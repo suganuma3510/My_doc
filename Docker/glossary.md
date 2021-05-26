@@ -1,28 +1,15 @@
-# Dockerとは
-Docker社が開発している、コンテナ型の仮想環境を作成、配布、実行するためのプラットフォーム。
-コンテナ型のアプリケーション実行環境のこと。Linux上で動作する。（WindowsやMacでは裏でLinuxの仮想環境が構築されている）
-
-[Dockerハンズオン](https://shimo5.me/post/2020-09-07/)
-
-### コンテナ型
-
-現在の主流。アプリケーション・ミドルウェア・OSなどのインフラ環境を一つのコンテナとしてまとめる。それぞれのコンテナがホストOSを共有して稼働するため、他の仮想化と比べるとサーバの起動や処理なども高速。ホストOSと異なるOSのコンテナを作ることができない。
-仮想化ソフトウェアの例：Dockerなど
-
-#### コンテナ仮想化のメリット
-
-- ビルド、デプロイも高速
-- オーバーヘッドが少ない
-- プラットフォームやハードウェアからの隔離環境
-- ラップトップで動いているものをそのままサーバに持っていける
-
-####特徴
-- 開発環境を共有できる
-- Docker Hubと呼ばれるレジストリがある
-- ホストがライブラリやミドルウェアで汚れない
-
-dockerが利用されているサービス
-AbemaTV・アメーバブログ・Pokemon Goなど
+- [Dockerfile　書き方](#dockerfile書き方)
+- [Dockerイメージ](#dockerイメージ)
+- [Docker Compose](#docker-compose)
+  - [version](#version)
+  - [services](#services)
+  - [IMAGE](#image)
+  - [build](#build)
+  - [volumes](#volumes)
+  - [ports](#ports)
+  - [environment](#environment)
+  - [env_file](#env_file)
+  - [command](#command)
 
 #### Dockerfile　書き方
 
@@ -88,14 +75,14 @@ services:
       - 13306:3306
 ```
 
-##### version¶
+##### version
 docker-composeのバージョンを指定します。
 特にこだわりがなければ最新のものを記述するようにしましょう。
 ```yml
 version: '3.7'
 ```
 
-##### services¶
+##### services
 起動するコンテナの定義を行います。
 このdocker-compose.yamlでは nginx , app , mysql の3つが定義されています。
 ```yml
@@ -103,13 +90,13 @@ services:
   nginx:
 ```
 
-##### IMAGE¶
+##### IMAGE
 コンテナを起動するDocker Image を指定します。
 ```yml
 image: mysql:5.7
 ```
 
-##### build¶
+##### build
 docker buildの実行情報を記述します。
 ここで定義された情報を元にDockerをビルドし、そのビルドしたイメージ使用してコンテナを起動します。
 image もしくは build どちらかを記述する必要があります。
@@ -122,14 +109,14 @@ build:
   dockerfile: docker/nginx/Dockerfile
 ```
 
-##### volumes¶
+##### volumes
 ボリュームのマウントを行います。 コマンドの場合、 -v $(pwd)/public:/var/www/html/public:ro `<IMAGE ID>` オプションと同一です。
 ```yml
 volumes:
   - ./public:/var/www/html/public:ro
 ```
 
-##### ports¶
+##### ports
 ポートの開放を行います。
 左にホストのポートを、右にコンテナのポートを指定します。
 コマンドの場合、 -p 8080:80 オプションと同一です。
@@ -138,7 +125,7 @@ ports:
   - 8080:80
 ```
 
-##### environment¶
+##### environment
 起動するコンテナへ環境変数を定義します。
 コマンドの場合、 -e PHP_HOST=app オプションと同一です。
 ```yml
@@ -146,14 +133,14 @@ environment:
   PHP_HOST: app
 ```
 
-##### env_file¶
+##### env_file
 ファイルに定義された環境変数を読み取り、コンテナへ定義します。
 ```yml
 env_file:
   - .env.example
 ```
 
-##### command¶
+##### command
 Dockerfileで定義されている CMD の上書きを行います。
 ```yml
 command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
