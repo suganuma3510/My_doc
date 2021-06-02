@@ -13,6 +13,7 @@
 - [ブランチ名変更](#ブランチ名変更)
 - [差分をチェック](#差分をチェック)
 - [違うブランチで作業をしたとき](#違うブランチで作業をしたとき)
+- [リモートブランチ取得](#リモートブランチ取得)
 
 #### ステージングエリアに登録
 ```
@@ -104,4 +105,16 @@ git checkout
 5.退避させた変更分を反映
 ```
 git stash apply
+```
+
+#### リモートブランチ取得
+```
+git fetch
+git branch -a
+```
+```
+git checkout -b feature/ origin/feature/
+```
+```
+git checkout -t origin/feature/
 ```

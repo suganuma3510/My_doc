@@ -1,5 +1,19 @@
 # TypeScript
 
+- [TypeScript](#typescript)
+  - [TypeScriptとは何か？](#typescriptとは何か)
+    - [公式](#公式)
+  - [TypeScriptにはどのような機能があるのか？](#typescriptにはどのような機能があるのか)
+  - [なぜTypeScriptを使うのか？](#なぜtypescriptを使うのか)
+  - [TypeScriptとJavaScriptのジレンマ](#typescriptとjavascriptのジレンマ)
+  - [TypeScriptの特徴](#typescriptの特徴)
+    - [型システム](#型システム)
+    - [interface](#interface)
+    - [Enums](#enums)
+    - [TypeScriptのコンパイルの効率化](#typescriptのコンパイルの効率化)
+  - [まとめ](#まとめ)
+  - [参照](#参照)
+
 ## TypeScriptとは何か？
 
 -   Microsoft社が開発・保守しているプログラミング言語。
@@ -113,7 +127,7 @@ class Class implements IClassDefination {
 
 ### Enums
 
-Enums を使用すると、一連の名前付き定数を定義することができる。意図を明確化することが容易になる。
+Enums を使用すると、一連の名前付き定数を定義することができる。意図を明確化することが容易になる。a
 
 ```
 enum Direction {
