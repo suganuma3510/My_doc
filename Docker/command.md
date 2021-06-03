@@ -30,6 +30,11 @@ docker-compose up -d --build
 docker-compose build
 ```
 
+#### upしたコンテナに入る
+```
+docker-compose exec app sh
+```
+
 #### 権限付与
 ```
 sudo chmod 777
