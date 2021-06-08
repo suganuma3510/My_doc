@@ -1,6 +1,9 @@
 - [Dockerとは](#dockerとは)
     - [コンテナ型](#コンテナ型)
       - [コンテナ仮想化のメリット](#コンテナ仮想化のメリット)
+    - [alpineLinuxとは](#alpinelinuxとは)
+      - [比較 docker image](#比較-docker-image)
+      - [パッケージマネージャ「apk」](#パッケージマネージャapk)
 
 # Dockerとは
 Docker社が開発している、コンテナ型の仮想環境を作成、配布、実行するためのプラットフォーム。
@@ -31,3 +34,17 @@ Docker社が開発している、コンテナ型の仮想環境を作成、配�
 dockerが利用されているサービス
 AbemaTV・アメーバブログ・Pokemon Goなど
 
+### alpineLinuxとは
+組み込み系でよく使われているBusyBoxとmuslをベースにしたLinuxディストリビューション。
+軽量でセキュアな点が特徴。
+
+#### 比較 docker image
+
+```
+ubuntu 64.2MB
+alpine 5.55MB
+centos 220MB
+```
+`docker pull push` などの時間が短縮される。
+
+#### パッケージマネージャ「apk」
