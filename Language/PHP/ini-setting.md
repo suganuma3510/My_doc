@@ -1,8 +1,43 @@
+- [php.iniの設定](#phpiniの設定)
+  - [php.iniとは](#phpiniとは)
+  - [開発用と本番用の設定例](#開発用と本番用の設定例)
+    - [開発用 php.ini の例](#開発用-phpini-の例)
+    - [本番用 php.ini の例](#本番用-phpini-の例)
+  - [オプションの補足](#オプションの補足)
+    - [zend.exception\_ignore\_args](#zendexception_ignore_args)
+    - [expose\_php](#expose_php)
+    - [max\_execution\_time](#max_execution_time)
+    - [max\_input\_vars](#max_input_vars)
+    - [upload\_max\_filesize](#upload_max_filesize)
+    - [post\_max\_size](#post_max_size)
+    - [memory\_limit](#memory_limit)
+    - [error\_reporting](#error_reporting)
+    - [display\_errors](#display_errors)
+    - [display\_startup\_errors](#display_startup_errors)
+    - [log\_errors](#log_errors)
+    - [error\_log](#error_log)
+    - [default\_charset = UTF-8](#default_charset--utf-8)
+    - [date.timezone](#datetimezone)
+    - [mysqlnd.collect\_memory\_statistics](#mysqlndcollect_memory_statistics)
+    - [zend.assertions](#zendassertions)
+    - [mbstring.language](#mbstringlanguage)
+    - [opcache の設定](#opcache-の設定)
+    - [opcache.enable](#opcacheenable)
+    - [opcache.memory\_consumption](#opcachememory_consumption)
+    - [opcache.interned\_strings\_buffer](#opcacheinterned_strings_buffer)
+    - [opcache.max\_accelerated\_files](#opcachemax_accelerated_files)
+    - [opcache.validate\_timestamps](#opcachevalidate_timestamps)
+    - [opcache.huge\_code\_pages](#opcachehuge_code_pages)
+    - [opcache.preload](#opcachepreload)
+    - [opcache.preload\_user](#opcachepreload_user)
+  - [参考](#参考)
+
 # php.iniの設定
 
-## [](https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9#%E5%8F%82%E8%80%83%E8%A8%AD%E5%AE%9A)参考設定
-
-PHPでは、開発用と本番用の設定例を用意してくれています。  
+## php.iniとは
+PHPプログラムの全体的な動作や環境を設定するファイルのこと。
+PHPの設定変更が必要な場合や、文字化けするプログラムの文字コード設定を変更したい場合などには、php.iniファイルの変更が必要。
+## 開発用と本番用の設定例
 
 -   [https://github.com/php/php-src/blob/master/php.ini-development](https://github.com/php/php-src/blob/master/php.ini-development)
 -   [https://github.com/php/php-src/blob/master/php.ini-production](https://github.com/php/php-src/blob/master/php.ini-production)
@@ -10,12 +45,6 @@ PHPでは、開発用と本番用の設定例を用意してくれています�
 予め以前の記事で設定の差分を調べておきましたので、よかったらご覧ください。
 
 -   [PHP7.4 開発用と本番用の php.ini 設定の違い](https://qiita.com/ucan-lab/items/86f1498de569f4a5e16b)
-
-## 環境
-
--   PHP 7.4.5 (執筆時のバージョンです。)
-
-※バージョンが異なる場合は公式サイトで有効な設定か確認してください。
 
 ### 開発用 php.ini の例
 
@@ -259,6 +288,5 @@ opcacheするとソースコードのキャッシュ、最適化して高速化�
 
 ## 参考
 
--   [ぼくのかんがえたさいきょうの](https://dic.pixiv.net/a/%E3%81%BC%E3%81%8F%E3%81%AE%E3%81%8B%E3%82%93%E3%81%8C%E3%81%88%E3%81%9F%E3%81%95%E3%81%84%E3%81%8D%E3%82%87%E3%81%86%E3%81%AE)
--   [php.ini ディレクティブのリスト](https://www.php.net/manual/ja/ini.list.php)
--   [OPcache インストール手順](https://www.php.net/manual/ja/opcache.installation.php)
+-   [PHP7.4 ぼくのかんがえたさいきょうのphp.ini](https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9)
+-   [php.ini設定について](https://www.xserver.ne.jp/manual/man_server_phpini_edit.php)
