@@ -1,3 +1,84 @@
+- [コンテナ作成＆起動](#コンテナ作成起動)
+- [コンテナ停止＆削除](#コンテナ停止削除)
+- [ビルド](#ビルド)
+- [コンテナでコマンド実行](#コンテナでコマンド実行)
+- [upしたコンテナに入る](#upしたコンテナに入る)
+- [イメージをもとにコンテナを作成](#イメージをもとにコンテナを作成)
+- [Dockerfileをもとにイメージ作成](#dockerfileをもとにイメージ作成)
+- [ポートマップ](#ポートマップ)
+- [権限付与](#権限付与)
+- [コンテナ、イメージ削除](#コンテナイメージ削除)
+- [volume削除](#volume削除)
+  - [すべて削除](#すべて削除)
+  - [リンク切れ削除](#リンク切れ削除)
+- [docker-composeダウンロード](#docker-composeダウンロード)
+- [ファイル容量確認](#ファイル容量確認)
+- [ECS](#ecs)
+- [build時に環境変数を渡す](#build時に環境変数を渡す)
+- [コンテナのファイルをホストにコピー](#コンテナのファイルをホストにコピー)
+- [コンテナ表示](#コンテナ表示)
+- [コンテナ停止](#コンテナ停止)
+- [参考](#参考)
+
+#### コンテナ作成＆起動
+```
+docker-compose up
+```
+
+指定したサービスのみ起動
+```
+docker-compose up ＜サービス名＞
+docker-compose up nginx
+```
+
+バッググラウンドで実行
+```
+docker-compose up -d
+```
+
+#### コンテナ停止＆削除
+```
+docker-compose down
+```
+
+#### ビルド
+```
+docker-compose build
+```
+
+buildと同時にup
+```
+docker-compose up -d --build
+```
+
+#### コンテナでコマンド実行
+
+すでにあるコンテナでコマンド実行
+```
+docker-compose exec ＜サービス名＞ ＜実行したいコマンド＞
+docker-compose exec mysql echo 'hello'
+```
+
+コンテナを新たに作成してコマンドを実行
+```
+docker-compose run ＜サービス名＞ ＜実行したいコマンド＞
+docker-compose run mysql echo 'hello'
+
+# --rm 実行後コンテナを削除
+docker-compose run --rm mysql echo 'hello'
+```
+
+#### upしたコンテナに入る
+```
+docker-compose exec ＜サービス名＞ sh
+# または
+docker-compose exec ＜サービス名＞ bash
+
+docker-compose exec db sh
+# または
+docker-compose exec db bash
+```
+
 #### イメージをもとにコンテナを作成
 ```
 docker run nginx
@@ -20,19 +101,6 @@ docker run -p 80:80 nginx
 ```
 ```
 docker run --rm -p 80:80 homeres-nuxt-app
-```
-
-#### buildと同時にup
-```
-docker-compose up -d --build
-```
-```
-docker-compose build
-```
-
-#### upしたコンテナに入る
-```
-docker-compose exec app sh
 ```
 
 #### 権限付与
@@ -120,3 +188,7 @@ docker stop [コンテナID]
 ```
 docker stop
 ```
+
+#### 参考
+[docker-compose コマンドまとめ](https://qiita.com/wasanx25/items/d47caf37b79e855af95f)
+
