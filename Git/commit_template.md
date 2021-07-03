@@ -26,13 +26,18 @@ Add: グローバルナビゲーションを追加する
 
 #### ブランチ名
 
-| 種類    |  分岐元 |    マージ先     |                                 用途途                                  |
-| :------: | :------: | :-------------: | :---------------------------------------------------------------------: |
-| feature | develop |     develop     | 機能実装やバグ修正などの開発作業を行う<br>例：feature/add_function_name |
-| release | develop | developとmaster |         リリース準備作業を行う<br>例：release/add_function_name         |
+```
+master
+develop
+feature/
+release/
+hotfix/
+```
 
 #### 参考文献
 [GitHubで使われている実用英語コメント集](https://qiita.com/shikichee/items/a5f922a3ef3aa58a1839)
 [Gitのコミットメッセージの書き方](https://qiita.com/itosho/items/9565c6ad2ffc24c09364)
 [BcRikko/【メモ】Issueの書き方.md](https://gist.github.com/BcRikko/6af0b248148c12d3ab90)
 [git-flowとgithub-flow](https://www.atmarkit.co.jp/ait/articles/1708/01/news015.html#021)
+[Git\-flow ～Gitのブランチモデルを知る～ \| バージョン管理システム入門\(初心者向け\)](https://tracpath.com/bootcamp/learning_git_git_flow.html)
+[非エンジニアのためのGit\-flowの運用方法とケーススタディをご紹介 \| Digitoo](https://digitoo.trans-cosmos.co.jp/blog/git-flow/)
