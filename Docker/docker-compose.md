@@ -9,17 +9,18 @@
     - [build](#build)
     - [volumes](#volumes)
       - [short syntaxとlong syntaxの違い](#short-syntaxとlong-syntaxの違い)
+      - [トップレベルの volumes](#トップレベルの-volumes)
     - [ports](#ports)
     - [environment](#environment)
-    - [env\_file](#env_file)
+    - [env_file](#env_file)
     - [command](#command)
     - [参考](#参考)
 
 ## 概要
 
-docker-composeはローカルでDockerのオーケストレーションを行うためのツールです。  
-DockerのビルドからNetworkやVolumeの管理をコードベースで定義して行ってくれます。  
-単純なnginxの起動であれば素のdockerコマンドで問題ありませんが、ここにPHP, MySQL...とコンテナが増えていくとその威力を発揮します。
+docker-composeはローカルでDockerのオーケストレーションを行うためのツール。  
+DockerのビルドからNetworkやVolumeの管理をコードベースで定義して行う。  
+複数のコンテナを管理する際に使用される。
 
 ### docker-compose.yamlサンプル
 
@@ -62,25 +63,25 @@ services:
 
 ### version
 
-docker-composeのバージョンを指定します。  
-特にこだわりがなければ最新のものを記述するようにしましょう。
+docker-composeのバージョンを指定する。  
+特にこだわりがなければ最新のものを記述する。
 
 ### services
 
-起動するコンテナの定義を行います。  
-このdocker-compose.yamlでは `nginx` , `app` , `mysql` の3つが定義されています。
+起動するコンテナの定義を行う。  
+サンプルのdocker-compose.yamlでは `nginx` , `app` , `mysql` の3つが定義されている。
 
 ### image
 
-コンテナを起動するDocker Image を指定します。
+コンテナを起動するDocker Image を指定する。
 
 ### build
 
-docker buildの実行情報を記述します。  
-ここで定義された情報を元にDockerをビルドし、そのビルドしたイメージ使用してコンテナを起動します。  
-`image` もしくは `build` どちらかを記述する必要があります。
+docker buildの実行情報を記述する。  
+ここで定義された情報を元にDockerをビルドし、そのビルドしたイメージ使用してコンテナを起動する。  
+`image` もしくは `build` どちらかを記述する必要がある。
 
-コマンドの場合、 `docker build -f docker/nginx/Dockerfile .` と同一です。
+コマンドの場合、 `docker build -f docker/nginx/Dockerfile .` と同一。
 
 ```yml
 build:
@@ -90,7 +91,8 @@ build:
 
 ### volumes
 
-ボリュームのマウントを行います。 コマンドの場合、 `-v $(pwd)/public:/var/www/html/public:ro <IMAGE ID>` オプションと同一です。
+ボリュームのマウントを行う。ホストとコンテナのディレクトリを共有することができる。  
+ コマンドの場合、 `-v $(pwd)/public:/var/www/html/public:ro <IMAGE ID>` オプションと同一。
 
 short syntax
 ```yml
@@ -111,29 +113,33 @@ short syntaxは、もしホストに対象ファイルが存在しなかった�
 
 long syntaxは、マウント対象がホスト上に存在しない場合, docker-compose up 時に適切なエラーを吐き, 早期発見を促す。
 
+#### トップレベルの volumes
+トップレベル(一番上の階層)にvolumesを名前付きで定義することによって、  
+複数のコンテナ間でディレクトリを共有することができる。
+
 ### ports
 
 ポートの開放を行います。  
-左にホストのポートを、右にコンテナのポートを指定します。  
-コマンドの場合、 `-p 8080:80` オプションと同一です。
+左にホストのポートを、右にコンテナのポートを指定する。  
+コマンドの場合、 `-p 8080:80` オプションと同一。
 
 ### environment
 
-起動するコンテナへ環境変数を定義します。  
-コマンドの場合、 `-e PHP_HOST=app` オプションと同一です。
+起動するコンテナへ環境変数を定義する。  
+コマンドの場合、 `-e PHP_HOST=app` オプションと同一。
 
 ```yml
 environment:
   PHP_HOST: app
 ```
 
-### env\_file
+### env_file
 
-ファイルに定義された環境変数を読み取り、コンテナへ定義します。
+ファイルに定義された環境変数を読み取り、コンテナへ定義する。
 
 ### command
 
-Dockerfileで定義されている `CMD` の上書きを行います。
+Dockerfileで定義されている `CMD` の上書きを行う。
 
 `command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci` 
 
