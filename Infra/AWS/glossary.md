@@ -10,6 +10,7 @@
     - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
     - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
     - [Fargate](#fargate)
+    - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
 
 ### AWS
 Amazon により提供されているクラウドプラットフォーム。  
@@ -40,3 +41,11 @@ Docker コンテナイメージを簡単に保存、管理、デプロイでき�
 ### Fargate
 AWS が提供するマネージドなコンテナ実行環境。  
 コンテナを実行するサーバーを直接意識する必要がなく、サーバーのインスタンスタイプの選択やクラスタ管理がいらないというメリットがある。
+
+### IAM (Identity and Access Management)
+AWSのサービスで「認証」と「認可」の設定を行うことができるサービス。
+IAMでは、以下の機能が用意されている。
+- IAMユーザー（グループ）
+- IAMポリシー
+- IAMロール  
+IAMロールとは、ユーザーやグループではなく、EC2などのAWSのサービスや他のアカウントに対してにAWS の操作権限を付与するための仕組み。
