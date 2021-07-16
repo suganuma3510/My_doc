@@ -1,10 +1,37 @@
-# 技術用語集
+## 技術用語集
+
+- [技術用語集](#技術用語集)
+  - [WebAPI](#webapi)
+  - [クラウド (Cloud)](#クラウド-cloud)
+  - [クラウドアーキテクチャ](#クラウドアーキテクチャ)
+  - [WebSocket](#websocket)
+  - [SPA(Single Page Application)](#spasingle-page-application)
+  - [SSR(Server Side Rendering)](#ssrserver-side-rendering)
+  - [マイクロサービス（Microservices）](#マイクロサービスmicroservices)
+  - [REST API](#rest-api)
+  - [SEO](#seo)
+    - [検索ボリューム](#検索ボリューム)
+  - [クローラー](#クローラー)
+
+### WebAPI
+何かしらのサービス提供者が、そのサービスを利用するために HTTP/HTTPS ベースで、提供するインターフェースのこと。
+
+### クラウド (Cloud)
+クラウドサービスプラットフォーム(AWS や GCP など)からインターネット経由でコンピューティング、データベース、ストレージ、アプリケーションをはじめとした、さまざまなIT リソースをユーザーの要求があった際に、その要求に応じてサービスを提供、利用することができるサービスの総称。
+
+### クラウドアーキテクチャ
+クラウドを構築するために必要なものをつなぎ合わせ、アプリケーションが実行する環境を作るための設計思想のようなもの。
 
 ### WebSocket
 双方向リアルタイム通信を可能にするための一般的な方式。  
 
 [WebSocketについて調べてみた。](https://qiita.com/south37/items/6f92d4268fe676347160)
 [フロントエンドとバックエンドのリアルタイム通信の選択肢を教えて下さい](https://qiita.com/suin/items/00dee8bac706a6d66862)
+
+### SPA(Single Page Application)
+単一のWebページでコンテンツ切り替えを行うことで、ページ遷移の必要がなく、ブラウザの挙動に縛られないWeb表現を可能にする設計構造の名称。  
+メリットとして、ページ遷移が高速・高度な UI/UX が実現可能・ネイティブアプリの代用などがある。  
+デメリットはSEOの低下、初期ローディングに時間がかかるなど。
 
 ### SSR(Server Side Rendering)
 本来JavaScriptで行う画面の書き換え処理などをサーバー側で実行させて、ユーザーの待機時間を短くすること。  
