@@ -9,6 +9,10 @@
     - [エラーメッセージの属性名(:attributes)を変更する](#エラーメッセージの属性名attributesを変更する)
     - [ユニークチェック](#ユニークチェック)
   - [マイグレーションファイルの書き方](#マイグレーションファイルの書き方)
+  - [データベースのテストデータ自動生成](#データベースのテストデータ自動生成)
+    - [モデルファクトリの利用](#モデルファクトリの利用)
+    - [シーダファイルの書き方](#シーダファイルの書き方)
+    - [Fakerの日本語化](#fakerの日本語化)
   - [参考](#参考)
 
 ### laravel 8でcssファイルにアクセスする方法
@@ -77,6 +81,73 @@ $request->validate([
 ### マイグレーションファイルの書き方
 - [【Laravel】初めてのマイグレーション \- Qiita](https://qiita.com/manbolila/items/c19735438affefbfbe69)
 
+### データベースのテストデータ自動生成
+
+#### モデルファクトリの利用
+`database\factories\EmployeeFactory.php`
+```php
+public function definition()
+{
+  return [
+    // YZ + 一意な8桁の乱数
+    'employee_id' => 'YZ' . $this->faker->unique()->randomNumber(8),
+    // 姓
+    'family_name' => $this->faker->lastName(),
+    // 名
+    'first_name' => $this->faker->firstName(),
+    // 1～3の乱数
+    'section_id' => $this->faker->numberBetween(1, 3),
+    // 一意かつ安全（存在しない）な電子メール
+    'mail' => $this->faker->unique()->safeEmail(),
+    // 1～2の乱数
+    'gender_id' => $this->faker->numberBetween(1, 2),
+  ];
+}
+```
+
+#### シーダファイルの書き方
+`database\seeders\DatabaseSeeder.php`
+```php
+public function run()
+{
+  // 10件のテストデータを生成
+  \App\Models\Employee::factory(10)->create();
+}
+```
+
+`app\Models\Employee.php`
+```php
+use Illuminate\Database\Eloquent\Factories\HasFactory; // 追記
+
+class Employee extends Model
+{
+    use HasFactory; // 追記
+
+    protected $table = 'employee';
+
+    protected $fillable = [
+        'employee_id',
+        'family_name',
+        'first_name',
+        'section_id',
+        'mail',
+        'gender_id'
+    ];
+
+    public $timestamps = false;
+}
+```
+
+#### Fakerの日本語化
+`config/app.php`の`faker_locale`を下記のように変更する。
+```php
+'faker_locale' => 'ja_JP',
+```
+
+- [php artisan db:seed](https://readouble.com/laravel/8.x/ja/seeding.html)
+- [Laravel7でよく使うfactoryのfakerダミーデータのチートシート](https://cross-accelerate-business-create.com/2021/01/02/laravel7-faker/)
+- [Fakerチートシート \- Qiita](https://qiita.com/tosite0345/items/1d47961947a6770053af)
+- 
 ### 参考
 - [Laravel 8.x バリデーション](https://readouble.com/laravel/8.x/ja/validation.html)
 - [【laravel】Validatorによるバリデーション \- Qiita](https://qiita.com/gone0021/items/c613ef7e006b6f5d47ce)
