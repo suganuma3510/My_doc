@@ -1,23 +1,19 @@
-# docker-compose
-
 - [docker-compose](#docker-compose)
-  - [概要](#概要)
-    - [docker-compose.yamlサンプル](#docker-composeyamlサンプル)
-    - [version](#version)
-    - [services](#services)
-    - [image](#image)
-    - [build](#build)
-    - [volumes](#volumes)
-      - [short syntaxとlong syntaxの違い](#short-syntaxとlong-syntaxの違い)
-      - [トップレベルの volumes](#トップレベルの-volumes)
-    - [ports](#ports)
-    - [environment](#environment)
-    - [env_file](#env_file)
-    - [command](#command)
-    - [参考](#参考)
+  - [docker-compose.yamlサンプル](#docker-composeyamlサンプル)
+  - [version](#version)
+  - [services](#services)
+  - [image](#image)
+  - [build](#build)
+  - [volumes](#volumes)
+    - [short syntaxとlong syntaxの違い](#short-syntaxとlong-syntaxの違い)
+    - [トップレベルの volumes](#トップレベルの-volumes)
+  - [ports](#ports)
+  - [environment](#environment)
+  - [env_file](#env_file)
+  - [command](#command)
+  - [参考](#参考)
 
-## 概要
-
+## docker-compose
 docker-composeはローカルでDockerのオーケストレーションを行うためのツール。  
 DockerのビルドからNetworkやVolumeの管理をコードベースで定義して行う。  
 複数のコンテナを管理する際に使用される。
