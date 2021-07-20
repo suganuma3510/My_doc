@@ -13,6 +13,7 @@
     - [モデルファクトリの利用](#モデルファクトリの利用)
     - [シーダファイルの書き方](#シーダファイルの書き方)
     - [Fakerの日本語化](#fakerの日本語化)
+  - [FormRequestクラス](#formrequestクラス)
   - [参考](#参考)
 
 ### laravel 8でcssファイルにアクセスする方法
@@ -147,7 +148,50 @@ class Employee extends Model
 - [php artisan db:seed](https://readouble.com/laravel/8.x/ja/seeding.html)
 - [Laravel7でよく使うfactoryのfakerダミーデータのチートシート](https://cross-accelerate-business-create.com/2021/01/02/laravel7-faker/)
 - [Fakerチートシート \- Qiita](https://qiita.com/tosite0345/items/1d47961947a6770053af)
-- 
+
+### FormRequestクラス
+`app\Http\Requests\EmployeeRequest.php`
+```php
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class EmployeeRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'employeeId' => ['required', 'size:10', 'regex:/YZ+\d{8}/', 'unique:employee,employee_id'],
+            'familyName' => 'required | max:25',
+            'firstName' => 'required | max:25',
+            'sectionId' => ['required', 'regex:/[1-3]/'],
+            'mail' => ['required', 'max:256', 'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+$/'],
+            'genderId' => ['required', 'regex:/[12]/'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => '必須：:attributeを入力してください',
+            'size' => '桁数：:attributeは :size 文字で入力してください',
+            'max' => '最大桁数：:attributeは :max 文字以内で入力してください',
+            'unique' => '重複：入力した:attributeはすでに登録されています',
+            'regex' => '書式：:attributeを正しく入力してください',
+        ];
+    }
+}
+```
+
+上記のように記述することで、リクエストを送った際に自動でバリデーション処理を行ってくれる。
+
+- [LaravelのFormRequestクラス機能まとめ \- Qiita](https://qiita.com/OKCH3COOH/items/53db8780027e5e11be82#%E6%A9%9F%E8%83%BD)
+
 ### 参考
 - [Laravel 8.x バリデーション](https://readouble.com/laravel/8.x/ja/validation.html)
 - [【laravel】Validatorによるバリデーション \- Qiita](https://qiita.com/gone0021/items/c613ef7e006b6f5d47ce)
