@@ -1,25 +1,23 @@
-- [コンテナ作成＆起動](#コンテナ作成起動)
-- [コンテナ停止＆削除](#コンテナ停止削除)
-- [ビルド](#ビルド)
-- [コンテナでコマンド実行](#コンテナでコマンド実行)
-- [upしたコンテナに入る](#upしたコンテナに入る)
-- [イメージをもとにコンテナを作成](#イメージをもとにコンテナを作成)
-- [Dockerfileをもとにイメージ作成](#dockerfileをもとにイメージ作成)
-- [ポートマップ](#ポートマップ)
-- [権限付与](#権限付与)
-- [コンテナ、イメージ削除](#コンテナイメージ削除)
-- [volume削除](#volume削除)
-  - [すべて削除](#すべて削除)
-  - [リンク切れ削除](#リンク切れ削除)
-- [docker-composeダウンロード](#docker-composeダウンロード)
-- [ファイル容量確認](#ファイル容量確認)
-- [ECS](#ecs)
-- [build時に環境変数を渡す](#build時に環境変数を渡す)
-- [コンテナのファイルをホストにコピー](#コンテナのファイルをホストにコピー)
-- [コンテナ表示](#コンテナ表示)
-- [コンテナ停止](#コンテナ停止)
-- [参考](#参考)
+- [docker compose コマンド](#docker-compose-コマンド)
+  - [コンテナ作成＆起動](#コンテナ作成起動)
+  - [コンテナ停止＆削除](#コンテナ停止削除)
+  - [ビルド](#ビルド)
+  - [コンテナでコマンド実行](#コンテナでコマンド実行)
+  - [docker-composeダウンロード](#docker-composeダウンロード)
+  - [upしたコンテナに入る](#upしたコンテナに入る)
+- [docker コマンド](#docker-コマンド)
+  - [イメージをもとにコンテナを作成](#イメージをもとにコンテナを作成)
+  - [Dockerfileをもとにイメージ作成](#dockerfileをもとにイメージ作成)
+  - [ポートマップ](#ポートマップ)
+  - [コンテナのファイルをホストにコピー](#コンテナのファイルをホストにコピー)
+  - [コンテナ表示](#コンテナ表示)
+  - [コンテナ停止](#コンテナ停止)
+  - [コンテナ、イメージ削除](#コンテナイメージ削除)
+  - [volume削除](#volume削除)
+  - [build時に環境変数を渡す](#build時に環境変数を渡す)
+  - [参考](#参考)
 
+### docker compose コマンド
 #### コンテナ作成＆起動
 ```
 docker-compose up
@@ -68,6 +66,13 @@ docker-compose run mysql echo 'hello'
 docker-compose run --rm mysql echo 'hello'
 ```
 
+#### docker-composeダウンロード
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 #### upしたコンテナに入る
 ```
 docker-compose exec ＜サービス名＞ sh
@@ -78,6 +83,8 @@ docker-compose exec db sh
 # または
 docker-compose exec db bash
 ```
+
+### docker コマンド
 
 #### イメージをもとにコンテナを作成
 ```
@@ -103,68 +110,6 @@ docker run -p 80:80 nginx
 docker run --rm -p 80:80 homeres-nuxt-app
 ```
 
-#### 権限付与
-```
-sudo chmod 777
-```
-```
-sudo yum -y install ImageMagick ImageMagick-devel
-```
-
-#### コンテナ、イメージ削除
-```
-docker container prune
-```
-```
-docker image prune
-```
-```
-docker rmi 6782816 -f
-```
-
-#### volume削除
-##### すべて削除
-```
-docker volume rm $(docker volume ls -qf dangling=true)
-```
-
-##### リンク切れ削除
-```
-docker volume ls -qf dangling=true | xargs -r docker volume rm
-```
-
-#### docker-composeダウンロード
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-#### ファイル容量確認
-```
-df -h
-du -h | sort -rh | head -5
-```
-
-#### ECS
-```
-sudo usermod -a -G docker ec2-user
-aws ecr get-login --no-include-email --region ap-northeast-1
-```
-
-#### build時に環境変数を渡す
-```
-FROM alpine
-ARG my_app_version
-ENV VERSION_APP=$my_app_version
-```
-```
-$ hoge='fuga'
-$ docker build --tag my_alpine --build-arg my_app_version=$hoge .
-
-docker build -t homeres-nuxt-app -f docker/production/nuxt/Dockerfile .
-```
-
 #### コンテナのファイルをホストにコピー
 ```
 docker cp [コンテナID]:[コピーしたいファイルパス] [ローカルにコピーしたいパス]
@@ -187,6 +132,42 @@ docker stop [コンテナID]
 ```
 ```
 docker stop
+```
+
+#### コンテナ、イメージ削除
+```
+docker container prune
+```
+```
+docker image prune
+```
+```
+docker rmi 6782816 -f
+```
+
+#### volume削除
+すべて削除
+```
+docker volume rm $(docker volume ls -qf dangling=true)
+```
+
+リンク切れ削除
+```
+docker volume ls -qf dangling=true | xargs -r docker volume rm
+```
+
+#### build時に環境変数を渡す
+`Dockerfile`に以下のように記述
+```
+FROM alpine
+ARG my_app_version
+ENV VERSION_APP=$my_app_version
+```
+```
+$ hoge='fuga'
+$ docker build --tag my_alpine --build-arg my_app_version=$hoge .
+
+docker build -t homeres-nuxt-app -f docker/production/nuxt/Dockerfile .
 ```
 
 #### 参考
