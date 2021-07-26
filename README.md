@@ -16,7 +16,3 @@
   - [Go](https://github.com/suganuma3510/My_doc/blob/master/Language/Go)
   - [PHP](https://github.com/suganuma3510/My_doc/blob/master/Language/PHP)
   - [TypeScript](https://github.com/suganuma3510/My_doc/blob/master/Language/TypeScript)
-
-Markdown All in One のショートカット
-
-Ctrl+Shift+P
