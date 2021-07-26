@@ -1,16 +1,17 @@
-# AWS用語集
+## AWS用語集
 
 - [AWS用語集](#aws用語集)
-    - [AWS](#aws)
-    - [VPC (Virtual Private Cloud)](#vpc-virtual-private-cloud)
-    - [Route 53](#route-53)
-    - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
-    - [ALB (Application Load Balancer)](#alb-application-load-balancer)
-    - [RDB (Relational Database Service)](#rdb-relational-database-service)
-    - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
-    - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
-    - [Fargate](#fargate)
-    - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
+  - [AWS](#aws)
+  - [VPC (Virtual Private Cloud)](#vpc-virtual-private-cloud)
+  - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
+  - [Route 53](#route-53)
+  - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
+  - [ALB (Application Load Balancer)](#alb-application-load-balancer)
+  - [RDB (Relational Database Service)](#rdb-relational-database-service)
+  - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
+  - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
+  - [Fargate](#fargate)
+  - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
 
 ### AWS
 Amazon により提供されているクラウドプラットフォーム。  
@@ -18,6 +19,11 @@ Amazon により提供されているクラウドプラットフォーム。
 
 ### VPC (Virtual Private Cloud)
 ユーザー専用の仮想のクラウド環境を構築しプライベートなネットワーク空間を提供するサービス。
+
+### EC2 (Elastic Compute Cloud)
+仮想サーバを構築できるサービス。LinuxやWindowsなど様々なOSの仮想サーバを立てることができる。  
+必要な分だけ仮想サーバーを起動して、セキュリティやネットワーキングの設定、ストレージの管理をすることができる。  
+また、EC2では要件が変更した場合や需要が増加した場合なども、必要に応じて迅速に容量のスケールアップやスケールダウンをすることができる。
 
 ### Route 53
 可用性と拡張性に優れたクラウドのドメインネームシステム (DNS) ウェブサービス。  
