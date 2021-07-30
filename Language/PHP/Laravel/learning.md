@@ -14,6 +14,7 @@
     - [シーダファイルの書き方](#シーダファイルの書き方)
     - [Fakerの日本語化](#fakerの日本語化)
   - [FormRequestクラス](#formrequestクラス)
+  - [アクセサ](#アクセサ)
   - [参考](#参考)
 
 ### laravel 8でcssファイルにアクセスする方法
@@ -191,6 +192,37 @@ class EmployeeRequest extends FormRequest
 上記のように記述することで、リクエストを送った際に自動でバリデーション処理を行ってくれる。
 
 - [LaravelのFormRequestクラス機能まとめ \- Qiita](https://qiita.com/OKCH3COOH/items/53db8780027e5e11be82#%E6%A9%9F%E8%83%BD)
+
+### アクセサ
+アクセサを使用することでDBから値を取得時に任意のフィールドの値を変更することができる。
+
+使用場面としては、以下のようなテーブル定義をされたDBからデータを取得して、  
+view側で表示する際に名前をフルネームで表示させたり、性別を数字ではなく文字列をして表示させたいときに使用する。
+
+| 論理名       | 物理名      | データ型 | 備考         |
+| ------------ | ----------- | -------- | ------------ |
+| 社員名（姓） | family_name | 文字列型 |              |
+| 社員名（名） | first_name  | 文字列型 |              |
+| 性別         | gender_id   | 数値型   | 1：男、2：女 |
+
+実装方法
+
+Modelファイルに`get〜Attribute`というメソッドを定義することで、  
+Laravelは自動的にアクセサと判断してくれる。
+
+`app\Models\Employee.php`
+```php
+private static $gender_list = [1 => '男', 2 => '女'];
+
+// 性別IDのアクセサ
+public function getGenderIdAttribute($value)
+{
+  return self::$gender_list[$value];
+}
+```
+
+- [Laravelのアクセサ \- Qiita](https://qiita.com/yukachin0414/items/bf4dd35af8f9a0d1a5a8)
+- [アクセサとミューテタを使用してデータの加工を楽に行う](https://zenn.dev/naoki_oshiumi/articles/6497b8e078b9c5)
 
 ### 参考
 - [Laravel 8.x バリデーション](https://readouble.com/laravel/8.x/ja/validation.html)
