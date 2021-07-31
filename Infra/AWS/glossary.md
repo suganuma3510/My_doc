@@ -39,7 +39,23 @@ Web サービスに発生する負荷を分散するロードバランシング�
 クラウド上で提供されるリレーショナル型データベースサービス。
 
 ### ECS (Elastic Container Service)
-EC2 インスタンスを用いて仮想サーバー構築によく用いられる Docker コンテナを簡単に実行、停止、管理できる非常にスケーラブルで高速な管理サービス。
+Dockerオーケストレーションツール。  
+EC2 インスタンスを用いて仮想サーバー構築によく用いられる Docker コンテナを簡単に実行、停止、管理できる非常にスケーラブルで高速な管理サービス。  
+開発者はコンテナを動かすことに集中できるよう開発されていてクラスターの管理はAWSが行う。  
+そのため、プロダクションで活用するまでの学習コストが低く、他のAWSサービスとの連携もしやすいことが特徴。
+
+- タスク定義
+  - どんなコンテナをどんな設定で動かすかを定義する
+- サービス
+  - どのタスク定義でコンテナを立ち上げ、そのコンテナとどのロードバランサ(ターゲットグループ, リスナー)と紐付けるか
+- タスク
+  - タスク定義をもとに起動したコンテナをタスクと呼ぶ
+
+開発者がECSを使用する際は「タスク定義を作成し、そのタスク定義をもとにサービスを起動」する流れ。
+
+- [Amazon ECS タスク定義 \- Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definitions.html)
+- [チュートリアル: AWS CLI を使用した Fargate タスクのクラスターの作成 \- Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/ECS_AWSCLI_Fargate.html)
+- [Amazon ECS task execution IAM role \- Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
 
 ### ECR (Elastic Container Registry)
 Docker コンテナイメージを簡単に保存、管理、デプロイできる完全マネージド型のコンテナレジストリ。
