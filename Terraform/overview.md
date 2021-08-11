@@ -1,4 +1,4 @@
-## terraform
+## Terraform
 IaCと呼ばれるAWSやGCPといったインフラをコードで管理することができるインフラストラクチャ定義ツール。  
 Terraformはオープンソースであり、HashiCorpによってGo言語で開発された。  
 クラウド上のリソースを定義ファイルの状態になるように生成・操作する。
@@ -14,3 +14,10 @@ Terraformはオープンソースであり、HashiCorpによってGo言語で開
 - GCP
 - Azure  
 Azure（アジュール）とは、マイクロソフト社が提供するクラウドコンピューティングサービスのこと。
+
+### Terraformを動かす流れ
+1. ファイルのある場所まで移動する
+2. `terraform init` して初期化
+3. `terraform validate` してエラーチェック
+4. `terraform plan` して構成チェック
+5. `terraform apply` して実行
