@@ -13,6 +13,7 @@
   - [コンテナ表示](#コンテナ表示)
   - [コンテナ停止](#コンテナ停止)
   - [コンテナ、イメージ削除](#コンテナイメージ削除)
+  - [volume一覧](#volume一覧)
   - [volume削除](#volume削除)
   - [build時に環境変数を渡す](#build時に環境変数を渡す)
   - [参考](#参考)
@@ -143,6 +144,11 @@ docker image prune
 ```
 ```
 docker rmi 6782816 -f
+```
+
+#### volume一覧
+```
+docker volume ls
 ```
 
 #### volume削除

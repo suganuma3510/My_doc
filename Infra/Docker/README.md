@@ -8,4 +8,4 @@
 
 ### 学習用
 - [Learn Kubernetes Basics \| Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
-- [Docker2020 \- Speaker Deck](https://speakerdeck.com/cybozuinsideout/docker2020?slide=47)
+- [Docker2020 \- Speaker Deck](https://speakerdeck.com/cybozuinsideout/docker2020)
