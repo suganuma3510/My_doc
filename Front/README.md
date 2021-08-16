@@ -23,6 +23,7 @@
 ## UIフレームワーク
 - [Vuetify — A Material Design Framework for Vue.js](https://vuetifyjs.com/)
 - [Materialize](https://materializecss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 ## プレゼンテンプレート
 - [SlidesCarnival](https://www.slidescarnival.com/ja)
