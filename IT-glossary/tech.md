@@ -4,6 +4,7 @@
   - [WebAPI](#webapi)
   - [REST API](#rest-api)
     - [REST (REpresentational State Transfer)](#rest-representational-state-transfer)
+  - [パッケージマネージャー](#パッケージマネージャー)
   - [クラウド (Cloud)](#クラウド-cloud)
   - [クラウドアーキテクチャ](#クラウドアーキテクチャ)
   - [WebSocket](#websocket)
@@ -31,6 +32,21 @@ Webサービスの設計モデルであり、以下のような設計原則が�
 [Webサービスの設計モデル](https://qiita.com/TakahiRoyte/items/949f4e88caecb02119aa)  
 [0からREST APIについて調べてみた \- Qiita](https://qiita.com/masato44gm/items/dffb8281536ad321fb08)  
 [RESTful API（REST API）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/RESTful_API.html)
+
+### パッケージマネージャー
+OSやプログラミング言語の各パッケージのインストールやアンインストールを行うツールのこと。  
+
+プログラミング言語のツール例
+- npm (Node.js)
+- gem (Ruby)
+- Composer (PHP)
+
+OSのツール例
+- yum (Linux RedHot系)
+- PackageManagemet (Windows)
+- apt-get (Linux Debian系)
+
+[バージョン管理ツール、パッケージ管理ツールの種類をまとめました \- Qiita](https://qiita.com/akkey2475/items/5b2813e62303a9c75813)
 
 ### クラウド (Cloud)
 クラウドサービスプラットフォーム(AWS や GCP など)からインターネット経由でコンピューティング、データベース、ストレージ、アプリケーションをはじめとした、さまざまなIT リソースをユーザーの要求があった際に、その要求に応じてサービスを提供、利用することができるサービスの総称。
