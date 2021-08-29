@@ -36,6 +36,27 @@ LinuxをカーネルをOSとして利用しやすいように様々なソフト�
 - Edubuntu  
   Ubuntuから派生したディストリビューション。教育関連のソフトウェアが充実。
 
+## Linuxコマンド
+LinuxをCUI (文字によってコンピューター間での情報のやり取りや操作を行う方法) で操作する際に使われる、あらかじめ決められた命令文のこと。
+
+例：hoge.txtファイルの中身を行番号付きで表示する
+```
+cat -n hoge.txt
+[コマンド] [オプション] [パラメータ]
+```
+コマンド：コンピュータに特定の機能の実行を指示する命令
+オプション：コマンドの動作を指定あるいは変更するもの 
+パラメーター：コマンドの処理対象などを示すもの
+
+### パイプライン
+パイプ「 | 」を使用し、コマンドの標準出力を次のコマンドに渡すことで複数のコマンドを組み合わせて処理を行うことができる。  
+パイプを使った処理のことを「パイプライン処理」という。
+
+例：psコマンドの結果の中からパターン (apache) を検索
+```
+ps aux | grep apache
+```
+
 ### 参考
 - [What is the Linux kernel?](https://www.redhat.com/ja/topics/linux/what-is-the-linux-kernel)
 - [カーネル（kernel）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB.html)
@@ -43,3 +64,4 @@ LinuxをカーネルをOSとして利用しやすいように様々なソフト�
 - [Linuxとは？初心者でもわかる基本情報とメリットを紹介｜発注成功のための知識が身に付く【発注ラウンジ】](https://hnavi.co.jp/knowledge/blog/linux-merit/)
 - [Linuxをはじめから \- Linuxの超基礎を解説](https://www.infraeye.com/study/linuxz0.html)
 - [【エンジニア監修】Linuxとは何か？初心者目線でやさしく解説してみた \| 侍エンジニアブログ](https://www.sejuku.net/blog/4948)
+- [パイプ「\|」を使って 複数のコマンドを組み合わせる \- Linux入門 \- Webkaru](https://webkaru.net/linux/commands-pipeline/)
