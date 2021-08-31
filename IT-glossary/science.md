@@ -13,6 +13,8 @@
   - [正規表現](#正規表現)
   - [アーカイブ](#アーカイブ)
   - [スワップ](#スワップ)
+  - [CUI (Character-based User Interface)](#cui-character-based-user-interface)
+  - [GUI (Graphical User Interface)](#gui-graphical-user-interface)
 
 #### プロセス
 メモリを使って、何かやっているプログラムひとつひとつのこと。
@@ -74,3 +76,15 @@ Webサーバーの分野におけるトラフィックとして、外部から�
 OSのメモリ管理機能の一つで、メモリ容量が足りない時にHDDやSSDなどの記憶領域に移すこと。  
 メモリ領域を記憶領域に退避させることをスワップアウトという。  
 退避させた情報をメモリ領域に書き戻す動作をスワップインという。
+
+#### CUI (Character-based User Interface)
+ユーザーとコンピューター間での情報のやり取りや操作を受け付ける方法の一つ。  
+すべてのやり取りを文字によって行う。CLI (Command Line Interface) とも呼ばれる。
+
+[CUI（キャラクタユーザインターフェース）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/CUI.html)
+
+#### GUI (Graphical User Interface)
+ユーザーとコンピューター間での情報のやり取りや操作を受け付ける方法の一つ。  
+情報の提示に画像や図形を多用し、基礎的な操作の大半をマウスやタッチスクリーンなどによる画面上の位置の指示により行う。
+
+[Graphical](https://e-words.jp/w/GUI.html)
