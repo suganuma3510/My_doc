@@ -16,6 +16,7 @@
   - [クローラー](#クローラー)
   - [アクセス解析](#アクセス解析)
     - [Googleアナリティクス (GA)](#googleアナリティクス-ga)
+    - [スマートバナー](#スマートバナー)
 
 ### WebAPI
 何かしらのサービス提供者が、そのサービスを利用するために HTTP/HTTPS ベースで、提供するインターフェースのこと。
@@ -135,3 +136,7 @@ Googleが提供する無料のWebサイトアクセス解析ツール。
 
 - [【GAとは？】Googleアナリティクスの導入方法・使い方を分かりやすく解説](https://digitalidentity.co.jp/blog/analytics/what-googleanalytics.html)
 - [設定した最終地点に顧客やユーザーが着地する数](https://www.profuture.co.jp/mk/column/8792)
+
+#### スマートバナー
+スマホのWebサイトにアクセスした際に、Webサイトの上部にアプリダウンロードバナーを表示させる仕組みのこと。  
+正式名称はSmart App Banner という。
