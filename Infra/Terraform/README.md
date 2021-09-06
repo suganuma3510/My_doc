@@ -7,6 +7,7 @@
 - [Docs overview \| hashicorp/aws \| Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 ### 学習用
+- [Terraformとは \- Terraformで構築するAWS](https://y-ohgi.com/introduction-terraform/first/about/)
 - [Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる \- Qiita](https://qiita.com/minamijoyo/items/1f57c62bed781ab8f4d7)
 - [TerraformでFargateを構築する \- dip Engineer Blog](https://developer.dip-net.co.jp/entry/2020/09/10/Terraform%E3%81%A7Fargate%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B)
 - [Terraformで構築するAWS](https://y-ohgi.com/introduction-terraform/)
