@@ -22,6 +22,8 @@
     - [デジタイゼーション](#デジタイゼーション)
     - [デジタライゼーション](#デジタライゼーション)
     - [非連続イノベーション](#非連続イノベーション)
+  - [ETL](#etl)
+  - [非構造化データ](#非構造化データ)
 
 ### WebAPI
 何かしらのサービス提供者が、そのサービスを利用するために HTTP/HTTPS ベースで、提供するインターフェースのこと。
@@ -179,3 +181,20 @@ Googleが提供する無料のWebサイトアクセス解析ツール。
 [DX（デジタルトランスフォーメーション）とは？意味や重要性、事例まで徹底解説 \| ワークフロー総研](https://www.atled.jp/wfl/article/16095/)  
 [デジタルトランスフォーメーション（DX）とは？ 何かをわかりやすく解説 – ルートテック｜ビジネスライフとキャリアを応援する情報メディア](https://www.seraku.co.jp/tectec-note/industry/about_digitaltransformation/)  
 [非連続なイノベーション \| イノベーションリーダー \| 神戸大学大学院科学技術イノベーション研究科 オープンイノベーション人材センター イノベーション人材育成のプラットフォーム](https://www.lab.kobe-u.ac.jp/stin-innovation-leader/innovation/discontinuous.html)
+
+###　BI (ビジネスインテリジェンス)
+企業の情報システムなどに蓄積される膨大な業務データを収集して分析し、その結果を可視化することで業務や経営の意思決定に活用する仕組み。
+
+[ビジネスインテリジェンス \| IT用語辞典 \| 大塚商会](https://www.otsuka-shokai.co.jp/words/business-intelligence.html)
+
+### ETL
+Extract：抽出、Transform：変換、Load：格納 の略。  
+組織の内外に散在するデジタルデータを抽出・収集し、用途に応じて変換・加工したうえで、その先にある格納先に有用な情報として格納すること。
+
+[ETLツールとは：データフロー全体像のなかで担う領域と期待できる効果 \| 簡単・高速・信頼の純国産ETL：データ連携ツール Waha\! Transformer](https://waha-transformer.com/etl.html)
+
+### 非構造化データ
+非構造化データとは、ネイティブな形式のまま保存され、使用時まで処理されないデータのこと。  
+メールやソーシャルメディアの投稿、チャット、IoTセンサーのデータ、衛星画像など、さまざまなファイル形式がある。
+
+[構造化データと非構造化データの比較：完全ガイド \- Talend](https://www.talend.com/jp/resources/structured-vs-unstructured-data/)
