@@ -12,6 +12,7 @@
   - [SPA(Single Page Application)](#spasingle-page-application)
   - [SSR(Server Side Rendering)](#ssrserver-side-rendering)
   - [マイクロサービス（Microservices）](#マイクロサービスmicroservices)
+  - [メッセージキュー](#メッセージキュー)
   - [SEO](#seo)
     - [検索ボリューム](#検索ボリューム)
   - [クローラー](#クローラー)
@@ -97,6 +98,18 @@ MaaSが浸透すれば、1つのアプリで目的地までの複数の交通機
 
 [事例つき！マイクロサービスとは？基礎知識からメリットとデメリットまでを解説](https://ec-orange.jp/ec-media/?p=23458)  
 [マイクロサービス化・Microservices事例集](https://qiita.com/piaro/items/e82ee7f257be2ae37068)
+
+### メッセージキュー
+異なるソフトウェア間でデータを送受信する手法の一つで、直接データを渡すのではなく一旦第三者のソフトウェアに預けることで、送信側も受信側も好きなタイミングで送受信処理をおこなうことができるようにする方式。
+
+メッセージ  
+意味のあるバイト・ストリングのこと。 メッセージは、ある 1 つのアプリケーションから別のアプリケーションに (または、同じアプリケーションの異なる部分の間で) 情報を転送するために使用される。伝達に関係するアプリケーションは、 同じプラットフォーム上で実行されていても、別のプラットフォーム上で実行されていてもかまわない。
+
+キュー  
+メッセージを保管するためのデータ構造体のこと。
+
+[メッセージキューイング（MQ）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%AD%E3%83%A5%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%B0.html)  
+[メッセージとキュー \- IBM Documentation](https://www.ibm.com/docs/ja/ibm-mq/9.0?topic=ssfksj-9-0-0-com-ibm-mq-pro-doc-q002650--htm)
 
 ### SEO
 Search Engine Optimization:検索エンジン最適化  
