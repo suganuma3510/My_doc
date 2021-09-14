@@ -13,6 +13,7 @@
   - [正規表現](#正規表現)
   - [アーカイブ](#アーカイブ)
   - [スワップ](#スワップ)
+  - [シームレス](#シームレス)
   - [CUI (Character-based User Interface)](#cui-character-based-user-interface)
   - [GUI (Graphical User Interface)](#gui-graphical-user-interface)
 
@@ -76,6 +77,11 @@ Webサーバーの分野におけるトラフィックとして、外部から�
 OSのメモリ管理機能の一つで、メモリ容量が足りない時にHDDやSSDなどの記憶領域に移すこと。  
 メモリ領域を記憶領域に退避させることをスワップアウトという。  
 退避させた情報をメモリ領域に書き戻す動作をスワップインという。
+
+#### シームレス
+サービスやシステム、ソフトウェアなどが複数の要素や複数の異なる提供主体の組み合わせで構成されているとき、利用者側から見てそれぞれの違いを認識・意識せずに一体的に利用できる状態のこと。
+
+[シームレス（seamless）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/%E3%82%B7%E3%83%BC%E3%83%A0%E3%83%AC%E3%82%B9.html)
 
 #### CUI (Character-based User Interface)
 ユーザーとコンピューター間での情報のやり取りや操作を受け付ける方法の一つ。  
