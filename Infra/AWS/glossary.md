@@ -13,10 +13,6 @@
   - [Fargate](#fargate)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
 
-### AWS
-Amazon により提供されているクラウドプラットフォーム。  
-インターネットを介して 100 以上のサーバー・ストレージ・データベース・ソフトウェアといったコンピューターを使用した様々なサービスを利用することができる。
-
 ### VPC (Virtual Private Cloud)
 ユーザー専用の仮想のクラウド環境を構築しプライベートなネットワーク空間を提供するサービス。
 
