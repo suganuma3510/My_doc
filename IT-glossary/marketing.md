@@ -59,3 +59,23 @@
 
 [トキ消費｜3つの特徴と事業例、変化する消費行動をわかりやすく解説│kotodori \| コトドリ](https://kotodori.jp/strategy/toki-consumption-2/)  
 [モノ・コト・トキの三原則【コンテンツづくりの三原則 第11回】 \| ナイルのマーケティング相談室](https://www.seohacks.net/blog/3747/)
+
+### サードプレイス
+ファーストプレイス：第一の居場所である家  
+セカンドプレイ：職場や学校など、自宅以外で長い時間過ごす場所  
+サードプレイス：趣味や息抜きができる場所、新たなやる気を生む交流のある場所  
+例）カフェや趣味を共有できる仲間など
+
+[【スタバはサードプレイスではない\!?】サードプレイスとは？ 条件と問題点 \- カオナビ人事用語集](https://www.kaonavi.jp/dictionary/third-place/)
+
+### デザイン思考
+「ユーザーも気づかない本質的なニーズを見つけ、変革させるイノベーション思考」のこと。  
+以下の5つのプロセスを経る。
+1. 観察・共感（Empathize）
+2. 定義（Define）
+3. 概念化（Ideate）
+4. 試作（Prototype）
+5. テスト（Test）
+
+[デザイン思考とは？5分でわかりやすく解説！メリットやフレームワーク集も紹介 \| mazrica times\(マツリカタイムズ\)](https://times.mazrica.com/column/what-is-design-thinking/)  
+[デザイン思考（デザインシンキング） \| IT用語辞典 \| 大塚商会](https://www.otsuka-shokai.co.jp/words/design-thinking.html)
