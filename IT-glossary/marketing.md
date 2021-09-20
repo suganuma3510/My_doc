@@ -79,3 +79,15 @@
 
 [デザイン思考とは？5分でわかりやすく解説！メリットやフレームワーク集も紹介 \| mazrica times\(マツリカタイムズ\)](https://times.mazrica.com/column/what-is-design-thinking/)  
 [デザイン思考（デザインシンキング） \| IT用語辞典 \| 大塚商会](https://www.otsuka-shokai.co.jp/words/design-thinking.html)
+
+### 垂直統合
+価値提供のプロセスすべてをグループ企業で組織する形態のビジネスモデルのこと。  
+M&A（買収や合併）やアライアンス（提携）によって事業の拡大を行う場合もある。  
+商品の企画・開発から製造・流通・販売までの一連の流れ（サプライチェーン）において、必要な工程の全てをグループ企業で行う。
+
+[垂直統合とは？メリット・デメリットと水平分業との違いを解説 \| Musubuライブラリ](https://library.musubu.in/articles/19836)
+
+### 水平統合
+特定の工程を担う複数の企業が一体化すること。
+
+[特定の工程を担う複数の企業が一体化すること。](https://www.nri.com/jp/knowledge/glossary/lst/sa/suicyoku_suihei)
