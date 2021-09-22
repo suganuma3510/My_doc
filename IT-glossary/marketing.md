@@ -3,6 +3,8 @@
 - [マーケティング用語](#マーケティング用語)
   - [ペルソナ](#ペルソナ)
   - [O2O (Online to Offline)](#o2o-online-to-offline)
+  - [D2C (Direct to Consumer)](#d2c-direct-to-consumer)
+  - [C2C (Consumer to Consumer)](#c2c-consumer-to-consumer)
   - [OMO (Online Merges with Offline)](#omo-online-merges-with-offline)
   - [OEM (Original Equipment Manufacturing)](#oem-original-equipment-manufacturing)
   - [SPA (製造小売)](#spa-製造小売)
@@ -31,6 +33,14 @@
 オンライン（＝WEBサイト、インターネット広告、SNSなど）で広く情報発信をし、集めた見込み客をオフライン（＝実店舗）へ誘導して購買を促す施策のこと。
 
 [O2Oとは？今更聞けない意味や概念とマーケティングにおける施策から成功事例まで](https://www.makeshop.jp/main/know-how/knowledge/o2o.html)
+
+### D2C (Direct to Consumer)
+製造者がダイレクトに消費者と取り引きをすること。例：出前館
+
+[D2Cとは何か？従来の販売モデルとの違いやメリット・デメリットを解説｜決済代行のSBペイメントサービス](https://www.sbpayment.jp/support/ec/d2c-merit/)
+
+### C2C (Consumer to Consumer)
+個人と個人（一般消費者）の間で行う取引のこと。例：メルカリ
 
 ### OMO (Online Merges with Offline)
 「オンラインとオフラインの融合」の意味。オンライン（インターネット）とオフライン（リアル店舗）の境界線をなくして個々の顧客に最適なサービスを提供すること。
