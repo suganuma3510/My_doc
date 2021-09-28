@@ -6,6 +6,7 @@ CD(継続的デリバリー)とは、システムテストやデプロイなど�
 - 自動化により開発期間を短縮できる
 - コードのバグを早期に発見できる
 - コードの品質がある程度担保される
+- デプロイ時の人的ミスや属人化を防ぐことができる
 
 ## デメリット
 - 導入コストが高い
@@ -16,60 +17,20 @@ CD(継続的デリバリー)とは、システムテストやデプロイなど�
 - CircleCI
 - GitHub Actions
 
-## CircleCIとは
-Saas型のCI/CDサービス。Saas型とであるという点が特徴。CircleCIはクラウド上のコンテナあるいはVMを実行環境として使用する。
+### オンプレミス型
+特徴
+- 拡張性が高い
+- 運用コストが高い
+- サーバーを自前で用意する必要がある
 
-### 自動テストの仕組み
-1. githubのプッシュ時に、config.ymlを読み込む
-2. CircleCIのサーバーにDockerコンテナが起動して、imageをコピー
-3. テストを行うコマンドを実行する
+### クラウド型
+特徴
+- 拡張性が低い
+- 導入が容易
 
-### 設定ファイルの書き方
-config.yml
-```yml
-version: 2
+## 流れ
+![NT-Dのユースケース図](../.img/CICD/CI-CDの流れ.png)
 
-jobs:
-    # build ジョブ: CircleCI 上で Docker コンテナを作成してテストする
-    build:
-        docker:
-            - image: alpine
-        steps:
-            - checkout
-            - run:
-                name: Echo Test
-                command: echo "CircleCI Test"
-    # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
-    deploy:
-        machine:
-            image: circleci/classic:edge
-        steps:
-            - checkout
-            # CircleCI に登録した秘密鍵を呼び出す
-            - add_ssh_keys:
-            # CircleCI に登録した環境変数を使って SSH
-            - run: ssh ${USER_NAME}@${HOST_NAME} 'cd [あなたのプロジェクトへのパス] && git pull'
-
-workflows:
-    version: 2
-    # build_and_deploy ジョブ: 一番最初に呼ばれるジョブ
-    build_and_deploy:
-        # build ジョブと deploy ジョブを呼び出す
-        jobs:
-            - build
-            - deploy:
-                requires:
-                    # deploy ジョブより先に build ジョブを実行しろ、という命令
-                    - build
-                # master ブランチに push された場合のみ deploy ジョブを実行する
-                filters:
-                    branches:
-                        only: master
-```
-
-#### 処理の流れ
-1. GitHub の master ブランチに push されたら CircleCI サーバ上で config.yml が読み込まれる
-2. 最初に workflows ブロック内の build_and_deploy ジョブを実行する
-3. build_and_deploy ジョブは「小さいジョブの実行」を定義しています
-   - jobs ブロック内に定義した build ジョブを実行する
-   - jobs ブロック内に定義した deploy ジョブを実行する
+### 参考
+- [CI/CDとは？メリット・デメリットからちゃんと理解していく \| yukimasablog](https://yukimasablog.com/ci-cd)
+- [CI/CDのエキスパートが解説：CI/CDとは何か？ なぜ今、必要とされるのか？ \(1/3\)：CodeZine（コードジン）](https://codezine.jp/article/detail/11083)
