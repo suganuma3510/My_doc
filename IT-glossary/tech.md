@@ -11,6 +11,7 @@
   - [WebSocket](#websocket)
   - [SPA(Single Page Application)](#spasingle-page-application)
   - [SSR(Server Side Rendering)](#ssrserver-side-rendering)
+  - [OGP(Open Graph Protocol)](#ogpopen-graph-protocol)
   - [マイクロサービス（Microservices）](#マイクロサービスmicroservices)
   - [メッセージキュー](#メッセージキュー)
   - [SEO](#seo)
@@ -83,6 +84,10 @@ MaaSが浸透すれば、1つのアプリで目的地までの複数の交通機
 
 [Nuxt.jsを使うときに、SPA・SSR・静的化のどれがいいか迷ったら](https://qiita.com/nishinoshake/items/f42e2f03663b00b5886d)  
 [SSR（サーバーサイドレンダリング）とは](https://qiita.com/negi524/items/40166176a8fb7186c9b2)
+
+### OGP(Open Graph Protocol)
+FacebookやTwitterなどのSNSでwebページやブログの記事がシェアされた時、またLINEなどのメッセージ機能でページのURLを送信した時に、そのページのタイトル、URL、概要、画像を表示させる仕組みのこと。  
+OGPが重要になってくるサービスの場合CSRは採用されにくい。
 
 ### マイクロサービス（Microservices）
 個々に開発された複数の小さな（マイクロ）サービスを連携させて管理、運営をおこなっていくソフトウェアのアーキテクチャ。  
