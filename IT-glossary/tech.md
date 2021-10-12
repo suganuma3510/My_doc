@@ -4,6 +4,7 @@
   - [WebAPI](#webapi)
   - [REST API](#rest-api)
     - [REST (REpresentational State Transfer)](#rest-representational-state-transfer)
+  - [GraphQL](#graphql)
   - [パッケージマネージャー](#パッケージマネージャー)
   - [クラウド (Cloud)](#クラウド-cloud)
     - [クラウドアーキテクチャ](#クラウドアーキテクチャ)
@@ -39,6 +40,13 @@ Webサービスの設計モデルであり、以下のような設計原則が�
 [Webサービスの設計モデル](https://qiita.com/TakahiRoyte/items/949f4e88caecb02119aa)  
 [0からREST APIについて調べてみた \- Qiita](https://qiita.com/masato44gm/items/dffb8281536ad321fb08)  
 [RESTful API（REST API）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/RESTful_API.html)
+
+### GraphQL
+Facebookが開発しているWeb APIのための規格で、「クエリ言語」と「スキーマ言語」からなる。  
+RESTと違い、必要な情報のみ取得できるため余分な通信を行わないという特徴がある。
+
+[「GraphQL」徹底入門 ─ RESTとの比較、API・フロント双方の実装から学ぶ \- エンジニアHub｜Webエンジニアのキャリアを考える！](https://eh-career.com/engineerhub/entry/2018/12/26/103000)  
+[GraphQLとは？RESTとの違いや導入事例を紹介｜Udemy メディア](https://udemy.benesse.co.jp/development/system/graphql.html)
 
 ### パッケージマネージャー
 OSやプログラミング言語の各パッケージのインストールやアンインストールを行うツールのこと。  
