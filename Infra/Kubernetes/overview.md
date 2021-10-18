@@ -17,6 +17,12 @@ Nodeには、マスターノードとワーカーノードの種類存在し、�
 ### クラスタ
 Nodeの集合体。クラスタでは少なくとも1つ以上のマスターノードとワーカーノードが存在する。
 
+### マスターノード
+クラスター内のワーカーノードとPodを管理する。複数のマスターコンポーネントによって構成される。
+
+### ワーカーノード
+Podを動作させるためのノード。Podとノードコンポーネントによって構成されており、マスターノードによって管理される。
+
 ### Service
 Podとの通信に単一のエンドポイントを提供する。  
 各PodはそれぞれIPアドレスを持っているが、クラスタの状況に合わせて動的に作成・削除されるためIPアドレスが一定にならない。
@@ -30,7 +36,7 @@ Serviceのタイプには などがある。
 `NodePort:`  
 クラスタの外部に静的なポートで公開できる。
 
-`LoadBalancer:`
+`LoadBalancer:`  
 クラスタの外部に静的なIPを持ったロードバランサーを公開する。  
 そのまま各ノードの特定のポートにルーティングしてくれる。
 
@@ -59,3 +65,5 @@ Kubernetesクラスターを制御するためのコマンドラインツール�
 ### 参考
 - [Kubernetes \(k8s\) 基本用語学習](https://zenn.dev/akkey/articles/8af85e30cbdde3)
 - [コンテナを使いこなすための心強い味方\!「Kubernetes」\(前編\) \| Think IT（シンクイット）](https://thinkit.co.jp/article/17453)
+- [Kubernetesのコンポーネント \| Kubernetes](https://kubernetes.io/ja/docs/concepts/overview/components/)
+- [Kubernetes アーキテクチャの概要](https://www.redhat.com/ja/topics/containers/kubernetes-architecture)
