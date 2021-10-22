@@ -21,3 +21,32 @@ $sample
 
 - `""` は変数の中身が表示される
 - `''` は変数が中身が表示されず変数名が表示される
+
+### 比較演算子
+| PowerShell | 意味                       |
+| :--------: | :------------------------- |
+|    -eq     | 等しい                     |
+|    -ne     | 等しくない                 |
+|    -gt     | より大きい                 |
+|    -ge     | 以上                       |
+|    -lt     | より小さい                 |
+|    -le     | 以下                       |
+|   -like    | ワイルドカードと等しい     |
+|  -notlike  | ワイルドカードと等しくない |
+|   -match   | 正規表現と等しい           |
+| -notmatch  | 正規表現と等しくない       |
+
+ワイルドカード：任意の文字列を指定する際に使用する特殊文字のこと
+
+### if文
+```powershell
+    if ($hoge1 -eq 1) {
+        Write-Host "a"
+    } elseif ($hoge2 -eq 2) {
+        Write-Host "b"
+    } else {
+        Write-Host "c"
+    }
+```
+
+[ResourceUtilization/Script言語課題\.md at master · numazuvtcSeClass/ResourceUtilization](https://github.com/numazuvtcSeClass/ResourceUtilization/blob/master/Script%E8%A8%80%E8%AA%9E%E8%AA%B2%E9%A1%8C.md)
