@@ -49,4 +49,25 @@ $sample
     }
 ```
 
-[ResourceUtilization/Script言語課題\.md at master · numazuvtcSeClass/ResourceUtilization](https://github.com/numazuvtcSeClass/ResourceUtilization/blob/master/Script%E8%A8%80%E8%AA%9E%E8%AA%B2%E9%A1%8C.md)
+### ファイル出力
+`Out-File` でファイルへ出力される
+```powershell
+    $hoge = "hogetext"
+    $hoge | Out-File hogefile.txt -Encoding UTF8
+```
+`-Append` を付けると追記する
+```powershell
+    $hoge = "hogetext"
+    $hoge | Out-File hogefile.txt -Encoding UTF8 -Append
+```
+
+#### 実行例
+クリップボードの内容をファイルに出力
+```powershell
+$cliptext = Get-Clipboard -Format Text
+$cliptext | Out-File kadai3-1.txt -Encoding UTF8
+
+$filetext = $con = Get-Content .\kadai3-1.txt -Encoding UTF8
+Write-Host "$filetext"
+```
+![kadai3-1](https://user-images.githubusercontent.com/57606507/87123136-26950b00-c2c1-11ea-8e92-07156f7a5104.png)
