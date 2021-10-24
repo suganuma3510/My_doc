@@ -49,6 +49,33 @@ $sample
     }
 ```
 
+### for文
+```powershell
+    $files = Get-ChildItem $filePath
+    $fileCount = 0
+    foreach ($i in $files) {
+        if ($i.Extension -eq $fileExtension) {
+            $fileCount = $fileCount + 1
+        }
+    }
+```
+
+#### 実行例
+拡張子が`.txt`のファイルの個数を数える
+```powershell
+    $filePath = "Z:\"
+    $fileExtension = ".txt"
+
+    $files = Get-ChildItem $filePath
+    $fileCount = 0
+    foreach ($i in $files) {
+        if ($i.Extension -eq $fileExtension) {
+            $fileCount = $fileCount + 1
+        }
+    }
+    Write-Host "$fileCount"
+```
+
 ### ファイル出力
 `Out-File` でファイルへ出力される
 ```powershell
@@ -64,10 +91,10 @@ $sample
 #### 実行例
 クリップボードの内容をファイルに出力
 ```powershell
-$cliptext = Get-Clipboard -Format Text
-$cliptext | Out-File kadai3-1.txt -Encoding UTF8
+    $cliptext = Get-Clipboard -Format Text
+    $cliptext | Out-File kadai3-1.txt -Encoding UTF8
 
-$filetext = $con = Get-Content .\kadai3-1.txt -Encoding UTF8
-Write-Host "$filetext"
+    $filetext = $con = Get-Content .\kadai3-1.txt -Encoding UTF8
+    Write-Host "$filetext"
 ```
 ![kadai3-1](https://user-images.githubusercontent.com/57606507/87123136-26950b00-c2c1-11ea-8e92-07156f7a5104.png)
