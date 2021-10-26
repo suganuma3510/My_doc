@@ -1,7 +1,6 @@
 ## AWS用語集
 
 - [AWS用語集](#aws用語集)
-  - [AWS](#aws)
   - [VPC (Virtual Private Cloud)](#vpc-virtual-private-cloud)
   - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
   - [Route 53](#route-53)
@@ -12,6 +11,7 @@
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
+  - [リージョン](#リージョン)
 
 ### VPC (Virtual Private Cloud)
 ユーザー専用の仮想のクラウド環境を構築しプライベートなネットワーク空間を提供するサービス。
@@ -19,7 +19,7 @@
 ### EC2 (Elastic Compute Cloud)
 仮想サーバを構築できるサービス。LinuxやWindowsなど様々なOSの仮想サーバを立てることができる。  
 必要な分だけ仮想サーバーを起動して、セキュリティやネットワーキングの設定、ストレージの管理をすることができる。  
-また、EC2では要件が変更した場合や需要が増加した場合なども、必要に応じて迅速に容量のスケールアップやスケールダウンをすることができる。
+また、EC2では要件が変更した場合や需要が増加した場合なども、必要に応じて迅速に容量のスケールアップやスケールダウンをすることができる。  
 
 ### Route 53
 可用性と拡張性に優れたクラウドのドメインネームシステム (DNS) ウェブサービス。  
@@ -67,3 +67,7 @@ IAMでは、以下の機能が用意されている。
 - IAMポリシー
 - IAMロール  
 IAMロールとは、ユーザーやグループではなく、EC2などのAWSのサービスや他のアカウントに対してにAWS の操作権限を付与するための仕組み。
+
+### リージョン
+完全に独立し、地理的に離れたクラウドの領域のこと。  
+他のリージョンの影響を受けず、データはリージョン内に常駐するため、データ持ち出し禁止などの要件を順守することが可能。
