@@ -5,11 +5,13 @@
   - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
+    - [S3 Glacier](#s3-glacier)
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Route 53](#route-53)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
   - [ALB (Application Load Balancer)](#alb-application-load-balancer)
-  - [RDB (Relational Database Service)](#rdb-relational-database-service)
+  - [RDS (Relational Database Service)](#rds-relational-database-service)
+  - [DynamoDB](#dynamodb)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
@@ -27,7 +29,7 @@
 インスタンスの種類が数多くあり、用途に応じて選択することができる。
 
 ### EBS (Elastic Block Store)
-EC2インスタンスにアタッチして使用するためのブロックストレージのこと。  
+EC2インスタンスにアタッチして使用するためのブロックストレージ。  
 高い可用性や大規模なワークロードにも対応している。  
 なお1つのEC2から複数のEBSには接続できるが、その逆はできない。  
 また、AZを超えた接続もできない。
@@ -35,17 +37,23 @@ EC2インスタンスにアタッチして使用するためのブロックス�
 - [よく聞くEBSってなに？ \- Qiita](https://qiita.com/miyuki_samitani/items/20a1d74657668578180b)
 
 ### S3 (Simple Storage Service)
-スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービスのこと。  
+スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービス。  
 世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。
 
+#### S3 Glacier
+データのアーカイブ(複数のファイルやフォルダを1つにまとめること)や長期のバックアップを目的としたサービス。  
+S3との違いとして、保管したデータの取り出しに時間がかかるが、価格が安価であることが特徴。  
+また高い安全性と耐久性に優れており、ほとんど取り出す機会がないデータやダウンロードに時間が掛かってもいいデータなどに使用される。
+
 #### オブジェクトストレージ
-データを「オブジェクト」という単位で扱う記憶装置のこと。  
+データを「オブジェクト」という単位で扱う記憶装置。  
 ディレクトリ構造で管理するファイルストレージとは異なり、データサイズやデータ数の保存制限がないため、大容量データの保存に適している。  
 オブジェクトにはストレージシステムのなかで固有のID（URI）が付与され、このIDでデータを出し入れする。
 
 - [AWSの S3って何？ 初心者でも分かる簡単用語解説 \| WafCharm（ワフチャーム） \- AIによるAWS / Azure WAFのルール自動運用サービス](https://www.wafcharm.com/blog/s3-for-beginners/)
 - [5分で絶対に分かるオブジェクトストレージ：5分で絶対に分かる（3/5 ページ） \- ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1705/29/news014_3.html)
 - [オブジェクトストレージとは : 富士通](https://www.fujitsu.com/jp/products/computing/storage/lib-f/tech/beginner/object-storage/)
+- [Amazon S3とAmazon Glacier両者の違いとは？ – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1646)
 
 ### Route 53
 可用性と拡張性に優れたクラウドのドメインネームシステム (DNS) ウェブサービス。  
@@ -57,8 +65,17 @@ AWS が提供している SSL 証明書とキーの作成、保存、更新が�
 ### ALB (Application Load Balancer)
 Web サービスに発生する負荷を分散するロードバランシングサービス。
 
-### RDB (Relational Database Service)
-クラウド上で提供されるリレーショナル型データベースサービス。
+### RDS (Relational Database Service)
+クラウド上で提供されるリレーショナル型データベースサービス。  
+サーバーのプロビジョニング、OSの導入、データベースの設定、バッチ適用、バックアップ等の作業を自動化することができる。  
+
+### DynamoDB
+NoSQLの完全マネージド型データベースサービス。  
+NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、毎秒2000万件を超えるリクエストをサポート可能。  
+また耐久性が高く、セキュリティ、バックアップおよびリカバリー機能が組み込まれている、。  
+複数のリージョンでバックアップを行うことで高い可用性を実現している。
+
+- [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
 
 ### ECS (Elastic Container Service)
 Dockerオーケストレーションツール。  
