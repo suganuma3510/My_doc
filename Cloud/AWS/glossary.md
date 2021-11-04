@@ -9,7 +9,10 @@
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Route 53](#route-53)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
-  - [ALB (Application Load Balancer)](#alb-application-load-balancer)
+  - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
+    - [ALB (Application Load Balancer)](#alb-application-load-balancer)
+    - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
+    - [CLB (Classic Load Balancer)](#clb-classic-load-balancer)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
@@ -62,8 +65,18 @@ IP アドレスの変換だけでなく、新規ドメイン名の登録やド�
 ### ACM (AWS Certificate Manager)
 AWS が提供している SSL 証明書とキーの作成、保存、更新が行えるサービス。
 
-### ALB (Application Load Balancer)
-Web サービスに発生する負荷を分散するロードバランシングサービス。
+### ELB (Elastic Load Balancer)
+アプリケーションのトラフィック(一定時間内におけるインターネット通信量のこと)の負荷に応じて分散する仕組み。  
+EC2インスタンスやコンテナ、IPアドレス、Lambda関数などをターゲットに負荷分散を行うことができる。主に以下の3種類がある。
+
+#### ALB (Application Load Balancer)
+HTTPやHTTPSなどのWeb サービスに発生するトラフィックの負荷分散を行う。
+
+#### NLB (Network Load Balancer)
+数百万リクエストという極めて高いパフォーマンスが要求されるTCP、UDPおよびTLSにおけるトラフィックの負荷分散を行う。
+
+#### CLB (Classic Load Balancer)
+EC2-Classicネットワーク内で構築されたアプリケーションを対象とした負荷分散を行う。
 
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
@@ -72,7 +85,7 @@ Web サービスに発生する負荷を分散するロードバランシング�
 ### DynamoDB
 NoSQLの完全マネージド型データベースサービス。  
 NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、毎秒2000万件を超えるリクエストをサポート可能。  
-また耐久性が高く、セキュリティ、バックアップおよびリカバリー機能が組み込まれている、。  
+また耐久性が高く、セキュリティ、バックアップおよびリカバリー機能が組み込まれている。  
 複数のリージョンでバックアップを行うことで高い可用性を実現している。
 
 - [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
