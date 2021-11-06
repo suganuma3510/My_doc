@@ -9,17 +9,20 @@
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Route 53](#route-53)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
+  - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
+  - [KMS (Key Management Service)](#kms-key-management-service)
+  - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
     - [CLB (Classic Load Balancer)](#clb-classic-load-balancer)
+  - [CloudFront](#cloudfront)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
   - [Lambda](#lambda)
-  - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -65,6 +68,24 @@ IP アドレスの変換だけでなく、新規ドメイン名の登録やド�
 ### ACM (AWS Certificate Manager)
 AWS が提供している SSL 証明書とキーの作成、保存、更新が行えるサービス。
 
+### IAM (Identity and Access Management)
+AWSリソースへのアクセスを安全に管理するために「認証」と「認可」の仕組みを提供するサービス。  
+AWSのユーザーやグループを作成及び管理することができ、ポリシーに従ったアクセス権を付与することができる。  
+IAMでは、以下の機能が用意されている。
+- IAMユーザー（グループ）
+- IAMポリシー
+- IAMロール  
+IAMロールとは、ユーザーやグループではなく、EC2などのAWSのサービスや他のアカウントに対してにAWS の操作権限を付与するための仕組み。
+
+- [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
+
+### KMS (Key Management Service)
+データを暗号化するためのキーを作成および管理することができるサービス。  
+通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。
+
+### AWS WAF (Web Application Firewall)
+可用性、セキュリティ侵害、リソースの過剰消費に影響を与えるような、ウェブの脆弱性を利用した一般的な攻撃やボットから、ウェブアプリケーションまたはAPIを保護する。
+
 ### ELB (Elastic Load Balancer)
 アプリケーションのトラフィック(一定時間内におけるインターネット通信量のこと)の負荷に応じて分散する仕組み。  
 EC2インスタンスやコンテナ、IPアドレス、Lambda関数などをターゲットに負荷分散を行うことができる。主に以下の3種類がある。
@@ -77,6 +98,11 @@ HTTPやHTTPSなどのWeb サービスに発生するトラフィックの負荷�
 
 #### CLB (Classic Load Balancer)
 EC2-Classicネットワーク内で構築されたアプリケーションを対象とした負荷分散を行う。
+
+### CloudFront
+AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
+
+- [Amazon CloudFront とは何ですか? \- Amazon CloudFront](https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
@@ -122,13 +148,6 @@ Lambdaはコードの実行時間ごとに料金が発生し、実行されて�
 
 - [AWS Lambdaの使い方をやさしく解説、関数実行や権限設定の基本を押さえる 連載：やさしく学ぶAWS入門｜ビジネス\+IT](https://www.sbbit.jp/article/cont1/67741)
 
-### IAM (Identity and Access Management)
-AWSのサービスで「認証」と「認可」の設定を行うことができるサービス。
-IAMでは、以下の機能が用意されている。
-- IAMユーザー（グループ）
-- IAMポリシー
-- IAMロール  
-IAMロールとは、ユーザーやグループではなく、EC2などのAWSのサービスや他のアカウントに対してにAWS の操作権限を付与するための仕組み。
-
 ### 参考
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)
 - 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
