@@ -16,7 +16,10 @@
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
     - [CLB (Classic Load Balancer)](#clb-classic-load-balancer)
+  - [Auto Scaling](#auto-scaling)
   - [CloudFront](#cloudfront)
+  - [CloudFormation](#cloudformation)
+  - [CloudWatch](#cloudwatch)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
@@ -99,10 +102,23 @@ HTTPやHTTPSなどのWeb サービスに発生するトラフィックの負荷�
 #### CLB (Classic Load Balancer)
 EC2-Classicネットワーク内で構築されたアプリケーションを対象とした負荷分散を行う。
 
+### Auto Scaling
+Auto Scalingにはいくつかのサービスがあり、例としてEC2 Auto Scalingはユーザーが定義した条件に応じてEC2インスタンスを自動的に追加または削除できる。  
+フリート管理を使用して、フリートの状態と可用性を維持できる。また、動的スケーリングと予測スケーリング機能があり、動的は需要の変更に対応してEC2インスタンスを増減し、予測は需要の予測に応じて、適切な数のEC2インスタンスを自動的にスケジュールする。
+
 ### CloudFront
 AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
 
 - [Amazon CloudFront とは何ですか? \- Amazon CloudFront](https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+
+### CloudFormation
+インフラの設定をプログラムコードで行えるサービス。  
+作成するAWSリソースはJSONまたはYAMLを使用し定義することができる。
+
+### CloudWatch
+システムやアプリケーションの監視と管理ができるサービス。  
+ログデータやパフォーマンスデータを統合的に収集し、確認することができる。  
+システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。
 
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
