@@ -20,12 +20,15 @@
   - [CloudFront](#cloudfront)
   - [CloudFormation](#cloudformation)
   - [CloudWatch](#cloudwatch)
+  - [VPCフローログ](#vpcフローログ)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
   - [Lambda](#lambda)
+  - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
+  - [Elastic Beanstalk](#elastic-beanstalk)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -120,6 +123,11 @@ AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス
 ログデータやパフォーマンスデータを統合的に収集し、確認することができる。  
 システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。
 
+### VPCフローログ
+VPCのネットワークインターフェースとの間で行き来するネットワーク上のIPトラフィックに関する情報を、キャプチャできるようにする機能。  
+セキュリティグループの診断やトラフィックのモニタリングなどに使用する。  
+取得したログはCloudWatchまたはS3に提供される。
+
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
 サーバーのプロビジョニング、OSの導入、データベースの設定、バッチ適用、バックアップ等の作業を自動化することができる。  
@@ -163,6 +171,14 @@ AWS が提供するマネージドなコンテナ実行環境。
 Lambdaはコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
 
 - [AWS Lambdaの使い方をやさしく解説、関数実行や権限設定の基本を押さえる 連載：やさしく学ぶAWS入門｜ビジネス\+IT](https://www.sbbit.jp/article/cont1/67741)
+
+### AMI (Amazon Machine Image)
+EC2インスタンスでソフトウェアを動かすために必要なOSやボリューム、APサーバー、アプリケーションなどを合わせたテンプレート。  
+インスタンス起動時に必ず指定する必要がある。
+
+### Elastic Beanstalk
+Webアプリケーションのデプロイおよびスケーリングを行うサービス。  
+ユーザーはコードをアップロードするだけで、キャパシティのプロビジョニング、ロードバランシング、Auto Scalingからアプリケーションのヘルスモニタリングまで、デプロイを自動的に処理する。
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
