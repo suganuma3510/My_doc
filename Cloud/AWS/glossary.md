@@ -29,6 +29,7 @@
   - [Lambda](#lambda)
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
   - [Elastic Beanstalk](#elastic-beanstalk)
+  - [X-Ray](#x-ray)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -179,6 +180,10 @@ EC2インスタンスでソフトウェアを動かすために必要なOSやボ
 ### Elastic Beanstalk
 Webアプリケーションのデプロイおよびスケーリングを行うサービス。  
 ユーザーはコードをアップロードするだけで、キャパシティのプロビジョニング、ロードバランシング、Auto Scalingからアプリケーションのヘルスモニタリングまで、デプロイを自動的に処理する。
+
+### X-Ray
+マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
+マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
