@@ -7,6 +7,11 @@
   - [AWS Arifact](#aws-arifact)
   - [セキュリティグループ](#セキュリティグループ)
   - [ネットワーク ACL](#ネットワーク-acl)
+  - [AWS CloudTrail](#aws-cloudtrail)
+  - [AWS Config](#aws-config)
+  - [AWS Shield](#aws-shield)
+  - [GuardDuty](#guardduty)
+  - [参考](#参考)
 
 ### AWS アカウント
 AWSアカウントは請求の単位であるとともに、最も基本的なサービス提供の単位。  
@@ -50,3 +55,23 @@ VPCのファイアウォールとして機能し、1つ以上のサブネット�
 - ステートレス（許可されているインバウンドトラフィックに対する応答は、アウトバウンドトラフィックのルールに従う。その逆も同様）
 
 - [ネットワーク ACL \- Amazon Virtual Private Cloud](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-network-acls.html)
+
+### AWS CloudTrail
+AWSアカウントの監査ができるサービス。  
+マネジメントコンソールを使用して実行されるアクションの履歴などを取得可能。
+
+### AWS Config
+AWSリソースに対してどんな変更をしたか、時系列で変更履歴を追跡できるサービス。
+
+### AWS Shield
+DDoS攻撃に対するAWSの保護サービス。  
+アプリケーションのダウンタイムとレイテンシーを最小限に抑えるための各種機能を備えており、エッジロケーションでの利用も可能。  
+無料版と有料版がある。
+
+### GuardDuty
+マネージド型の脅威検出サービス。  
+悪意のある動作や不正な動作を継続的にモニタリング可能。
+
+### 参考
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
