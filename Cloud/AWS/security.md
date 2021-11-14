@@ -11,6 +11,11 @@
   - [AWS Config](#aws-config)
   - [AWS Shield](#aws-shield)
   - [GuardDuty](#guardduty)
+  - [Inspector](#inspector)
+  - [Directory Service](#directory-service)
+  - [S3のアクセスコントロール](#s3のアクセスコントロール)
+  - [AWS Service Catalog](#aws-service-catalog)
+  - [AWS Trusted Advisor](#aws-trusted-advisor)
   - [参考](#参考)
 
 ### AWS アカウント
@@ -71,6 +76,31 @@ DDoS攻撃に対するAWSの保護サービス。
 ### GuardDuty
 マネージド型の脅威検出サービス。  
 悪意のある動作や不正な動作を継続的にモニタリング可能。
+
+### Inspector
+アプリケーションのセキュリティを評価できるサービス。  
+事前定義されたルールによってチェックを行い、セキュリティ上の脆弱性やベストプラクティスからの逸脱の確認が可能。  
+
+### Directory Service
+AWS上でMicrosoftのActive Directoryが使用できるサービス。  
+
+### S3のアクセスコントロール
+主なコントロール方法としてACL、パケットポリシー、IAMポリシーがある。  
+
+- ACL  
+  パケット内のオブジェクト一つ一つにアクセス制御をかける
+- パケットポリシー  
+  パケット単位でアクセス制御する
+- IAMポリシー  
+  特定のIAMユーザー単位でアクセス制御する
+
+### AWS Service Catalog
+その企業のCloudFrontのテンプレートをまとめたもの。  
+これによりユーザーは社内で承認されたITサービスのみデプロイすることが可能になる。
+
+### AWS Trusted Advisor
+AWSのベストプラクティスに従ったチェックができるオンラインツール。  
+コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス、サービス制限のそれぞれでチェックする。
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
