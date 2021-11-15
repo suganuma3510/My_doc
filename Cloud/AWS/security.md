@@ -7,6 +7,7 @@
   - [AWS Arifact](#aws-arifact)
   - [セキュリティグループ](#セキュリティグループ)
   - [ネットワーク ACL](#ネットワーク-acl)
+  - [AWS VPN](#aws-vpn)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [AWS Config](#aws-config)
   - [AWS Shield](#aws-shield)
@@ -60,6 +61,12 @@ VPCのファイアウォールとして機能し、1つ以上のサブネット�
 - ステートレス（許可されているインバウンドトラフィックに対する応答は、アウトバウンドトラフィックのルールに従う。その逆も同様）
 
 - [ネットワーク ACL \- Amazon Virtual Private Cloud](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-network-acls.html)
+
+### AWS VPN
+インターネット上で、専用の接続経路を確立し通信を暗号化する技術を提供するサービス。  
+接続経路はオンプレミスとAWS間のサイト間VPNとAWS Client VPNの2つで構成されている。  
+AWSサイト間VPNはオンプレミスとVPCまたはTransit Gatewayの間にトンネルを作成する。  
+AWS Client VPNは無料のVPNソフトウェアクライアントを使用して接続する。
 
 ### AWS CloudTrail
 AWSアカウントの監査ができるサービス。  
