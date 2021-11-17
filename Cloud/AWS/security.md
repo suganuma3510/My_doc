@@ -8,6 +8,7 @@
   - [セキュリティグループ](#セキュリティグループ)
   - [ネットワーク ACL](#ネットワーク-acl)
   - [AWS VPN](#aws-vpn)
+  - [AWS Direct Connect](#aws-direct-connect)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [AWS Config](#aws-config)
   - [AWS Shield](#aws-shield)
@@ -67,6 +68,11 @@ VPCのファイアウォールとして機能し、1つ以上のサブネット�
 接続経路はオンプレミスとAWS間のサイト間VPNとAWS Client VPNの2つで構成されている。  
 AWSサイト間VPNはオンプレミスとVPCまたはTransit Gatewayの間にトンネルを作成する。  
 AWS Client VPNは無料のVPNソフトウェアクライアントを使用して接続する。
+
+### AWS Direct Connect
+オンプレミスのデータセンターやオフィスとAWS間を専用線を介してプライベート接続するサービス。  
+これにより、インターネットを介した接続に比べ、安定した良好なネットワーク品質が実現できる。  
+利用料はポート使用料とデータ転送料で決まり、インターネット接続よりコストを抑えることができる。  
 
 ### AWS CloudTrail
 AWSアカウントの監査ができるサービス。  
