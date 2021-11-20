@@ -23,6 +23,7 @@
   - [スマートバナー](#スマートバナー)
   - [非構造化データ](#非構造化データ)
   - [ローリングアップデート](#ローリングアップデート)
+  - [JWT (JSON Web Token)](#jwt-json-web-token)
 
 ### WebAPI
 何かしらのサービス提供者が、そのサービスを利用するために HTTP/HTTPS ベースで、提供するインターフェースのこと。
@@ -193,3 +194,10 @@ Googleが提供する無料のWebサイトアクセス解析ツール。
 [ローリングアップデート（rolling update）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88.html)  
 [Kubernetesのローリングアップデート \| OSSのデージーネット](https://www.designet.co.jp/ossinfo/kubernetes/update/)
 
+### JWT (JSON Web Token)
+JSON形式で表現された認証情報などをURL文字列などとして安全に送受信できるよう、符号化やデジタル署名の仕組みを規定した標準規格のこと。  
+ヘッダー、ペイロードクレーム情報、電子署名の3つの構成で成り立っており、Base64でエンコードされた文字列や特定のアルゴリズムで暗号化された署名をピリオド区切りで表す。  
+例：ヘッダー.ペイロード.電子署名
+
+[JWT\(JSON Web Token\)の「仕組み」と「注意点」 \- わくわくBank](https://www.wakuwakubank.com/posts/523-it-jwt/)  
+[JWT\(JSON Web Token\)の仕組みと使い方まとめ │ Web備忘録](https://webbibouroku.com/Blog/Article/jwt)
