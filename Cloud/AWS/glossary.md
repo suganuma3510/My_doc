@@ -23,6 +23,7 @@
   - [VPCフローログ](#vpcフローログ)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
+  - [Redshift](#redshift)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
@@ -157,6 +158,11 @@ NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、
 複数のリージョンでバックアップを行うことで高い可用性を実現している。
 
 - [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
+
+### Redshift
+ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
+オンプレミスと異なり、数クリックで起動、従量課金制という特徴がある。  
+また高パフォーマンスであり、容量のニーズの変化に応じてノードの数や種類の変更が可能。
 
 ### ECS (Elastic Container Service)
 Dockerオーケストレーションツール。  
