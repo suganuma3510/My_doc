@@ -29,7 +29,7 @@ CD(継続的デリバリー)とは、システムテストやデプロイなど�
 - 導入が容易
 
 ## 流れ
-![NT-Dのユースケース図](../.img/CICD/CI-CDの流れ.png)
+![](../.img/CICD/CI-CDの流れ.png)
 
 ### 参考
 - [CI/CDとは？メリット・デメリットからちゃんと理解していく \| yukimasablog](https://yukimasablog.com/ci-cd)
