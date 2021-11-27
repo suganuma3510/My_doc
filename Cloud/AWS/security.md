@@ -18,6 +18,7 @@
   - [S3のアクセスコントロール](#s3のアクセスコントロール)
   - [AWS Service Catalog](#aws-service-catalog)
   - [AWS Trusted Advisor](#aws-trusted-advisor)
+  - [AWSアカウントにて、セキュリティ侵害を受けた際の対処方法](#awsアカウントにてセキュリティ侵害を受けた際の対処方法)
   - [参考](#参考)
 
 ### AWS アカウント
@@ -114,6 +115,13 @@ AWS上でMicrosoftのActive Directoryが使用できるサービス。
 ### AWS Trusted Advisor
 AWSのベストプラクティスに従ったチェックができるオンラインツール。  
 コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス、サービス制限のそれぞれでチェックする。
+
+### AWSアカウントにて、セキュリティ侵害を受けた際の対処方法
+- AWSアカウントのパスワード変更
+- 全てのルートとIAMアクセスキーの更新または削除
+- 侵害を受けたユーザーの削除と他のすべてのIAMユーザーのパスワード変更
+- EC2インスタンスとAMI、EBSボリュームとスナップショット、IAMユーザーなど、作成していないアカウントのリソースの削除
+- AWSサポートセンターを通じてAWSサポートから受け取った通知への応答
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
