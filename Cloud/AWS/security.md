@@ -12,9 +12,10 @@
   - [AWS CloudTrail](#aws-cloudtrail)
   - [AWS Config](#aws-config)
   - [AWS Shield](#aws-shield)
-  - [GuardDuty](#guardduty)
-  - [Inspector](#inspector)
-  - [Directory Service](#directory-service)
+  - [AWS Organizations](#aws-organizations)
+  - [Amazon GuardDuty](#amazon-guardduty)
+  - [Amazon Inspector](#amazon-inspector)
+  - [Amazon Directory Service](#amazon-directory-service)
   - [S3のアクセスコントロール](#s3のアクセスコントロール)
   - [AWS Service Catalog](#aws-service-catalog)
   - [AWS Trusted Advisor](#aws-trusted-advisor)
@@ -87,15 +88,26 @@ DDoS攻撃に対するAWSの保護サービス。
 アプリケーションのダウンタイムとレイテンシーを最小限に抑えるための各種機能を備えており、エッジロケーションでの利用も可能。  
 無料版と有料版がある。
 
-### GuardDuty
+### AWS Organizations
+複数のAWSアカウントを統合するためのアカウント管理サービス。
+
+主な機能
+- 全てのAWSアカウントの一元管理
+- 全てのメンバーアカウントの一括請求
+- サービスのアクセス制御をグループ、メンバー単位で管理できる
+- AWSアカウントの新規作成を自動化
+
+- [AWS Organizations とは \- AWS Organizations](https://docs.aws.amazon.com/ja_jp/organizations/latest/userguide/orgs_introduction.html)
+
+### Amazon GuardDuty
 マネージド型の脅威検出サービス。  
 悪意のある動作や不正な動作を継続的にモニタリング可能。
 
-### Inspector
+### Amazon Inspector
 アプリケーションのセキュリティを評価できるサービス。  
 事前定義されたルールによってチェックを行い、セキュリティ上の脆弱性やベストプラクティスからの逸脱の確認が可能。  
 
-### Directory Service
+### Amazon Directory Service
 AWS上でMicrosoftのActive Directoryが使用できるサービス。  
 
 ### S3のアクセスコントロール
