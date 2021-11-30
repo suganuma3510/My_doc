@@ -29,8 +29,9 @@
   - [Fargate](#fargate)
   - [Lambda](#lambda)
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
-  - [Elastic Beanstalk](#elastic-beanstalk)
+  - [Elastic Beanstalk (ビーンズトーク)](#elastic-beanstalk-ビーンズトーク)
   - [X-Ray](#x-ray)
+  - [AWS Snow ファミリー](#aws-snow-ファミリー)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -200,13 +201,17 @@ Lambdaはコードの実行時間ごとに料金が発生し、実行されて�
 EC2インスタンスでソフトウェアを動かすために必要なOSやボリューム、APサーバー、アプリケーションなどを合わせたテンプレート。  
 インスタンス起動時に必ず指定する必要がある。
 
-### Elastic Beanstalk
+### Elastic Beanstalk (ビーンズトーク)
 Webアプリケーションのデプロイおよびスケーリングを行うサービス。  
 ユーザーはコードをアップロードするだけで、キャパシティのプロビジョニング、ロードバランシング、Auto Scalingからアプリケーションのヘルスモニタリングまで、デプロイを自動的に処理する。
 
 ### X-Ray
 マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
 マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
+
+### AWS Snow ファミリー
+AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
+非常に容量の多いデータの移行などに使用され、SnowballというアタッシュケースのようなものやSnowmobileというトラックのものもある。  
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
