@@ -32,6 +32,7 @@
   - [Elastic Beanstalk (ビーンズトーク)](#elastic-beanstalk-ビーンズトーク)
   - [X-Ray](#x-ray)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
+  - [AWSサポート](#awsサポート)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -212,6 +213,21 @@ Webアプリケーションのデプロイおよびスケーリングを行う�
 ### AWS Snow ファミリー
 AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
 非常に容量の多いデータの移行などに使用され、SnowballというアタッシュケースのようなものやSnowmobileというトラックのものもある。  
+
+### AWSサポート
+AWSによる技術サポートサービス。料金に応じてサポートを受けることができる。  
+上から順に料金が安くなっている。
+
+- Basic Support  
+  全ての利用者が利用可能。基本的なガイド等が提供される。
+- Developer Support  
+  AWS Trusted Advisorの7コアチェックや営業時間内のメールによる技術サポートなどが受けられる。
+- Business Support  
+  本番システムのワークロードに適したサポート。AWS Trusted Advisorのフルチェック、電話、Eメール、チャットアクセスが24時間、週7日提供され、本番システムにサービスの中断が発生した場合の応答時間は1時間未満。
+- Enterprise Support  
+  非常に重要なワークロードに適したサポート。電話、Eメール、チャットアクセスが24時間、週7日提供され、本番システムにサービスの中断が発生した場合の応答時間は15分未満。
+
+[サポートのプラン比較 \| 開発者、ビジネス、エンタープライズ \| AWS サポート](https://aws.amazon.com/jp/premiumsupport/plans/)
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
