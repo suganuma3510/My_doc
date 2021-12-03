@@ -21,6 +21,8 @@
   - [CloudFormation](#cloudformation)
   - [CloudWatch](#cloudwatch)
   - [VPCフローログ](#vpcフローログ)
+  - [VPCエンドポイント](#vpcエンドポイント)
+  - [VPCピアリング](#vpcピアリング)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
   - [Redshift](#redshift)
@@ -148,6 +150,14 @@ CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ�
 VPCのネットワークインターフェースとの間で行き来するネットワーク上のIPトラフィックに関する情報を、キャプチャできるようにする機能。  
 セキュリティグループの診断やトラフィックのモニタリングなどに使用する。  
 取得したログはCloudWatchまたはS3に提供される。
+
+### VPCエンドポイント
+サポート対象のAWSサービスなどにVPCをプライベートに接続可能な仮想デバイス。  
+セキュリティの問題でインターネットに接続させずにサービスと繋げる際に使用する。
+
+### VPCピアリング
+2つのVPC間でプライベート接続を可能にするネットワーキング機能。
+IPv4アドレスまたはIPv6アドレスを使用して2つのVPC間でトラフィックをルーティングすることを可能。
 
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
