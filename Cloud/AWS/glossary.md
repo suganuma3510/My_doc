@@ -10,7 +10,7 @@
   - [Route 53](#route-53)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
-  - [KMS (Key Management Service)](#kms-key-management-service)
+  - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
@@ -33,6 +33,7 @@
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
   - [Elastic Beanstalk (ビーンズトーク)](#elastic-beanstalk-ビーンズトーク)
   - [X-Ray](#x-ray)
+  - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
   - [AWSサポート](#awsサポート)
   - [参考](#参考)
@@ -48,6 +49,7 @@
 
 ### EBS (Elastic Block Store)
 EC2インスタンスにアタッチして使用するためのブロックストレージ。  
+スナップショットを作成することもでき、バックアップはS3に保管される。  
 高い可用性や大規模なワークロードにも対応している。  
 なお1つのEC2から複数のEBSには接続できるが、その逆はできない。  
 また、AZを超えた接続もできない。
@@ -56,7 +58,8 @@ EC2インスタンスにアタッチして使用するためのブロックス�
 
 ### S3 (Simple Storage Service)
 スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービス。  
-世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。
+世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。  
+耐久性は99.999999999%（イレブンナイン）、可用性は年間99.99%。
 
 #### S3 Glacier
 データのアーカイブ(複数のファイルやフォルダを1つにまとめること)や長期のバックアップを目的としたサービス。  
@@ -95,9 +98,10 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 
 - [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
 
-### KMS (Key Management Service)
+### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
-通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。
+通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。  
+AWS CloudTrail でログを調査してキーの使用を監査することが可能。
 
 ### AWS WAF (Web Application Firewall)
 可用性、セキュリティ侵害、リソースの過剰消費に影響を与えるような、ウェブの脆弱性を利用した一般的な攻撃やボットから、ウェブアプリケーションまたはAPIを保護する。
@@ -173,6 +177,7 @@ NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、
 
 ### Redshift
 ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
+Redshift Spectrumを利用することで、S3上の非構造化データに対してクエリを実行できる。  
 オンプレミスと異なり、数クリックで起動、従量課金制という特徴がある。  
 また高パフォーマンスであり、容量のニーズの変化に応じてノードの数や種類の変更が可能。
 
@@ -220,9 +225,18 @@ Webアプリケーションのデプロイおよびスケーリングを行う�
 マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
 マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
 
+### Amazon EFS (Amazon Elastic File System)
+ストレージをプロビジョニングまたは管理することなくファイルデータを共有できるファイルストレージサービス。  
+ペタバイト単位まで自動的にスケールされ、耐久性は99.999999999%（イレブンナイン）、さらに複数のAZに冗長的に保存される。  
+DropboxのAWS版。
+
 ### AWS Snow ファミリー
 AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
 非常に容量の多いデータの移行などに使用され、SnowballというアタッシュケースのようなものやSnowmobileというトラックのものもある。  
+
+ - AWS Snowball Edge：テラバイト規模
+ - AWS Snowball：ペタバイト規模
+ - AWS Snowmobile：エクサバイト規模
 
 ### AWSサポート
 AWSによる技術サポートサービス。料金に応じてサポートを受けることができる。  
@@ -241,4 +255,5 @@ AWSによる技術サポートサービス。料金に応じてサポートを�
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- [AWS の製品・サービス一覧 \| クラウドなら AWS](https://aws.amazon.com/jp/products/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc&awsf.re%3AInvent=*all&awsf.Free%20Tier=*all&awsf.tech-category=*all)
 - 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
