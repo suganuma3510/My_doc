@@ -25,6 +25,8 @@
   - [VPCピアリング](#vpcピアリング)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
+  - [DynamoDB Accelerator](#dynamodb-accelerator)
+  - [Amazon ElastiCache](#amazon-elasticache)
   - [Redshift](#redshift)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
@@ -174,6 +176,15 @@ NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、
 複数のリージョンでバックアップを行うことで高い可用性を実現している。
 
 - [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
+
+### DynamoDB Accelerator
+DynamoDB用に特化したフルマネージド型のインメモリキャッシュサービス。  
+DynamoDBの前に配置することで、1ミリ秒未満のレイテンシーが実現可能。
+
+### Amazon ElastiCache
+セットアップ、運用や拡張が簡単にできるマネージド型インメモリキャッシュサービス。  
+RedisとMemcachedの二種類のエンジンを選択することができる。  
+RDSなどのデータベースの前に配置し、高スループットかつ低レイテンシーにデータを取得することができる。
 
 ### Redshift
 ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
