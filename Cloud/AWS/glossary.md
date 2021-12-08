@@ -28,6 +28,7 @@
   - [DynamoDB Accelerator](#dynamodb-accelerator)
   - [Amazon ElastiCache](#amazon-elasticache)
   - [Redshift](#redshift)
+  - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
@@ -51,6 +52,7 @@
 
 ### EBS (Elastic Block Store)
 EC2インスタンスにアタッチして使用するためのブロックストレージ。  
+EBSはデータに素早く、かつ長期永続性が必要な場合に推奨される。  
 スナップショットを作成することもでき、バックアップはS3に保管される。  
 高い可用性や大規模なワークロードにも対応している。  
 なお1つのEC2から複数のEBSには接続できるが、その逆はできない。  
@@ -191,6 +193,10 @@ RDSなどのデータベースの前に配置し、高スループットかつ�
 Redshift Spectrumを利用することで、S3上の非構造化データに対してクエリを実行できる。  
 オンプレミスと異なり、数クリックで起動、従量課金制という特徴がある。  
 また高パフォーマンスであり、容量のニーズの変化に応じてノードの数や種類の変更が可能。
+
+### Amazon SQS (Simple Queue Service)
+サーバーレスでキューイングを実現できるフルマネージドキューイングサービス。  
+キューイングとは処理の順番待ちのことで、システム間でデータを送受信する際に一時的にデータをため込む場所を設け、非同期に処理を行うことができる仕組みのこと。
 
 ### ECS (Elastic Container Service)
 Dockerオーケストレーションツール。  
