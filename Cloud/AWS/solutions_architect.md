@@ -6,10 +6,13 @@
   - [AWS DataSync](#aws-datasync)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [AWS Config](#aws-config)
+  - [RDS](#rds)
+  - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [Redshift](#redshift)
   - [EC2](#ec2)
   - [ECS](#ecs)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
+  - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
 
 ### S3 (Simple Storage Service)
 - クロスリージョンレプリケーション  
@@ -55,6 +58,15 @@ SQSキューの需要に応じてAuto Scalingグループをスケールする�
 AWSリソースに対してどんな変更をしたか、時系列で変更履歴を追跡できるサービス。  
 コンプライアンスに違反しているリソースの特定も可能。  
 
+### RDS
+- MySQL DBインスタンスでSSL接続  
+プライマリインスタンスにSSL証明書をアタッチし、クライアントは接続に公開鍵を使用することでSSL接続をすることができる。
+
+### Amazon FSx For Lustre
+ワークロードの高速処理に最適化された高性能ファイルシステムを提供するフルマネージド型サービス。  
+機械学習、高性能コンピューティング、ビデオ処理、財務モデリング、電子設計自動化、分析などのワークロード向けに最適化されたファイルシステム。  
+S3バケットとリンクすることもできる。
+
 ### Redshift
 ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
 
@@ -98,3 +110,10 @@ SQLやApache Finkでストリームデータをリアルタイムで処理でき
 
 [Amazon Kinesis（ストリーミングデータをリアルタイムで収集、処理、分析）\| AWS](https://aws.amazon.com/jp/kinesis/)  
 [Kinesis Data Firehoseを使ってみた話 \- Qiita](https://qiita.com/arata-honda/items/a21c5985f25ec337efbf)
+
+### AWS KMS (Key Management Service)
+データを暗号化するためのキーを作成および管理することができるサービス。  
+
+- キーアクセス  
+キーポリシーを使用することで、カスタマーマスターキー（CMKs）へのアクセスを制御することができる。  
+またAWS CloudTrailと統合されており、すべてのキーの使用ログを表示できる。
