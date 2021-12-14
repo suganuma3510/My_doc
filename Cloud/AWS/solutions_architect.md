@@ -2,7 +2,9 @@
 
 - [Solutions Architect](#solutions-architect)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
+  - [Auto Scaling](#auto-scaling)
   - [AWS Storage Gateway](#aws-storage-gateway)
+  - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
   - [AWS DataSync](#aws-datasync)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [AWS Config](#aws-config)
@@ -15,6 +17,20 @@
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
 
 ### S3 (Simple Storage Service)
+- S3 標準
+- S3 標準 - 低頻度アクセス (S3 標準 -IA)  
+アクセス頻度は低いが、必要に応じてすぐに取り出す際に適している。  
+バックアップ、災害対策ファイルなどに最適。
+- S3 Glacier (迅速取り出し)
+
+- ライフサイクルポリシー  
+ライフサイクルを設定することでコスト効率を上げることができる。
+  - 移行アクション  
+  別のストレージクラスにオブジェクトを移行することができる。  
+  例：30日経過後、S3 Glacierにアーカイブなど
+  - 有効期限アクション  
+  有効期限切れのオブジェクトを削除する。
+
 - クロスリージョンレプリケーション  
 S3のクロスリージョンレプリケーションを有効にすることで、複数のリージョン間でデータを複製することができる。  
 また、レプリケーションを有効にするにはバケットでバージョニングを有効にする必要がある。
@@ -25,11 +41,18 @@ S3のクロスリージョンレプリケーションを有効にすることで
 [なんとなく CORS がわかる\.\.\.はもう終わりにする。 \- Qiita](https://qiita.com/att55/items/2154a8aad8bf1409db2b)
 
 - 署名付きURL  
-有効期限付きのURLを生成できるため、ユーザーがIAMユーザーである必要がなく、オブジェクトのアップロードが可能。
+有効期限付きのURLを生成できるため、ユーザーがIAMユーザーである必要がなく、オブジェクトのアップロードが可能。  
+また、アプリケーション経由でルーティングする必要がなく、S3へ直接アクセスできる。
 
 - S3ファイルゲートウェイ  
 NFSプロトコルをサポートしており、ローカルキャッシュを使用してデータへの低レイテンシーアクセスを提供する。
 データへの低レイテンシーアクセスを維持したまま、オンプレからAWSへ移行したい際に利用する。
+
+### Auto Scaling
+自動的にリソースをスケールさせることができるサービス。  
+
+- Auto Scaling グループ  
+同じリージョン内の複数AZからEC2インスタンスなどを含めることができる。
 
 ### AWS Storage Gateway
 - ボリュームゲートウェイ  
@@ -43,6 +66,11 @@ iSCSIProtocolを使用してブロックストレージを提供し、AWS上に�
 
 - ファイルゲートウェイ  
 業界標準のファイルプロトコル（NFS、SMBなど）を使用し、ファイルをオブジェクトとしてS3に保存、アクセスするためのファイルインターフェースを提供している。  
+
+### Amazon EFS (Amazon Elastic File System)
+ストレージをプロビジョニングまたは管理することなくファイルデータを共有できる完全マネージド型ファイルストレージサービス。  
+複数のインスタンスから同時にアクセスできる。  
+
 
 ### AWS DataSync
 オンプレミスからAWS（Amazon S3 / Amazon EFS）間、およびAWSストレージサービス間でのデータの移動を簡素化、自動化、高速化するマネージド型のデータ転送サービス。
