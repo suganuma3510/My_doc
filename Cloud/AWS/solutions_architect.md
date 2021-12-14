@@ -2,6 +2,8 @@
 
 - [Solutions Architect](#solutions-architect)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
+  - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
+  - [DynamoDB](#dynamodb)
   - [Auto Scaling](#auto-scaling)
   - [AWS Storage Gateway](#aws-storage-gateway)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
@@ -15,6 +17,7 @@
   - [ECS](#ecs)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
+  - [AWS CloudTrail](#aws-cloudtrail)
 
 ### S3 (Simple Storage Service)
 - S3 標準
@@ -47,6 +50,19 @@ S3のクロスリージョンレプリケーションを有効にすることで
 - S3ファイルゲートウェイ  
 NFSプロトコルをサポートしており、ローカルキャッシュを使用してデータへの低レイテンシーアクセスを提供する。
 データへの低レイテンシーアクセスを維持したまま、オンプレからAWSへ移行したい際に利用する。
+
+### EBS (Elastic Block Store)
+- ストレージオプション
+  - プロビジョンド IOPS SSD (io1)  
+  OLTPの要件に最適。
+  - 汎用SSD (gp2)  
+  - スループット最適化 HDD (st1)  
+  - Cold HDD  
+
+### DynamoDB
+- DynamoDB ストリーム  
+テーブル内の項目レベルの変更をキャプチャし、最大24時間のログを保存することができる。  
+これによりほぼリアルタイムで変更前、変更後の内容を参照できるため、写真を追加した際に通知を送るなどの機能を実装することができる。
 
 ### Auto Scaling
 自動的にリソースをスケールさせることができるサービス。  
@@ -145,3 +161,7 @@ SQLやApache Finkでストリームデータをリアルタイムで処理でき
 - キーアクセス  
 キーポリシーを使用することで、カスタマーマスターキー（CMKs）へのアクセスを制御することができる。  
 またAWS CloudTrailと統合されており、すべてのキーの使用ログを表示できる。
+
+### AWS CloudTrail
+- ログファイルの暗号化と整合性  
+CloudTrailはデフォルトでS3のログを暗号化し、ログファイルの整合性検証を行うことができる。
