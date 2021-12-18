@@ -1,6 +1,7 @@
 ## Solutions Architect
 
 - [Solutions Architect](#solutions-architect)
+  - [VPC](#vpc)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
   - [DynamoDB](#dynamodb)
@@ -18,6 +19,10 @@
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS CloudTrail](#aws-cloudtrail)
+
+### VPC
+- VPC間のデータ転送料  
+プライベートIPアドレスは、データ転送料金はかからない。
 
 ### S3 (Simple Storage Service)
 - S3 標準
@@ -53,6 +58,10 @@ S3のクロスリージョンレプリケーションを有効にすることで
 - S3ファイルゲートウェイ  
 NFSプロトコルをサポートしており、ローカルキャッシュを使用してデータへの低レイテンシーアクセスを提供する。
 データへの低レイテンシーアクセスを維持したまま、オンプレからAWSへ移行したい際に利用する。
+
+- MFA Delete  
+この設定を有効にするとバケット所有者は特定のバージョンの削除や変更をする際に、2つの認証形態を含める必要がある。  
+これにより誤った削除を防ぐことができる。
 
 ### EBS (Elastic Block Store)
 - ストレージオプション
@@ -108,6 +117,9 @@ AWSリソースに対してどんな変更をしたか、時系列で変更履�
 ### RDS
 - MySQL DBインスタンスでSSL接続  
 プライマリインスタンスにSSL証明書をアタッチし、クライアントは接続に公開鍵を使用することでSSL接続をすることができる。
+
+- IAM データベース認証  
+MySQLおよびPostgreSQLで使用することができ、パスワード不要で一時的な認証トークンを使用してDBにアクセスすることができる。
 
 ### Amazon FSx For Lustre
 ワークロードの高速処理に最適化された高性能ファイルシステムを提供するフルマネージド型サービス。  
