@@ -7,6 +7,7 @@
     - [非連続イノベーション](#非連続イノベーション)
   - [ETL](#etl)
   - [ペルソナ](#ペルソナ)
+  - [オンデマンド](#オンデマンド)
   - [O2O (Online to Offline)](#o2o-online-to-offline)
   - [D2C (Direct to Consumer)](#d2c-direct-to-consumer)
   - [C2C (Consumer to Consumer)](#c2c-consumer-to-consumer)
@@ -85,6 +86,9 @@ Extract：抽出、Transform：変換、Load：格納 の略。
 
 [担当者間で、共通した人物像を形成することができ](https://ferret-plus.com/8116?page=2)  
 [ペルソナ｜マーケティング用語｜かんでんCSフォーラム](https://www.kcsf.co.jp/marketing/persona.html)
+
+### オンデマンド
+ユーザの要求があった際に、その要求に応じてサービスを提供すること。
 
 ### O2O (Online to Offline)
 オンライン（＝WEBサイト、インターネット広告、SNSなど）で広く情報発信をし、集めた見込み客をオフライン（＝実店舗）へ誘導して購買を促す施策のこと。例：PayPay

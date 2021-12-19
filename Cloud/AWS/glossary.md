@@ -28,6 +28,7 @@
   - [DynamoDB Accelerator](#dynamodb-accelerator)
   - [Amazon ElastiCache](#amazon-elasticache)
   - [Redshift](#redshift)
+  - [Amazon EMR](#amazon-emr)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
@@ -64,7 +65,7 @@ EBSはデータに素早く、かつ長期永続性が必要な場合に推奨�
 ### S3 (Simple Storage Service)
 スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービス。  
 世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。  
-耐久性は99.999999999%（イレブンナイン）、可用性は年間99.99%。
+耐久性は99.999999999%（イレブンナイン）、可用性は年間99.99%。  
 
 #### S3 Glacier
 データのアーカイブ(複数のファイルやフォルダを1つにまとめること)や長期のバックアップを目的としたサービス。  
@@ -196,6 +197,9 @@ Redshift Spectrumを利用することで、S3上の非構造化データに対�
 オンプレミスと異なり、数クリックで起動、従量課金制という特徴がある。  
 また高パフォーマンスであり、容量のニーズの変化に応じてノードの数や種類の変更が可能。
 
+### Amazon EMR
+Apache Spark、Apache Hive、Presto などのオープンソースフレームワークを使用して、ビッグデータの処理、分析、機械学習を行なうことができるサービス。
+
 ### Amazon SQS (Simple Queue Service)
 サーバーレスでキューイングを実現できるフルマネージドキューイングサービス。  
 キューイングとは処理の順番待ちのことで、システム間でデータを送受信する際に一時的にデータをため込む場所を設け、非同期に処理を行うことができる仕組みのこと。
@@ -228,7 +232,7 @@ AWS が提供するマネージドなコンテナ実行環境。
 
 ### Lambda
 サーバレスコンピューティングサービスの1つ。利用者はプログラムのコードを用意し、アップロードするだけで自動でコードを実行してくれる。  
-Lambdaはコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
+Lambdaは割り当てられたメモリとコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
 
 - [AWS Lambdaの使い方をやさしく解説、関数実行や権限設定の基本を押さえる 連載：やさしく学ぶAWS入門｜ビジネス\+IT](https://www.sbbit.jp/article/cont1/67741)
 
