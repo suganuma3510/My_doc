@@ -8,6 +8,7 @@
   - [Auto Scaling](#auto-scaling)
   - [AWS Storage Gateway](#aws-storage-gateway)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
+  - [IAM](#iam)
   - [AWS DataSync](#aws-datasync)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [AWS Config](#aws-config)
@@ -99,6 +100,9 @@ iSCSIProtocolを使用してブロックストレージを提供し、AWS上に�
 ストレージをプロビジョニングまたは管理することなくファイルデータを共有できる完全マネージド型ファイルストレージサービス。  
 複数のインスタンスから同時にアクセスできる。  
 
+### IAM
+- クロスアカウントアクセス  
+AのアカウントからアカウントBのリソースを管理することができる。
 
 ### AWS DataSync
 オンプレミスからAWS（Amazon S3 / Amazon EFS）間、およびAWSストレージサービス間でのデータの移動を簡素化、自動化、高速化するマネージド型のデータ転送サービス。
