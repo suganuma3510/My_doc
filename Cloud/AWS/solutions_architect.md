@@ -15,6 +15,7 @@
   - [RDS](#rds)
   - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [Redshift](#redshift)
+  - [ALB (Application Load Balancer)](#alb-application-load-balancer)
   - [EC2](#ec2)
   - [ECS](#ecs)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
@@ -141,6 +142,10 @@ S3バケットとリンクすることもできる。並列処理も可能。
 - ウェブIDフェデレーション  
 一時的な認証情報を外部 ID プロバイダー（例: Login with Amazon、Facebook、Google）を使用してサインインし、その認証トークンをAWSアカウントのリソースを使用するためのアクセス許可を持つIAMロールにマッピングし、AWS の一時的セキュリティ認証情報に変換することができる。  
 これを利用し、モバイルアプリなどでAWSリソースにアクセスすることができる。
+
+### ALB (Application Load Balancer)
+- 登録解除の遅延  
+ALBは応答がないインスタンスへのリクエストを停止するが、そのタイムアウト時間を遅延させることができる。
 
 ### EC2
 - インスタンスストア
