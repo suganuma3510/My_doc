@@ -15,7 +15,9 @@
   - [RDS](#rds)
   - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [Redshift](#redshift)
-  - [ALB (Application Load Balancer)](#alb-application-load-balancer)
+  - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
+    - [ALB (Application Load Balancer)](#alb-application-load-balancer)
+    - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
   - [EC2](#ec2)
   - [ECS](#ecs)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
@@ -66,6 +68,8 @@ NFSプロトコルをサポートしており、ローカルキャッシュを�
 これにより誤った削除を防ぐことができる。
 
 ### EBS (Elastic Block Store)
+どんな規模のワークロードにも対応でき、独自のファイルシステムも作成可能。
+
 - ストレージオプション
   - プロビジョンド IOPS SSD (io1)  
   OLTPの要件に最適。
@@ -143,9 +147,25 @@ S3バケットとリンクすることもできる。並列処理も可能。
 一時的な認証情報を外部 ID プロバイダー（例: Login with Amazon、Facebook、Google）を使用してサインインし、その認証トークンをAWSアカウントのリソースを使用するためのアクセス許可を持つIAMロールにマッピングし、AWS の一時的セキュリティ認証情報に変換することができる。  
 これを利用し、モバイルアプリなどでAWSリソースにアクセスすることができる。
 
-### ALB (Application Load Balancer)
+### ELB (Elastic Load Balancer)
+- クロスゾーン負荷分散  
+複数のAZにまたがり、全インスタンスに均等にリクエストを分散する。  
+ALB、NLB対応。
+
+
+- スティッキーセッション  
+セッションが続いている間は、同じクライアントを同じインスタンスへ誘導する。  
+ALBのみ対応。
+
+
+#### ALB (Application Load Balancer)
+レイヤー7で対応。
+
 - 登録解除の遅延  
 ALBは応答がないインスタンスへのリクエストを停止するが、そのタイムアウト時間を遅延させることができる。
+
+#### NLB (Network Load Balancer)
+レイヤー4で対応。
 
 ### EC2
 - インスタンスストア
