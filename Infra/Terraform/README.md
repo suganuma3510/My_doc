@@ -14,6 +14,7 @@
 - [Terraform の terraform\.tfvars とは \| 30歳未経験からのITエンジニア](https://www.se-from30.com/it/terraform-terraform-tfvars/)
 - [Terraform RegistryのModuleを使ってAWSリソースを作成してみた \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_registry_module/)
 - [TerraformでAWS上にHTTPS化したサブドメインを定義する \- My External Storage](https://budougumi0617.github.io/2020/11/07/define_https_subdomain_by_terraform/)
+- [Terraformerとしてコードを書いて思うこと \| フューチャー技術ブログ](https://future-architect.github.io/articles/20211029a/)
 
 ### コードサンプル
 - [terraform\-community\-modules](https://github.com/terraform-community-modules)

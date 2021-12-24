@@ -41,7 +41,8 @@ Webサービスの設計モデルであり、以下のような設計原則が�
 
 [Webサービスの設計モデル](https://qiita.com/TakahiRoyte/items/949f4e88caecb02119aa)  
 [0からREST APIについて調べてみた \- Qiita](https://qiita.com/masato44gm/items/dffb8281536ad321fb08)  
-[RESTful API（REST API）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/RESTful_API.html)
+[RESTful API（REST API）とは \- IT用語辞典 e\-Words](https://e-words.jp/w/RESTful_API.html)  
+[PUT か POST か PATCH か？ \- Qiita](https://qiita.com/suin/items/d17bdfc8dba086d36115)
 
 ### GraphQL
 Facebookが開発しているWeb APIのための規格で、「クエリ言語」と「スキーマ言語」からなる。  
