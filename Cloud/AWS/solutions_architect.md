@@ -167,6 +167,9 @@ ALBのみ対応。
 #### ALB (Application Load Balancer)
 レイヤー7で対応。
 
+- AWS Global Accelerator  
+ALB、NLBの前面に配置することで、低レイテンシーと高可用性を提供する。
+
 - 登録解除の遅延  
 ALBは応答がないインスタンスへのリクエストを停止するが、そのタイムアウト時間を遅延させることができる。
 
