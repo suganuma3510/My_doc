@@ -23,6 +23,7 @@
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS CloudTrail](#aws-cloudtrail)
+  - [Amazon SNS](#amazon-sns)
 
 ### VPC
 - VPC間のデータ転送料  
@@ -158,11 +159,9 @@ S3バケットとリンクすることもできる。並列処理も可能。
 複数のAZにまたがり、全インスタンスに均等にリクエストを分散する。  
 ALB、NLB対応。
 
-
 - スティッキーセッション  
 セッションが続いている間は、同じクライアントを同じインスタンスへ誘導する。  
 ALBのみ対応。
-
 
 #### ALB (Application Load Balancer)
 レイヤー7で対応。
@@ -222,3 +221,16 @@ SQLやApache Finkでストリームデータをリアルタイムで処理でき
 ### AWS CloudTrail
 - ログファイルの暗号化と整合性  
 CloudTrailはデフォルトでS3のログを暗号化し、ログファイルの整合性検証を行うことができる。
+
+### Amazon SNS
+- トピック  
+配信対象をグルーピングし、一斉に通知を配信するための機能。  
+エンドポイントを登録（複数登録可）することで、トピックに登録されているエンドポイントへ通知を配信できる。  
+
+- サブスクリプション  
+作成したトピックと配信対象のエンドポイントを紐づけるデータ。
+
+- パブリッシュ（発行）  
+エンドポイントやトピックに対し、通知を配信すること。
+
+[Amazon SNSでプッシュ通知を送るための基礎知識 \| UNITRUST](https://www.unitrust.co.jp/6182)
