@@ -40,6 +40,7 @@
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
   - [プレイスメントグループ](#プレイスメントグループ)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
+  - [Amazon Cognito](#amazon-cognito)
   - [AWSサポート](#awsサポート)
   - [参考](#参考)
 
@@ -266,6 +267,9 @@ AWSへのデータ移行やエッジコンピューティングのための物�
  - AWS Snowball Edge：テラバイト規模
  - AWS Snowball：ペタバイト規模
  - AWS Snowmobile：エクサバイト規模
+
+### Amazon Cognito
+モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
 
 ### AWSサポート
 AWSによる技術サポートサービス。料金に応じてサポートを受けることができる。  
