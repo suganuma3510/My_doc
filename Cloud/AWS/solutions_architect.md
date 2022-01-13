@@ -15,6 +15,7 @@
   - [RDS](#rds)
   - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [Redshift](#redshift)
+  - [Route53](#route53)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
@@ -172,6 +173,10 @@ S3バケットとリンクすることもできる。並列処理も可能。
 一時的な認証情報を外部 ID プロバイダー（例: Login with Amazon、Facebook、Google）を使用してサインインし、その認証トークンをAWSアカウントのリソースを使用するためのアクセス許可を持つIAMロールにマッピングし、AWS の一時的セキュリティ認証情報に変換することができる。  
 これを利用し、モバイルアプリなどでAWSリソースにアクセスすることができる。
 
+### Route53
+- 加重ルーティングポリシー  
+指定した重量（比率）で複数リソースにトラフィックをルーティングすることができ、負荷分散が可能。
+
 ### ELB (Elastic Load Balancer)
 - クロスゾーン負荷分散  
 複数のAZにまたがり、全インスタンスに均等にリクエストを分散する。  
@@ -189,6 +194,12 @@ ALB、NLBの前面に配置することで、低レイテンシーと高可用�
 
 - 登録解除の遅延  
 ALBは応答がないインスタンスへのリクエストを停止するが、そのタイムアウト時間を遅延させることができる。
+
+- プライベートのインスタンスにアタッチ  
+インスタンスがあるAZにパブリックサブネットを作成し、ALBに関連付ける。そのためパブリックサブネットが2つ必要になる、。
+
+- パスベースのルーティング  
+URLのパスに基づいてリクエストを別のターゲットにルーティングするリスナーを作成することができる。
 
 #### NLB (Network Load Balancer)
 レイヤー4で対応。
