@@ -25,6 +25,7 @@
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [Amazon SNS](#amazon-sns)
+  - [AWS Snowball](#aws-snowball)
 
 ### VPC
 - VPC間のデータ転送料  
@@ -182,6 +183,10 @@ S3バケットとリンクすることもできる。並列処理も可能。
 一時的な認証情報を外部 ID プロバイダー（例: Login with Amazon、Facebook、Google）を使用してサインインし、その認証トークンをAWSアカウントのリソースを使用するためのアクセス許可を持つIAMロールにマッピングし、AWS の一時的セキュリティ認証情報に変換することができる。  
 これを利用し、モバイルアプリなどでAWSリソースにアクセスすることができる。
 
+- クロスリージョンスナップショット  
+クラスターのスナップショットを別リージョンにコピーするように設定ができる。  
+これにより2つのリージョンにバックアップすることができる。
+
 ### Route53
 - 加重ルーティングポリシー  
 指定した重量（比率）で複数リソースにトラフィックをルーティングすることができ、負荷分散が可能。
@@ -275,3 +280,7 @@ CloudTrailはデフォルトでS3のログを暗号化し、ログファイル�
 エンドポイントやトピックに対し、通知を配信すること。
 
 [Amazon SNSでプッシュ通知を送るための基礎知識 \| UNITRUST](https://www.unitrust.co.jp/6182)
+
+### AWS Snowball
+ - S3 Glacierへデータ転送する場合  
+S3 Glacier ボールトのサポートはされていないため、S3バケットを宛先として選択し、Glacierへ移行するライフサイクルポリシーを作成する必要がある。
