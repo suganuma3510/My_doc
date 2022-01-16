@@ -8,12 +8,12 @@
   - [Auto Scaling](#auto-scaling)
   - [AWS Storage Gateway](#aws-storage-gateway)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
+  - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [IAM](#iam)
   - [AWS DataSync](#aws-datasync)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [AWS Config](#aws-config)
   - [RDS](#rds)
-  - [Amazon FSx For Lustre](#amazon-fsx-for-lustre)
   - [Redshift](#redshift)
   - [Route53](#route53)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
@@ -37,6 +37,9 @@
 
 - 拡張ネットワーキング  
 低レイテンシーと高ネットワークパフォーマンスを提供する。
+
+- PrivateLink  
+AWSへのAPIアクセスをインターネットを経由せずに行えるインターフェースタイプのVPCエンドポイントのこと。
 
 ### S3 (Simple Storage Service)
 - S3 標準
@@ -128,6 +131,11 @@ iSCSIProtocolを使用してブロックストレージを提供し、AWS上に�
 ストレージをプロビジョニングまたは管理することなくファイルデータを共有できる完全マネージド型ファイルストレージサービス。  
 複数のインスタンスから同時にアクセスできる。  
 
+### Amazon FSx For Lustre
+ワークロードの高速処理に最適化された高性能ファイルシステムを提供するフルマネージド型サービス。  
+機械学習、高性能コンピューティング、ビデオ処理、財務モデリング、電子設計自動化、分析などのワークロード向けに最適化されたファイルシステム。  
+S3バケットとリンクすることもできる。並列処理も可能。
+
 ### IAM
 - クロスアカウントアクセス  
 AのアカウントからアカウントBのリソースを管理することができる。
@@ -165,11 +173,6 @@ MySQLおよびPostgreSQLで使用することができ、パスワード不要�
 
 - マルチAZオプション  
 シングルAZ配置のインスタンスをマルチAZオプションを指定して更新することで、ダウンタイムなしでマルチAZ配置に変換することができる。
-
-### Amazon FSx For Lustre
-ワークロードの高速処理に最適化された高性能ファイルシステムを提供するフルマネージド型サービス。  
-機械学習、高性能コンピューティング、ビデオ処理、財務モデリング、電子設計自動化、分析などのワークロード向けに最適化されたファイルシステム。  
-S3バケットとリンクすることもできる。並列処理も可能。
 
 ### Redshift
 ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
@@ -226,6 +229,12 @@ URLのパスに基づいてリクエストを別のターゲットにルーテ�
 
 - オンデマンドキャパシティー予約  
 特定AZの任意の所要時間、確実なEC2インスタンスの起動を確保することができる。
+
+- インスタンスプロファイル  
+EC2インスタンスとIAMロールを結びつけるための箱のこと。  
+インスタンスの起動時に EC2 インスタンスにロール情報を渡すために使用する。
+
+[インスタンスプロファイルを理解するついでにポリシーとロールを整理する。 \- Qiita](https://qiita.com/sakai00kou/items/a4b96dcfa6bb3e656cd9)
 
 ### ECS
 - EFSファイルシステムサポート
