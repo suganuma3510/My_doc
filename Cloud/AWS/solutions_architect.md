@@ -93,6 +93,9 @@ NFSプロトコルをサポートしており、ローカルキャッシュを�
   - スループット最適化 HDD (st1)  
   - Cold HDD  
 
+- DeleteOnTermination  
+EC2インスタンスを削除した際に、接続されたEBSボリュームを保持することができる。
+
 ### DynamoDB
 - DynamoDB Accelerator (DAX)  
 キャパシティーユニット（RCU）の削減に最適。
@@ -262,6 +265,10 @@ Kinesisに以下の4つの機能がある。
 ストリームデータをS3やRedshiftなどのツールを使用してリアルタイムで分析ツールにできるサービス。
 - Kinesis Data Analytics  
 SQLやApache Finkでストリームデータをリアルタイムで処理できるサービス。
+
+- Lambda統合  
+Lambda関数を使用して、Kinesisデータストリームのレコードを処理または変換することができる。  
+データをキャプチャ時に処理または変換をしてから、DBやS3に保存することが可能。
 
 [Amazon Kinesis（ストリーミングデータをリアルタイムで収集、処理、分析）\| AWS](https://aws.amazon.com/jp/kinesis/)  
 [Kinesis Data Firehoseを使ってみた話 \- Qiita](https://qiita.com/arata-honda/items/a21c5985f25ec337efbf)
