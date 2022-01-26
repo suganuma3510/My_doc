@@ -23,6 +23,7 @@
   - [EC2](#ec2)
   - [ECS](#ecs)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
+  - [CloudTrail](#cloudtrail)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [Amazon SNS](#amazon-sns)
@@ -31,6 +32,9 @@
 ### VPC
 - VPC間のデータ転送料  
 プライベートIPアドレスは、データ転送料金はかからない。
+
+- API Gateway  
+API Gatewayより背後の複数のバックエンドサービスに単一のインターフェースを提供することで、基盤のサービスから切り離すことができる。
 
 - クラスタープレイスメントグループ  
 単一のAZ内のインスタンスを論理的にグループ化することができる。  
@@ -350,6 +354,12 @@ Lambda関数を使用して、Kinesisデータストリームのレコードを�
 
 [Amazon Kinesis（ストリーミングデータをリアルタイムで収集、処理、分析）\| AWS](https://aws.amazon.com/jp/kinesis/)  
 [Kinesis Data Firehoseを使ってみた話 \- Qiita](https://qiita.com/arata-honda/items/a21c5985f25ec337efbf)
+
+### CloudTrail
+- ログファイルの整合性の検証  
+ログファイルの検証を有効にすることで、不変的な監査ログの用件に役立つ。  
+また、AWS KMSで管理されたキーを使用し、暗号化をすることもできる。
+
 
 ### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
