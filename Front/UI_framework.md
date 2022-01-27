@@ -24,3 +24,4 @@ UIフレームワークの例
 
 - [全米が待ち望んでいた超便利なTailwind CSSツールリスト](https://zenn.dev/taishi/articles/da33057d2c317d5068c1)
 - [Tailwind CSS Components gallery](https://tailwindcomponents.com/components)
+- [Tailwind CSS製UIデザインのHTMLコードをコピペできるFlowrift（便利ツールまとめも公開） \- PhotoshopVIP](https://photoshopvip.net/131407)

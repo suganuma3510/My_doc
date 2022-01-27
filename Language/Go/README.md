@@ -4,6 +4,8 @@
 #### コード
 - [yutaro1031/ror-portfolio: Ruby on Railsで作成したメディアポートフォリオ](https://github.com/yutaro1031/ror-portfolio)
 - [halhal23/dishare](https://github.com/halhal23/dishare)
+- [sekky0905/nuxt\-vue\-go\-chat: Chat sample of Nuxt\.js\(Vue\.js\) \+ Go\(Layerd Architecture\)](https://github.com/sekky0905/nuxt-vue-go-chat)
+- [victorsteven/food\-app\-server: Exploring Domain\-Driven Design in Golang](https://github.com/victorsteven/food-app-server)
 - [nuxt_go_Webアプリ](https://github.com/aiiro/youtube-manager-go)
 - [Goプログラミング実践入門](https://www.marlin-arms.com/support/goweb/)
 - [Goプログラミング実践入門 GitHub](https://github.com/mushahiroyuki/gowebprog)

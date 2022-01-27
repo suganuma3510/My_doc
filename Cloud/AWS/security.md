@@ -7,15 +7,19 @@
   - [AWS Arifact](#aws-arifact)
   - [セキュリティグループ](#セキュリティグループ)
   - [ネットワーク ACL](#ネットワーク-acl)
+  - [AWS VPN](#aws-vpn)
+  - [AWS Direct Connect](#aws-direct-connect)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [AWS Config](#aws-config)
   - [AWS Shield](#aws-shield)
-  - [GuardDuty](#guardduty)
-  - [Inspector](#inspector)
-  - [Directory Service](#directory-service)
+  - [AWS Organizations](#aws-organizations)
+  - [Amazon GuardDuty](#amazon-guardduty)
+  - [Amazon Inspector](#amazon-inspector)
+  - [Amazon Directory Service](#amazon-directory-service)
   - [S3のアクセスコントロール](#s3のアクセスコントロール)
   - [AWS Service Catalog](#aws-service-catalog)
   - [AWS Trusted Advisor](#aws-trusted-advisor)
+  - [AWSアカウントにて、セキュリティ侵害を受けた際の対処方法](#awsアカウントにてセキュリティ侵害を受けた際の対処方法)
   - [参考](#参考)
 
 ### AWS アカウント
@@ -61,27 +65,52 @@ VPCのファイアウォールとして機能し、1つ以上のサブネット�
 
 - [ネットワーク ACL \- Amazon Virtual Private Cloud](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-network-acls.html)
 
+### AWS VPN
+インターネット上で、専用の接続経路を確立し通信を暗号化する技術を提供するサービス。  
+接続経路はオンプレミスとAWS間のサイト間VPNとAWS Client VPNの2つで構成されている。  
+AWSサイト間VPNはオンプレミスとVPCまたはTransit Gatewayの間にトンネルを作成する。  
+AWS Client VPNは無料のVPNソフトウェアクライアントを使用して接続する。
+
+### AWS Direct Connect
+オンプレミスのデータセンターやオフィスとAWS間を専用線を介してプライベート接続するサービス。  
+これにより、インターネットを介した接続に比べ、安定した良好なネットワーク品質が実現できる。  
+利用料はポート使用料とデータ転送料で決まり、インターネット接続よりコストを抑えることができる。  
+
 ### AWS CloudTrail
 AWSアカウントの監査ができるサービス。  
 マネジメントコンソールを使用して実行されるアクションの履歴などを取得可能。
 
 ### AWS Config
-AWSリソースに対してどんな変更をしたか、時系列で変更履歴を追跡できるサービス。
+AWSリソースに対してどんな変更をしたか、時系列で変更履歴を追跡できるサービス。  
+コンプライアンスに違反しているリソースの特定も可能。  
+サードパーティー製品のリソースもサポートしている。
 
 ### AWS Shield
-DDoS攻撃に対するAWSの保護サービス。  
+DDoS攻撃（分散型サービス妨害）に対するAWSの保護サービス。  
 アプリケーションのダウンタイムとレイテンシーを最小限に抑えるための各種機能を備えており、エッジロケーションでの利用も可能。  
 無料版と有料版がある。
 
-### GuardDuty
+### AWS Organizations
+複数のAWSアカウントを統合するためのアカウント管理サービス。
+
+主な機能
+- 全てのAWSアカウントの一元管理
+- 全てのメンバーアカウントの一括請求
+- サービスのアクセス制御をグループ、メンバー単位で管理できる
+- AWSアカウントの新規作成を自動化
+
+- [AWS Organizations とは \- AWS Organizations](https://docs.aws.amazon.com/ja_jp/organizations/latest/userguide/orgs_introduction.html)
+
+### Amazon GuardDuty
 マネージド型の脅威検出サービス。  
 悪意のある動作や不正な動作を継続的にモニタリング可能。
 
-### Inspector
+### Amazon Inspector
 アプリケーションのセキュリティを評価できるサービス。  
 事前定義されたルールによってチェックを行い、セキュリティ上の脆弱性やベストプラクティスからの逸脱の確認が可能。  
+完全に評価するにはエージェントをインストールする必要がある。
 
-### Directory Service
+### Amazon Directory Service
 AWS上でMicrosoftのActive Directoryが使用できるサービス。  
 
 ### S3のアクセスコントロール
@@ -100,7 +129,14 @@ AWS上でMicrosoftのActive Directoryが使用できるサービス。
 
 ### AWS Trusted Advisor
 AWSのベストプラクティスに従ったチェックができるオンラインツール。  
-コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス、サービス制限のそれぞれでチェックする。
+コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス（耐障害性）、サービス制限のそれぞれでチェックする。
+
+### AWSアカウントにて、セキュリティ侵害を受けた際の対処方法
+- AWSアカウントのパスワード変更
+- 全てのルートとIAMアクセスキーの更新または削除
+- 侵害を受けたユーザーの削除と他のすべてのIAMユーザーのパスワード変更
+- EC2インスタンスとAMI、EBSボリュームとスナップショット、IAMユーザーなど、作成していないアカウントのリソースの削除
+- AWSサポートセンターを通じてAWSサポートから受け取った通知への応答
 
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)

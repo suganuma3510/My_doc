@@ -10,7 +10,7 @@
   - [Route 53](#route-53)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
-  - [KMS (Key Management Service)](#kms-key-management-service)
+  - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
@@ -21,15 +21,27 @@
   - [CloudFormation](#cloudformation)
   - [CloudWatch](#cloudwatch)
   - [VPCフローログ](#vpcフローログ)
+  - [VPCエンドポイント](#vpcエンドポイント)
+  - [VPCピアリング](#vpcピアリング)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
+  - [DynamoDB Accelerator](#dynamodb-accelerator)
+  - [Amazon ElastiCache](#amazon-elasticache)
+  - [Redshift](#redshift)
+  - [Amazon EMR](#amazon-emr)
+  - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
   - [Fargate](#fargate)
   - [Lambda](#lambda)
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
-  - [Elastic Beanstalk](#elastic-beanstalk)
+  - [Elastic Beanstalk (ビーンズトーク)](#elastic-beanstalk-ビーンズトーク)
   - [X-Ray](#x-ray)
+  - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
+  - [プレイスメントグループ](#プレイスメントグループ)
+  - [AWS Snow ファミリー](#aws-snow-ファミリー)
+  - [Amazon Cognito](#amazon-cognito)
+  - [AWSサポート](#awsサポート)
   - [参考](#参考)
 
 ### VPC (Virtual Private Cloud)
@@ -43,6 +55,8 @@
 
 ### EBS (Elastic Block Store)
 EC2インスタンスにアタッチして使用するためのブロックストレージ。  
+EBSはデータに素早く、かつ長期永続性が必要な場合に推奨される。  
+スナップショットを作成することもでき、バックアップはS3に保管される。  
 高い可用性や大規模なワークロードにも対応している。  
 なお1つのEC2から複数のEBSには接続できるが、その逆はできない。  
 また、AZを超えた接続もできない。
@@ -51,12 +65,14 @@ EC2インスタンスにアタッチして使用するためのブロックス�
 
 ### S3 (Simple Storage Service)
 スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービス。  
-世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。
+世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。  
+耐久性は99.999999999%（イレブンナイン）、可用性は年間99.99%。  
 
 #### S3 Glacier
 データのアーカイブ(複数のファイルやフォルダを1つにまとめること)や長期のバックアップを目的としたサービス。  
 S3との違いとして、保管したデータの取り出しに時間がかかるが、価格が安価であることが特徴。  
-また高い安全性と耐久性に優れており、ほとんど取り出す機会がないデータやダウンロードに時間が掛かってもいいデータなどに使用される。
+また高い安全性と耐久性に優れており、ほとんど取り出す機会がないデータやダウンロードに時間が掛かってもいいデータなどに使用される。  
+1ファイル40TBまで保存可能。
 
 #### オブジェクトストレージ
 データを「オブジェクト」という単位で扱う記憶装置。  
@@ -90,9 +106,10 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 
 - [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
 
-### KMS (Key Management Service)
+### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
-通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。
+通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。  
+AWS CloudTrail でログを調査してキーの使用を監査することが可能。
 
 ### AWS WAF (Web Application Firewall)
 可用性、セキュリティ侵害、リソースの過剰消費に影響を与えるような、ウェブの脆弱性を利用した一般的な攻撃やボットから、ウェブアプリケーションまたはAPIを保護する。
@@ -111,8 +128,15 @@ HTTPやHTTPSなどのWeb サービスに発生するトラフィックの負荷�
 EC2-Classicネットワーク内で構築されたアプリケーションを対象とした負荷分散を行う。
 
 ### Auto Scaling
-Auto Scalingにはいくつかのサービスがあり、例としてEC2 Auto Scalingはユーザーが定義した条件に応じてEC2インスタンスを自動的に追加または削除できる。  
-フリート管理を使用して、フリートの状態と可用性を維持できる。また、動的スケーリングと予測スケーリング機能があり、動的は需要の変更に対応してEC2インスタンスを増減し、予測は需要の予測に応じて、適切な数のEC2インスタンスを自動的にスケジュールする。
+自動的にリソースをスケールさせることができるサービス。  
+また異常なインスタンスを置き換え、アプリケーションの可用性を維持できる。  
+フリート管理を使用して、フリートの状態と可用性の維持が可能。  
+動的スケーリングと予測スケーリング機能があり、動的は需要の変更に対応してEC2インスタンスを増減し、予測は需要の予測に応じて、適切な数のEC2インスタンスを自動的にスケジュールする。
+
+- EC2 Auto Scaling  
+  ユーザーが定義した条件に応じてEC2インスタンスを自動的に追加または削除できる
+- Application Auto Scaling  
+  ECSクラスタ、スポットフリート、EMRクラスタ、DynamoDBテーブル、Auroraレプリカなどに対応
 
 ### CloudFront
 AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
@@ -125,13 +149,27 @@ AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス
 
 ### CloudWatch
 システムやアプリケーションの監視と管理ができるサービス。  
-ログデータやパフォーマンスデータを統合的に収集し、確認することができる。  
-システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。
+ログデータやパフォーマンスデータを統合的に収集し、確認することができ、メトリクス(パフォーマンスに関する)データは15ヵ月間保持される。  
+システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。  
+
+CloudWatch Eventとして、例えばメトリックを元に何らかのインシデントのアラートをAWS Lambdaでの自動化のアクションのルールを起動させることが可能。  
+つまりAWSリソースの状態変化に対応する、システムの自動化に利用できる。
+
+CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ処理やソートしてグループ化できる。  
+またクエリ言語を使用したカスタム計算の作成や、ダッシュボードでのログデータの可視化も可能。
 
 ### VPCフローログ
 VPCのネットワークインターフェースとの間で行き来するネットワーク上のIPトラフィックに関する情報を、キャプチャできるようにする機能。  
 セキュリティグループの診断やトラフィックのモニタリングなどに使用する。  
 取得したログはCloudWatchまたはS3に提供される。
+
+### VPCエンドポイント
+サポート対象のAWSサービスなどにVPCをプライベートに接続可能な仮想デバイス。  
+セキュリティの問題でインターネットに接続させずにサービスと繋げる際に使用する。
+
+### VPCピアリング
+2つのVPC間でプライベート接続を可能にするネットワーキング機能。
+IPv4アドレスまたはIPv6アドレスを使用して2つのVPC間でトラフィックをルーティングすることを可能。
 
 ### RDS (Relational Database Service)
 クラウド上で提供されるリレーショナル型データベースサービス。  
@@ -141,9 +179,39 @@ VPCのネットワークインターフェースとの間で行き来するネ�
 NoSQLの完全マネージド型データベースサービス。  
 NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、毎秒2000万件を超えるリクエストをサポート可能。  
 また耐久性が高く、セキュリティ、バックアップおよびリカバリー機能が組み込まれている。  
-複数のリージョンでバックアップを行うことで高い可用性を実現している。
+複数のリージョンでバックアップを行うことで高い可用性を実現しており、無制限のスケーラビリティを提供している。
 
 - [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
+
+### DynamoDB Accelerator
+DynamoDB用に特化したフルマネージド型のインメモリキャッシュサービス。  
+DynamoDBの前に配置することで、1ミリ秒未満のレイテンシーが実現可能。
+
+### Amazon ElastiCache
+セットアップ、運用や拡張が簡単にできるマネージド型インメモリキャッシュサービス。  
+RedisとMemcachedの二種類のエンジンを選択することができる。  
+RDSなどのデータベースの前に配置し、高スループットかつ低レイテンシーにデータを取得することができる。
+
+### Redshift
+ペタバイト規模のマネージド型クラウド上のデータウェアハウス。  
+Redshift Spectrumを利用することで、S3上の非構造化データに対してクエリを実行できる。  
+オンプレミスと異なり、数クリックで起動、従量課金制という特徴がある。  
+また高パフォーマンスであり、容量のニーズの変化に応じてノードの数や種類の変更が可能。
+
+### Amazon EMR
+Apache Spark、Apache Hive、Presto などのオープンソースフレームワークを使用して、ビッグデータの処理、分析、機械学習を行なうことができるサービス。
+
+### Amazon SQS (Simple Queue Service)
+サーバーレスでキューイングを実現できるフルマネージドキューイングサービス。  
+キューイングとは処理の順番待ちのことで、システム間でデータを送受信する際に一時的にデータをため込む場所を設け、非同期に処理を行うことができる仕組みのこと。
+
+キュータイプ
+- 標準キュー  
+スループットは無制限だが、配信順序は保証されない。  
+メッセージは複数回配信される可能性がある。
+- FIFOキュー  
+先入先出。スループットは1秒当たり300件。  
+配信順序を保証し、必ず1回のみ配信する。
 
 ### ECS (Elastic Container Service)
 Dockerオーケストレーションツール。  
@@ -173,7 +241,7 @@ AWS が提供するマネージドなコンテナ実行環境。
 
 ### Lambda
 サーバレスコンピューティングサービスの1つ。利用者はプログラムのコードを用意し、アップロードするだけで自動でコードを実行してくれる。  
-Lambdaはコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
+Lambdaは割り当てられたメモリとコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
 
 - [AWS Lambdaの使い方をやさしく解説、関数実行や権限設定の基本を押さえる 連載：やさしく学ぶAWS入門｜ビジネス\+IT](https://www.sbbit.jp/article/cont1/67741)
 
@@ -181,7 +249,7 @@ Lambdaはコードの実行時間ごとに料金が発生し、実行されて�
 EC2インスタンスでソフトウェアを動かすために必要なOSやボリューム、APサーバー、アプリケーションなどを合わせたテンプレート。  
 インスタンス起動時に必ず指定する必要がある。
 
-### Elastic Beanstalk
+### Elastic Beanstalk (ビーンズトーク)
 Webアプリケーションのデプロイおよびスケーリングを行うサービス。  
 ユーザーはコードをアップロードするだけで、キャパシティのプロビジョニング、ロードバランシング、Auto Scalingからアプリケーションのヘルスモニタリングまで、デプロイを自動的に処理する。
 
@@ -189,6 +257,44 @@ Webアプリケーションのデプロイおよびスケーリングを行う�
 マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
 マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
 
+### Amazon EFS (Amazon Elastic File System)
+ストレージをプロビジョニングまたは管理することなくファイルデータを共有できるファイルストレージサービス。  
+ペタバイト単位まで自動的にスケールされ、耐久性は99.999999999%（イレブンナイン）、さらに複数のAZに冗長的に保存される。  
+DropboxのAWS版。
+
+### プレイスメントグループ
+単一のアベイラビリティーゾーン内のインスタンスを論理的にグループ化したもの。  
+インスタンス間における低レイテンシな通信を実現するための機能オプション。
+
+- [EC2 拡張ネットワーキングとプレイスメントグループの効果を試す \| DevelopersIO](https://dev.classmethod.jp/articles/ec2-placement-group/)
+
+### AWS Snow ファミリー
+AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
+非常に容量の多いデータの移行などに使用され、SnowballというアタッシュケースのようなものやSnowmobileというトラックのものもある。  
+
+ - AWS Snowball Edge：テラバイト規模
+ - AWS Snowball：ペタバイト規模
+ - AWS Snowmobile：エクサバイト規模
+
+### Amazon Cognito
+モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
+
+### AWSサポート
+AWSによる技術サポートサービス。料金に応じてサポートを受けることができる。  
+上から順に料金が安くなっている。
+
+- Basic Support  
+  全ての利用者が利用可能。基本的なガイド等が提供される。
+- Developer Support  
+  AWS Trusted Advisorの7コアチェックや営業時間内のメールによる技術サポートなどが受けられる。
+- Business Support  
+  本番システムのワークロードに適したサポート。AWS Trusted Advisorのフルチェック、電話、Eメール、チャットアクセスが24時間、週7日提供され、本番システムにサービスの中断が発生した場合の応答時間は1時間未満。
+- Enterprise Support  
+  非常に重要なワークロードに適したサポート。電話、Eメール、チャットアクセスが24時間、週7日提供され、本番システムにサービスの中断が発生した場合の応答時間は15分未満。
+
+[サポートのプラン比較 \| 開発者、ビジネス、エンタープライズ \| AWS サポート](https://aws.amazon.com/jp/premiumsupport/plans/)
+
 ### 参考
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- [AWS の製品・サービス一覧 \| クラウドなら AWS](https://aws.amazon.com/jp/products/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc&awsf.re%3AInvent=*all&awsf.Free%20Tier=*all&awsf.tech-category=*all)
 - 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
