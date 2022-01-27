@@ -22,6 +22,7 @@
     - [NLB (Network Load Balancer)](#nlb-network-load-balancer)
   - [EC2](#ec2)
   - [ECS](#ecs)
+  - [Lambda](#lambda)
   - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
   - [CloudTrail](#cloudtrail)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
@@ -327,6 +328,10 @@ ECS on FargateのタスクはEFSのファイルシステムをマウントでき
 - 動的ポートマッピング
 ALBで動的ポートマッピングを使用することで、1ホストに複数のタスク（コンテナの環境）をロードバランスすることができる。
 
+### Lambda
+- オーソライザー  
+ユーザー認証にて3回認証に失敗した際に、1時間アクセスを拒否させることができる。
+
 ### Amazon Kinesis Data Firehose
 ストリーミングデータをリアルタイムで収集、処理、分析することができる完全マネージド型サービス。  
 毎秒ギガバイトのデータを継続してキャプチャすることができる。リアルタイムで取り込めるデータは以下の通り。
@@ -384,6 +389,9 @@ CloudTrailはデフォルトでS3のログを暗号化し、ログファイル�
 エンドポイントやトピックに対し、通知を配信すること。
 
 [Amazon SNSでプッシュ通知を送るための基礎知識 \| UNITRUST](https://www.unitrust.co.jp/6182)
+
+- SNSモバイルプッシュ  
+モバイルアプリケーションに送信するには、プラットフォームエンドポイントを作成し、直接通知メッセージを送信する。
 
 ### AWS Snowball
  - S3 Glacierへデータ転送する場合  
