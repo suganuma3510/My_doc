@@ -11,6 +11,7 @@
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
+  - [AWS STS (AWS Security Token Service)](#aws-sts-aws-security-token-service)
   - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
     - [ALB (Application Load Balancer)](#alb-application-load-balancer)
@@ -110,6 +111,10 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 データを暗号化するためのキーを作成および管理することができるサービス。  
 通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。  
 AWS CloudTrail でログを調査してキーの使用を監査することが可能。
+
+### AWS STS (AWS Security Token Service)
+AWSリソースへアクセスするための一時的なセキュリティ認証情報を提供するためのサービス。
+ユーザーに対してAWS IDを定義せずにAWSリソースへのアクセスを許可できるため、IDフェデレーションが可能になる。
 
 ### AWS WAF (Web Application Firewall)
 可用性、セキュリティ侵害、リソースの過剰消費に影響を与えるような、ウェブの脆弱性を利用した一般的な攻撃やボットから、ウェブアプリケーションまたはAPIを保護する。
