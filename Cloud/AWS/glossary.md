@@ -30,6 +30,7 @@
   - [Amazon ElastiCache](#amazon-elasticache)
   - [Redshift](#redshift)
   - [Amazon EMR](#amazon-emr)
+  - [Amazon Athena](#amazon-athena)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [ECS (Elastic Container Service)](#ecs-elastic-container-service)
   - [ECR (Elastic Container Registry)](#ecr-elastic-container-registry)
@@ -205,6 +206,10 @@ Redshift Spectrumを利用することで、S3上の非構造化データに対�
 
 ### Amazon EMR
 Apache Spark、Apache Hive、Presto などのオープンソースフレームワークを使用して、ビッグデータの処理、分析、機械学習を行なうことができるサービス。
+
+### Amazon Athena  
+S3内のデータに対して標準SQLクエリを実行し、データ分析を行うことができるサービス。  
+サーバーレスかつ、実行したクエリに対して飲み料金が発生するため、Redshiftよりコスト効率が高い。
 
 ### Amazon SQS (Simple Queue Service)
 サーバーレスでキューイングを実現できるフルマネージドキューイングサービス。  
