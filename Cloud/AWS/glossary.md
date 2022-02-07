@@ -2,6 +2,7 @@
 
 - [AWS用語集](#aws用語集)
   - [VPC (Virtual Private Cloud)](#vpc-virtual-private-cloud)
+  - [AWS ENI (Elastic Network Interface)](#aws-eni-elastic-network-interface)
   - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
@@ -48,6 +49,10 @@
 
 ### VPC (Virtual Private Cloud)
 ユーザー専用の仮想のクラウド環境を構築しプライベートなネットワーク空間を提供するサービス。
+
+### AWS ENI (Elastic Network Interface)
+VPC上で実現する仮想ネットワークインタフェースで、物理的な環境におけるNIC（Network Interface Card）のこと。  
+パブリックIPアドレスやプライベートIPアドレス、MACアドレスなどをインスタンスにアタッチ・デタッチすることができる。
 
 ### EC2 (Elastic Compute Cloud)
 仮想サーバを構築できるサービス。LinuxやWindowsなど様々なOSの仮想サーバを立てることができる。  
