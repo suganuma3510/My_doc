@@ -28,6 +28,7 @@
     - [S3 Glacier](#s3-glacier)
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
+  - [AWS Storage Gateway](#aws-storage-gateway)
   - [CloudFront](#cloudfront)
 - [セキュリティ](#セキュリティ)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
@@ -44,11 +45,14 @@
   - [DynamoDB](#dynamodb)
   - [DynamoDB Accelerator](#dynamodb-accelerator)
   - [Amazon ElastiCache](#amazon-elasticache)
+  - [Amazon Neptune](#amazon-neptune)
 - [アナリティクス](#アナリティクス)
   - [Redshift](#redshift)
   - [Amazon EMR](#amazon-emr)
   - [Amazon Athena](#amazon-athena)
   - [Amazon Kinesis](#amazon-kinesis)
+  - [Amazon CloudSerch](#amazon-cloudserch)
+  - [Amazon Elasticserch Service](#amazon-elasticserch-service)
 - [アプリケーション統合](#アプリケーション統合)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [Amazon Cognito](#amazon-cognito)
@@ -214,6 +218,19 @@ S3との違いとして、保管したデータの取り出しに時間がかか
 ペタバイト単位まで自動的にスケールされ、耐久性は99.999999999%（イレブンナイン）、さらに複数のAZに冗長的に保存される。  
 DropboxのAWS版。
 
+### AWS Storage Gateway
+主にオンプレミス環境のデータを仮想アプライアンス経由でS3にバックアップするためのサービス。
+- ボリュームゲートウェイ  
+iSCSIProtocolを使用してブロックストレージを提供し、AWS上にストレージを拡張することができる。
+  - キャッシュ型モード  
+プライマリデータはS3に保存され、**頻繁にアクセスするデータ**はキャッシュでローカルに保持される。  
+データを全てS3に保存して、よく使うデータのみローカルでキャッシュしておくイメージ。またストレージの拡張を最小限に抑える。
+  - 保管型モード  
+プライマリデータはローカルに保存され、**データセット全体**が低レイテンシーにアクセス可能になる。非同期にAWSにバックアップされる。  
+ローカルにデータを残したままAWSにバックアップするイメージ。
+- ファイルゲートウェイ  
+業界標準のファイルプロトコル（NFS、SMBなど）を使用し、ファイルをオブジェクトとしてS3に保存、アクセスするためのファイルインターフェースを提供している。  
+
 ### CloudFront
 AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
 
@@ -319,6 +336,12 @@ DynamoDBの前に配置することで、1ミリ秒未満のレイテンシー�
 RedisとMemcachedの二種類のエンジンを選択することができる。  
 RDSなどのデータベースの前に配置し、高スループットかつ低レイテンシーにデータを取得することができる。
 
+### Amazon Neptune
+マネージド型のグラフデータベースサービス。  
+グラフとはノードと呼ばれる対象物を起点として、このノード間をエッジと呼ばれる関係性で表現したデータモデル。  
+例：SNSのユーザー（ノード）同士のフォローによる繋がり（エッジ）  
+　　→この繋がりを探索することで、まだ繋がっていないユーザー同士の新たな繋がりをアプリ側で提案できる
+
 
 <!--------------------------
 ## アナリティクス
@@ -357,9 +380,18 @@ Kinesisに以下の4つの機能がある。
 数十万規模のソースから秒あたり数ギガバイトものストリームデータを受けることができるサービス。  
 デフォルトでは24時間のみデータを保存し、最大7日間まで保存することができる。
 - Kinesis Data Firehose  
-ストリームデータをS3やRedshiftなどのツールを使用してリアルタイムで分析ツールにできるサービス。
+ストリームデータを受け取り、S3やRedshift、Elasticserchなどに配信することができるサービス。
 - Kinesis Data Analytics  
-SQLやApache Finkでストリームデータをリアルタイムで処理できるサービス。
+SQLやApache Finkでストリームデータをリアルタイムで分析できるサービス。
+
+### Amazon CloudSerch
+マネージド型の検索機能サービス。  
+検索キーワードが、どの文書に含まれているかを簡単に管理できる。
+これによりアプリケーション側の検索機能の実装や運用口数を減らすことができる。
+
+### Amazon Elasticserch Service
+Elastic社が提供しているオープンソースの全文検索エンジンのマネージド型サービス。
+全文検索に加え、リアルタイムデータ分析、ログ解析などが可能。
 
 
 <!--------------------------
@@ -401,7 +433,9 @@ AWSへのデータ移行やエッジコンピューティングのための物�
  - AWS Snowmobile：エクサバイト規模
 
 
----
+<!--------------------------
+## 開発者用ツール
+---------------------------->
 
 
 ## 開発者用ツール
@@ -443,3 +477,4 @@ AWSによる技術サポートサービス。料金に応じてサポートを�
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
 - [AWS の製品・サービス一覧 \| クラウドなら AWS](https://aws.amazon.com/jp/products/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc&awsf.re%3AInvent=*all&awsf.Free%20Tier=*all&awsf.tech-category=*all)
 - 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
+- 『AWS認定ソリューションアーキテクト－プロフェッショナル～試験特性から導き出した演習問題と詳細解説～』
