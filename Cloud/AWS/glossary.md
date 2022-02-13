@@ -9,6 +9,7 @@
     - [プレイスメントグループ](#プレイスメントグループ)
   - [AWS ENI (Elastic Network Interface)](#aws-eni-elastic-network-interface)
   - [Route 53](#route-53)
+  - [AWS Direct Connect](#aws-direct-connect)
 - [コンピュート](#コンピュート)
   - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
@@ -36,10 +37,21 @@
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS STS (AWS Security Token Service)](#aws-sts-aws-security-token-service)
   - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
+  - [AWS Shield](#aws-shield)
+  - [Amazon GuardDuty](#amazon-guardduty)
+  - [Amazon Inspector](#amazon-inspector)
+  - [Amazon Directory Service](#amazon-directory-service)
+  - [AWS Organizations](#aws-organizations)
+  - [AWS SSO (Single Sign-On)](#aws-sso-single-sign-on)
+  - [AWS Arifact](#aws-arifact)
 - [管理ツール](#管理ツール)
-  - [CloudFormation](#cloudformation)
+  - [AWS CloudTrail](#aws-cloudtrail)
+  - [AWS Config](#aws-config)
   - [CloudWatch](#cloudwatch)
   - [Auto Scaling](#auto-scaling)
+  - [CloudFormation](#cloudformation)
+  - [AWS Service Catalog](#aws-service-catalog)
+  - [AWS Trusted Advisor](#aws-trusted-advisor)
 - [データベース](#データベース)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
@@ -92,7 +104,11 @@ IPv4アドレスまたはIPv6アドレスを使用して2つのVPC間でトラ�
 単一のアベイラビリティーゾーン内のインスタンスを論理的にグループ化したもの。  
 インスタンス間における低レイテンシな通信を実現するための機能オプション。
 
+<details><summary>参照</summary>
+
 - [EC2 拡張ネットワーキングとプレイスメントグループの効果を試す \| DevelopersIO](https://dev.classmethod.jp/articles/ec2-placement-group/)
+
+</details>
 
 ### AWS ENI (Elastic Network Interface)
 VPC上で実現する仮想ネットワークインタフェースで、物理的な環境におけるNIC（Network Interface Card）のこと。  
@@ -101,6 +117,11 @@ VPC上で実現する仮想ネットワークインタフェースで、物理�
 ### Route 53
 可用性と拡張性に優れたクラウドのドメインネームシステム (DNS) ウェブサービス。  
 IP アドレスの変換だけでなく、新規ドメイン名の登録やドメインの DNS レコードの管理も行える。
+
+### AWS Direct Connect
+オンプレミスのデータセンターやオフィスとAWS間を専用線を介してプライベート接続するサービス。  
+これにより、インターネットを介した接続に比べ、安定した良好なネットワーク品質が実現できる。  
+利用料はポート使用料とデータ転送料で決まり、インターネット接続よりコストを抑えることができる。  
 
 
 <!--------------------------
@@ -153,9 +174,13 @@ EC2 インスタンスを用いて仮想サーバー構築によく用いられ�
 
 開発者がECSを使用する際は「タスク定義を作成し、そのタスク定義をもとにサービスを起動」する流れ。
 
+<details><summary>参照</summary>
+
 - [Amazon ECS タスク定義 \- Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_definitions.html)
 - [チュートリアル: AWS CLI を使用した Fargate タスクのクラスターの作成 \- Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/ECS_AWSCLI_Fargate.html)
 - [Amazon ECS task execution IAM role \- Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+
+</details>
 
 ### ECR (Elastic Container Registry)
 Docker コンテナイメージを簡単に保存、管理、デプロイできる完全マネージド型のコンテナレジストリ。
@@ -168,7 +193,11 @@ AWS が提供するマネージドなコンテナ実行環境。
 サーバレスコンピューティングサービスの1つ。利用者はプログラムのコードを用意し、アップロードするだけで自動でコードを実行してくれる。  
 Lambdaは割り当てられたメモリとコードの実行時間ごとに料金が発生し、実行されていない時間は料金が発生しないためコスト削減につながる。
 
+<details><summary>参照</summary>
+
 - [AWS Lambdaの使い方をやさしく解説、関数実行や権限設定の基本を押さえる 連載：やさしく学ぶAWS入門｜ビジネス\+IT](https://www.sbbit.jp/article/cont1/67741)
+
+</details>
 
 ### Elastic Beanstalk (ビーンズトーク)
 Webアプリケーションのデプロイおよびスケーリングを行うサービス。  
@@ -190,7 +219,11 @@ EBSはデータに素早く、かつ長期永続性が必要な場合に推奨�
 なお1つのEC2から複数のEBSには接続できるが、その逆はできない。  
 また、AZを超えた接続もできない。
 
+<details><summary>参照</summary>
+
 - [よく聞くEBSってなに？ \- Qiita](https://qiita.com/miyuki_samitani/items/20a1d74657668578180b)
+
+</details>
 
 ### S3 (Simple Storage Service)
 スケーラビリティ、可用性、セキュリティ、パフォーマンスを高いレベルで実現するオブジェクトストレージサービス。  
@@ -208,10 +241,14 @@ S3との違いとして、保管したデータの取り出しに時間がかか
 ディレクトリ構造で管理するファイルストレージとは異なり、データサイズやデータ数の保存制限がないため、大容量データの保存に適している。  
 オブジェクトにはストレージシステムのなかで固有のID（URI）が付与され、このIDでデータを出し入れする。
 
+<details><summary>参照</summary>
+
 - [AWSの S3って何？ 初心者でも分かる簡単用語解説 \| WafCharm（ワフチャーム） \- AIによるAWS / Azure WAFのルール自動運用サービス](https://www.wafcharm.com/blog/s3-for-beginners/)
 - [5分で絶対に分かるオブジェクトストレージ：5分で絶対に分かる（3/5 ページ） \- ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1705/29/news014_3.html)
 - [オブジェクトストレージとは : 富士通](https://www.fujitsu.com/jp/products/computing/storage/lib-f/tech/beginner/object-storage/)
 - [Amazon S3とAmazon Glacier両者の違いとは？ – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1646)
+
+</details>
 
 ### Amazon EFS (Amazon Elastic File System)
 ストレージをプロビジョニングまたは管理することなくファイルデータを共有できるファイルストレージサービス。  
@@ -234,7 +271,11 @@ iSCSIProtocolを使用してブロックストレージを提供し、AWS上に�
 ### CloudFront
 AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
 
+<details><summary>参照</summary>
+
 - [Amazon CloudFront とは何ですか? \- Amazon CloudFront](https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+
+</details>
 
 
 <!--------------------------
@@ -260,7 +301,11 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 - IAMポリシー  
   アクセス許可のポリシーを定義し、AWSリソースに関連付けることができる。
 
+<details><summary>参照</summary>
+
 - [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
+
+</details>
 
 ### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
@@ -268,11 +313,45 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 AWS CloudTrail でログを調査してキーの使用を監査することが可能。
 
 ### AWS STS (AWS Security Token Service)
-AWSリソースへアクセスするための一時的なセキュリティ認証情報を提供するためのサービス。
+AWSリソースへアクセスするための一時的なセキュリティ認証情報を提供するためのサービス。  
 ユーザーに対してAWS IDを定義せずにAWSリソースへのアクセスを許可できるため、IDフェデレーションが可能になる。
 
 ### AWS WAF (Web Application Firewall)
 可用性、セキュリティ侵害、リソースの過剰消費に影響を与えるような、ウェブの脆弱性を利用した一般的な攻撃やボットから、ウェブアプリケーションまたはAPIを保護する。
+
+### AWS Shield
+DDoS攻撃（分散型サービス妨害）に対するAWSの保護サービス。  
+アプリケーションのダウンタイムとレイテンシーを最小限に抑えるための各種機能を備えており、エッジロケーションでの利用も可能。  
+無料版と有料版がある。
+
+### Amazon GuardDuty
+マネージド型の脅威検出サービス。  
+悪意のある動作や不正な動作を継続的にモニタリング可能。
+
+### Amazon Inspector
+アプリケーションのセキュリティを評価できるサービス。  
+事前定義されたルールによってチェックを行い、セキュリティ上の脆弱性やベストプラクティスからの逸脱の確認が可能。  
+完全に評価するにはエージェントをインストールする必要がある。
+
+### Amazon Directory Service
+AWS上でMicrosoftのActive Directoryが使用できるサービス。  
+
+### AWS Organizations
+複数のAWSアカウントを統合するためのアカウント管理サービス。
+
+### AWS SSO (Single Sign-On)
+シングルサインオン（SSO：Single Sign On）とは、1度のユーザー認証によって複数のシステム（業務アプリケーションやクラウドサービスなど）の利用が可能になる仕組みのこと。
+SSOを実現するマネージドサービスであり、Organizationsとサービス統合されているため、複数アカウント間のSSOを容易に実現することができる。
+
+### AWS Arifact
+AWSはコンプライアンスプログラム（法規範、社内規範、倫理規範の3要素を企業及び全従業員が遵守するための枠組み）として独立した監査人による業界認証等を取得している。  
+AWS ArifactはAWSが取得しているセキュリティおよびコンプライアンスのレポートと特定のオンライン契約をオンデマンドで取得可能なサービス。
+
+<details><summary>参照</summary>
+
+- [コンプライアンスプログラムへの具体的な取り組み方](https://blog.tripwire.co.jp/blog/detail-action)
+
+</details>
 
 
 <!--------------------------
@@ -281,9 +360,15 @@ AWSリソースへアクセスするための一時的なセキュリティ認�
 
 
 ## 管理ツール
-### CloudFormation
-インフラの設定をプログラムコードで行えるサービス。  
-作成するAWSリソースはJSONまたはYAMLを使用し定義することができる。
+
+### AWS CloudTrail
+AWSアカウントの監査ができるサービス。  
+マネジメントコンソールを使用して実行されるアクションの履歴などを取得可能。
+
+### AWS Config
+AWSリソースに対してどんな変更をしたか、時系列で変更履歴を追跡できるサービス。  
+コンプライアンスに違反しているリソースの特定も可能。  
+サードパーティー製品のリソースもサポートしている。
 
 ### CloudWatch
 システムやアプリケーションの監視と管理ができるサービス。  
@@ -307,6 +392,18 @@ CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ�
 - Application Auto Scaling  
   ECSクラスタ、スポットフリート、EMRクラスタ、DynamoDBテーブル、Auroraレプリカなどに対応
 
+### CloudFormation
+インフラの設定をプログラムコードで行えるサービス。  
+作成するAWSリソースはJSONまたはYAMLを使用し定義することができる。
+
+### AWS Service Catalog
+その企業のCloudFrontのテンプレートをまとめたもの。  
+これによりユーザーは社内で承認されたITサービスのみデプロイすることが可能になる。
+
+### AWS Trusted Advisor
+AWSのベストプラクティスに従ったチェックができるオンラインツール。  
+コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス（耐障害性）、サービス制限のそれぞれでチェックする。
+
 
 <!--------------------------
 ## データベース
@@ -325,7 +422,11 @@ NoSQLのため処理速度が速く、1日10兆件以上のリクエストや、
 また耐久性が高く、セキュリティ、バックアップおよびリカバリー機能が組み込まれている。  
 複数のリージョンでバックアップを行うことで高い可用性を実現しており、無制限のスケーラビリティを提供している。
 
+<details><summary>参照</summary>
+
 - [Amazon DynamoDB（マネージド NoSQL データベース）\| AWS](https://aws.amazon.com/jp/dynamodb/)
+
+</details>
 
 ### DynamoDB Accelerator
 DynamoDB用に特化したフルマネージド型のインメモリキャッシュサービス。  
@@ -465,7 +566,11 @@ AWSによる技術サポートサービス。料金に応じてサポートを�
 - Enterprise Support  
   非常に重要なワークロードに適したサポート。電話、Eメール、チャットアクセスが24時間、週7日提供され、本番システムにサービスの中断が発生した場合の応答時間は15分未満。
 
-[サポートのプラン比較 \| 開発者、ビジネス、エンタープライズ \| AWS サポート](https://aws.amazon.com/jp/premiumsupport/plans/)
+<details><summary>参照</summary>
+
+- [サポートのプラン比較 \| 開発者、ビジネス、エンタープライズ \| AWS サポート](https://aws.amazon.com/jp/premiumsupport/plans/)
+
+</details>
 
 
 <!--------------------------
