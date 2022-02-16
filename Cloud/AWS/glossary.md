@@ -52,6 +52,8 @@
   - [CloudFormation](#cloudformation)
   - [AWS Service Catalog](#aws-service-catalog)
   - [AWS Trusted Advisor](#aws-trusted-advisor)
+  - [AWS OpsWorks](#aws-opsworks)
+  - [AWS Systems Manager](#aws-systems-manager)
 - [データベース](#データベース)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
@@ -68,6 +70,8 @@
 - [アプリケーション統合](#アプリケーション統合)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [Amazon Cognito](#amazon-cognito)
+- [AIサービス](#aiサービス)
+  - [Amazon Rekognition](#amazon-rekognition)
 - [移行](#移行)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
 - [開発者用ツール](#開発者用ツール)
@@ -398,7 +402,7 @@ CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ�
 
 ### CloudFormation
 インフラの設定をプログラムコードで行えるサービス。  
-作成するAWSリソースはJSONまたはYAMLを使用し定義することができる。
+ほぼあらゆるAWSリソースのプロビジョニングと管理をJSONまたはYAMLベースで行うことができる。
 
 ### AWS Service Catalog
 その企業のCloudFrontのテンプレートをまとめたもの。  
@@ -408,6 +412,12 @@ CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ�
 AWSのベストプラクティスに従ったチェックができるオンラインツール。  
 コスト最適化、パフォーマンス、セキュリティ、フォルトトレランス（耐障害性）、サービス制限のそれぞれでチェックする。
 
+### AWS OpsWorks
+Chef（シェフ）やPuppet（パペット）といったサーバーの設定や構築、管理を自動化するインフラ構成管理ツールを使用し、コードでサーバーの構成を自動化できるサービス。  
+CloudFormationとの違いとしては、サポート範囲が異なり、EC2 インスタンス、EBS ボリューム、Elastic IP、CloudWatch メトリクスなど、アプリケーション志向の AWS リソースに限られている。
+
+### AWS Systems Manager
+主にEC2インスタンスやオンプレミス環境のサーバー群の運用管理を容易にするための多種多様なサービスを提供している。
 
 <!--------------------------
 ## データベース
@@ -520,6 +530,18 @@ Elastic社が提供しているオープンソースの全文検索エンジン�
 
 ### Amazon Cognito
 モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
+
+
+<!--------------------------
+## AIサービス
+---------------------------->
+
+
+## AIサービス
+
+### Amazon Rekognition
+画像およびどうかを認識するサービス。  
+あらかじめ学習済みの顔や物体、テキストなどを検出するモデルを提供しており、AIによる画像認識などが実現できる。
 
 
 <!--------------------------
