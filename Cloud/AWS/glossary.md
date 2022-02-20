@@ -30,11 +30,13 @@
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
   - [AWS Storage Gateway](#aws-storage-gateway)
+  - [AWS Transfer Family](#aws-transfer-family)
   - [CloudFront](#cloudfront)
 - [セキュリティ](#セキュリティ)
   - [ACM (AWS Certificate Manager)](#acm-aws-certificate-manager)
   - [IAM (Identity and Access Management)](#iam-identity-and-access-management)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
+  - [AWS CloudHSM](#aws-cloudhsm)
   - [AWS STS (AWS Security Token Service)](#aws-sts-aws-security-token-service)
   - [AWS WAF (Web Application Firewall)](#aws-waf-web-application-firewall)
   - [AWS Shield](#aws-shield)
@@ -48,6 +50,7 @@
   - [AWS CloudTrail](#aws-cloudtrail)
   - [AWS Config](#aws-config)
   - [CloudWatch](#cloudwatch)
+  - [AWS Application Discovery Service](#aws-application-discovery-service)
   - [Auto Scaling](#auto-scaling)
   - [CloudFormation](#cloudformation)
   - [AWS Service Catalog](#aws-service-catalog)
@@ -69,6 +72,7 @@
   - [Amazon Elasticserch Service](#amazon-elasticserch-service)
 - [アプリケーション統合](#アプリケーション統合)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
+  - [Amazon MQ](#amazon-mq)
   - [Amazon Cognito](#amazon-cognito)
 - [AIサービス](#aiサービス)
   - [Amazon Rekognition](#amazon-rekognition)
@@ -272,6 +276,18 @@ iSCSIProtocolを使用してブロックストレージを提供し、AWS上に�
 - ファイルゲートウェイ  
 業界標準のファイルプロトコル（NFS、SMBなど）を使用し、ファイルをオブジェクトとしてS3に保存、アクセスするためのファイルインターフェースを提供している。  
 
+### AWS Transfer Family
+フルマネージド型のファイル転送サービス。  
+SFTP、FTPS、FTP経由でAmazon S3またはAmazon EFSと直接ファイル転送ができる。  
+また、ワークフローの移行が容易であり、顧客とのデータ共有方法を変更せずにS3などにデータを保存できる。
+
+<details><summary>参照</summary>
+
+- [AWS Transfer Family のよくある質問 \| アマゾン ウェブ サービス](https://aws.amazon.com/jp/aws-transfer-family/faqs/)
+- [AWSのFTPとは？AWS Transfer Familyの特徴やメリットを紹介！ \| FEnet AWSコラム](https://www.fenet.jp/aws/column/aws-beginner/804/)
+
+</details>
+
 ### CloudFront
 AWSが提供しているコンテンツ配信ネットワーク(CDN)サービス。  
 
@@ -297,12 +313,24 @@ AWS が提供している SSL 証明書とキーの作成、保存、更新が�
 AWSリソースへのアクセスを安全に管理するために「認証」と「認可」の仕組みを提供するサービス。  
 AWSのユーザーやグループを作成及び管理することができ、ポリシーに従ったアクセス権を付与することができる。  
 - IAMユーザー（グループ）  
-  AWSで作成するエンティティ(ユーザーまたはアプリケーションの実体)であり、名前と認証情報で構成される。  
+AWSで作成するエンティティ(ユーザーまたはアプリケーションの実体)であり、名前と認証情報で構成される。  
 - IAMロール  
 IAMロールとは、ユーザーやグループではなく、EC2などのAWSのサービスや他のアカウントに対してにAWS の操作権限を付与するための仕組み。
 - IAMポリシー  
-  アクセス許可のポリシーを定義し、IAMユーザーやIAMロールに関連付けることができる。
-  - アイデンティティベース (ユーザーベース)  
+アクセス許可のポリシーを定義し、プリンシパルエンティティ（IAMユーザー、IAMグループ、IAMロール）に関連付けることができる。  
+ポリシーには以下のような種類がある。
+  - 管理ポリシー  
+  複数のプリンシパルエンティティに適用させることができる。
+    - AWS管理ポリシー  
+    AWSによって用意されているポリシー。  
+    各AWSサービスごとにフル権限や読み取り権限など大まかな権限が用意されている。
+    - カスタマー管理ポリシー  
+    ユーザーが作成できるポリシー。  
+    特定のS3に対してのみ権限を付与したいなど細かい権限を付与したい場合に使用する。
+  - インラインポリシー  
+  プリンシパルエンティティと1対1の関係で適用できる。  
+  プリンシパルエンティティごとに変更する必要があるため、意図しない変更を防ぐことができる。
+  - アイデンティティベース (ユーザーベース、ID)  
   誰がどのリソースに対してどんなアクションを実行できるかを指定する。  
   ユーザー、グループ、ロールに直接アタッチして使用する。
   - リソースベース  
@@ -313,6 +341,7 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 
 - [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
 - [AWSのポリシーを使いこなそう　ポリシー設計につまづかないためのポイントを整理 \| そるでぶろぐ](https://devlog.arksystems.co.jp/2020/03/12/9338/#)
+- [\[AWS\]管理ポリシーとインラインポリシーの違いが分からなかったので改めてIAMポリシーのお勉強をする \- Qiita](https://qiita.com/Batchi/items/a2dde3d2df27568cc078)
 
 </details>
 
@@ -320,6 +349,30 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 データを暗号化するためのキーを作成および管理することができるサービス。  
 通信の暗号化とファイルやデータベースなどの保管データの暗号化の2つがある。  
 AWS CloudTrail でログを調査してキーの使用を監査することが可能。
+
+- CMK（Customer Master Key）  
+必ず作成するキー。AWSから作成する方法とユーザーが用意した鍵をCMKとしてインポートする方法がある。
+- CDK（Customer Data Key）  
+データの暗号化に使用する。CDKは作成時にCMKによって暗号化されて生成させる。
+- キーマテリアル  
+CMK作成時に使用するデータのこと。KMSではキーマテリアルオリジンとして、デフォルトでKMS、その他に外部（EXTERNAL）、カスタムキーストア（CloudHSM）を指定することができる。
+
+<details><summary>参照</summary>
+
+- [【AWS】Key Management Service（その②用語） \- 自由気ままに書いちゃおう](https://www.guri2o1667.work/entry/2021/08/24/%E3%80%90AWS%E3%80%91Key_Management_Service%EF%BC%88%E3%81%9D%E3%81%AE%E2%91%A1%E7%94%A8%E8%AA%9E%EF%BC%89)
+
+</details>
+
+### AWS CloudHSM
+クラウドベースのマネージド型ハードウェアセキュリティモジュール。
+暗号化キーを簡単に生成することができ、専用のハードウェアで暗号化キーを保管するため、キーの耐久性と可用性が高い。  
+KMSと比べより安全にキーを管理することが可能だが、高価。  
+
+<details><summary>参照</summary>
+
+- [【AWS SAP】AWS KMS と CloudHSMの違い【頻出】 \- Qiita](https://qiita.com/ayumi_imai/items/6a74c6327e0f6a1ac7db)
+
+</details>
 
 ### AWS STS (AWS Security Token Service)
 AWSリソースへアクセスするための一時的なセキュリティ認証情報を提供するためのサービス。  
@@ -349,7 +402,7 @@ AWS上でMicrosoftのActive Directoryが使用できるサービス。
 複数のAWSアカウントを統合するためのアカウント管理サービス。
 
 ### AWS SSO (Single Sign-On)
-シングルサインオン（SSO：Single Sign On）とは、1度のユーザー認証によって複数のシステム（業務アプリケーションやクラウドサービスなど）の利用が可能になる仕組みのこと。
+シングルサインオン（SSO：Single Sign On）とは、1度のユーザー認証によって複数のシステム（業務アプリケーションやクラウドサービスなど）の利用が可能になる仕組みのこと。  
 SSOを実現するマネージドサービスであり、Organizationsとサービス統合されているため、複数アカウント間のSSOを容易に実現することができる。
 
 ### AWS Arifact
@@ -390,6 +443,17 @@ CloudWatch Eventとして、例えばメトリックを元に何らかのイン�
 CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ処理やソートしてグループ化できる。  
 またクエリ言語を使用したカスタム計算の作成や、ダッシュボードでのログデータの可視化も可能。
 
+### AWS Application Discovery Service
+オンプレミス環境など、AWSとは別環境で稼働しているサーバ（物理/仮想問わない）のホスト名、IP アドレス、MAC アドレス、CPU 割り当て、ネットワークスループット、メモリ割り当て、ディスクリソース割り当て、DNS サーバーといった静的設定内容およびCPU 使用率やメモリ使用率といったリソース使用率のメトリクスを含むさまざまなデータを収集することができる。  
+主に収集したデータを元にAWSに移行する場合の必要スペック（インスタンスタイプ等）を設計し、移行計画を立てるために利用する。
+
+<details><summary>参照</summary>
+
+- [よくある質問 \- AWS Application Discovery Service \| AWS](https://aws.amazon.com/jp/application-discovery/faqs/#Discovered_data)
+- [【初心者】AWS Application Discovery Service を使ってみる \- Qiita](https://qiita.com/mksamba/items/cb4797763eba25e53ec7)
+
+</details>
+
 ### Auto Scaling
 自動的にリソースをスケールさせることができるサービス。  
 また異常なインスタンスを置き換え、アプリケーションの可用性を維持できる。  
@@ -419,6 +483,7 @@ CloudFormationとの違いとしては、サポート範囲が異なり、EC2 �
 
 ### AWS Systems Manager
 主にEC2インスタンスやオンプレミス環境のサーバー群の運用管理を容易にするための多種多様なサービスを提供している。
+
 
 <!--------------------------
 ## データベース
@@ -475,7 +540,8 @@ Redshift Spectrumを利用することで、S3上の非構造化データに対�
 
 ### Amazon EMR
 Apache Spark、Apache Hive、Presto などのオープンソースフレームワークを使用して、ビッグデータの処理、分析、機械学習を行なうことができるサービス。
-大規模なデータの分散処理を行うため多数のEC2インスタンスを使用する。
+大規模なデータの分散処理を行うため多数のEC2インスタンスを使用する。  
+1秒ごとに課金されるため、インスタンス数を経やすいことでパフォーマンスが向上する。
 
 ### Amazon Athena  
 S3内のデータに対して標準SQLクエリを実行し、データ分析を行うことができるサービス。  
@@ -496,6 +562,7 @@ Kinesisに以下の4つの機能がある。
 動画を簡単かつ安全にストリーミングできるサービス。
 - Kinesis Data Streams  
 数十万規模のソースから秒あたり数ギガバイトものストリームデータを受けることができるサービス。  
+KPL（Kinesis Producer Library）を使用してデータをプッシュすることができる。
 デフォルトでは24時間のみデータを保存し、最大7日間まで保存することができる。
 - Kinesis Data Firehose  
 ストリームデータを受け取り、S3やRedshift、Elasticserchなどに配信することができるサービス。
@@ -521,7 +588,8 @@ Elastic社が提供しているオープンソースの全文検索エンジン�
 
 ### Amazon SQS (Simple Queue Service)
 サーバーレスでキューイングを実現できるフルマネージドキューイングサービス。  
-キューイングとは処理の順番待ちのことで、システム間でデータを送受信する際に一時的にデータをため込む場所を設け、非同期に処理を行うことができる仕組みのこと。
+キューイングとは処理の順番待ちのことで、システム間でデータを送受信する際に一時的にデータをため込む場所を設け、非同期に処理を行うことができる仕組みのこと。  
+MQと比べシンプルな機能かつスケーラビリティに優れている。
 
 キュータイプ
 - 標準キュー  
@@ -530,6 +598,17 @@ Elastic社が提供しているオープンソースの全文検索エンジン�
 - FIFOキュー  
 先入先出。スループットは1秒当たり300件。  
 配信順序を保証し、必ず1回のみ配信する。
+
+### Amazon MQ
+Apache ActiveMQ向けのマネージド型メッセージブローカーサービス。  
+オンプレミスからクラウド内のメッセージブローカーへの移行が容易にでき、多くの一般的なメッセージブローカーとの互換性がある。
+
+<details><summary>参照</summary>
+
+- [Amazon MQ とは \- Amazon MQ](https://docs.aws.amazon.com/ja_jp/amazon-mq/latest/developer-guide/welcome.html)
+- [Amazon MQ とは？ \- Qiita](https://qiita.com/miyuki_samitani/items/5c59bf4270181699395f)
+
+</details>
 
 ### Amazon Cognito
 モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
