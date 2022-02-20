@@ -3,7 +3,7 @@
 - [Solutions Architect](#solutions-architect)
   - [VPC](#vpc)
   - [Direct Connect](#direct-connect)
-  - [Direct Connect](#direct-connect-1)
+  - [Route53](#route53)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
   - [EFS](#efs)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
@@ -26,10 +26,13 @@
   - [EC2](#ec2)
   - [ECS](#ecs)
   - [Lambda](#lambda)
-  - [Amazon Kinesis Data Firehose](#amazon-kinesis-data-firehose)
+  - [Amazon Kinesis](#amazon-kinesis)
   - [CloudWatch](#cloudwatch)
+  - [CloudFormation](#cloudformation)
+  - [Amazon Elasticserch Service](#amazon-elasticserch-service)
   - [AWS OpsWorks](#aws-opsworks)
   - [CloudTrail](#cloudtrail)
+  - [AWS Systems Manager](#aws-systems-manager)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
   - [AWS CloudTrail](#aws-cloudtrail)
   - [Amazon SNS](#amazon-sns)
@@ -83,7 +86,13 @@ VPNなどを使用する際は、ユーザー側に配置し、VPCルートテ�
 - セキュアな通信  
 既存のDirect Connectの回線を使用してVPN接続を構築することで、専用線接続の通信を暗号化できるため、非常にセキュアな通信を実現できる。
 
-### Direct Connect
+- パブリック仮想インターフェイス  
+パブリックIPアドレスを使用して、S3などのAWSパブリックサービス（非VPCサービス）にアクセスすることができる。
+
+- プライベート仮想インターフェイス  
+プライベートIPアドレスを使用してVPCにアクセスすることができる。
+
+### Route53
 - エイリアスレコード  
 Route 53のDNS拡張機能であり、IPアドレスの代わりにAWSのリソースにルーティングすることができる。
 
@@ -188,6 +197,9 @@ S3のバケットポリシーにてHTTPの接続を拒否に設定るすこと�
 - データ転送料をリクエストタに請求する  
 リクエスタ支払い機能を有効にすることで、バケットへのリクエストおよびデータのダウンロードにかかるコストをリクエスタが支払うように変更する事ができる。
 
+- Range Get  
+オブジェクトをいくつかに分けて取得する事ができ、特定のバイト範囲を指定して取得する事が可能。
+
 ### EFS
 - 保存時と転送時のデータ暗号化  
 保存時の暗号化と転送時の暗号化をサポートしており、保存時の暗号化はEFSファイルシステムを作成する際に有効する必要があり、転送時の暗号化は作成後、ファイルシステムをEC2インスタンスにマウントする際、有効にする事ができる。
@@ -203,7 +215,8 @@ S3のバケットポリシーにてHTTPの接続を拒否に設定るすこと�
 暗号化されていないリソースの暗号化を行うには、暗号化を有効にしたボリュームに暗号化されていないスナップショットを復元することで暗号化を行う。
 EBSの暗号化では、独自のキー管理インフラストラクチャを構築、保守、保護する必要がなく、暗号化されたボリュームとスナップショットを作成する際は、AWS KMS keysを使用する。  
 
-- ストレージオプション
+- ストレージオプション  
+ボリュームサイズを増やすことで、IOPSをあげることが出来る。
   - プロビジョンド IOPS SSD (io1)  
   OLTPの要件に最適。
   - 汎用SSD (gp2)  
@@ -233,6 +246,10 @@ RDBのプライマリキーのようなもの。データがどのパーティ�
 
 - ソートキー  
 パーティションの中で何かしらの並び替えを行う際に使用するキーのこと。
+
+- Time To Live (TTL)  
+テーブル項目の有効期限を指定して、データベースから項目を自動的に削除することができる。  
+一時データや特定の期間のみ保存するデータなどを予定に従って自動的に削除できる。
 
 ### Auto Scaling
 自動的にリソースをスケールさせることができるサービス。  
@@ -279,6 +296,9 @@ IAMユーザーに自身または他のAWSアカウントで定義されたロ�
 - ウェブIDフェデレーション  
 一時的な認証情報を外部 ID プロバイダー（例: Login with Amazon、Facebook、Google）を使用してサインインし、その認証トークンをAWSアカウントのリソースを使用するためのアクセス許可を持つIAMロールにマッピングし、AWS の一時的セキュリティ認証情報に変換することができる。  
 これを利用し、モバイルアプリなどでAWSリソースにアクセスすることができる。
+
+- PowerUserAccess 管理ポリシー  
+開発者用のポリシーで、IAMおよびOrganizations以外の全てのアクションを許可する権限を持っている。
 
 ### AWS Organizations
 - サービスコントロールポリシー (SCP)  
@@ -483,7 +503,7 @@ Cloudfrontのエッジロケーション（エッジサーバー）からコー�
 3. オリジンリクエスト
 4. オリジンレスポンス
 
-### Amazon Kinesis Data Firehose
+### Amazon Kinesis
 ストリーミングデータをリアルタイムで収集、処理、分析することができる完全マネージド型サービス。  
 毎秒ギガバイトのデータを継続してキャプチャすることができる。リアルタイムで取り込めるデータは以下の通り。
 - 機械学習
@@ -525,6 +545,14 @@ EC2インスタンス、CloudTrail、Route53などのログファイルの監視
 - 利用料金の監視とアラームの設定  
 CloudWatchの請求アラームとAWS Budgetsの予算アラートを使用することで、利用料金が設定した金額を超えた場合に、アラートを設定する事ができる。
 
+### CloudFormation
+- 別リージョンにデプロイ  
+--region パラメータを指定して、別リージョンにデプロイすることができる。
+
+### Amazon Elasticserch Service
+- CloudWatch Logsデータのストリーミング  
+ESドメイン（クラスタと同義）を作成し、クラスターにほぼリアルタイムでデータをストリーミングする事ができる。
+
 ### AWS OpsWorks
 - CloudFormationとの併用  
 CloudFormationテンプレート内で、OpsWorksコンポーネントを使用する事ができ、CloudFormationスタックとしてプロビジョニングが可能。
@@ -536,6 +564,15 @@ S3へサーバー側の暗号化を使用することができ、デフォルト
 - ログファイルの整合性の検証  
 ログファイルの検証を有効にすることで、不変的な監査ログの用件に役立つ。  
 また、AWS KMSで管理されたキーを使用し、暗号化をすることもできる。
+
+### AWS Systems Manager
+- Systems Managerメンテナンスウィンドウ  
+OSのパッチ適用、ドライバーの更新、ソフトウェアやパッチのインストールなど、インスタンスに対して破壊的になり得るアクションを実行するスケジュールを定義できる。
+
+- Patch Manager  
+OSとアプリケーションのパッチ適用を自動化できる。  
+SSMエージェント（Systems Managerエージェント）をインスタンス、またはオンプレミスのサーバーにインストールする必要がある。  
+また、パッチベースラインというパッチ適用の際のルールを定義するものがあり、OSごとに事前定義済みのAWS-DefaultPatchBaselineというパッチベースラインがある。
 
 ### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
