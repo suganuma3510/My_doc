@@ -57,6 +57,7 @@
   - [AWS Trusted Advisor](#aws-trusted-advisor)
   - [AWS OpsWorks](#aws-opsworks)
   - [AWS Systems Manager](#aws-systems-manager)
+  - [AWS Secrets Manager](#aws-secrets-manager)
 - [データベース](#データベース)
   - [RDS (Relational Database Service)](#rds-relational-database-service)
   - [DynamoDB](#dynamodb)
@@ -73,13 +74,19 @@
 - [アプリケーション統合](#アプリケーション統合)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [Amazon MQ](#amazon-mq)
+  - [Amazon Managed Streaming for Apache Kafka (MSK)](#amazon-managed-streaming-for-apache-kafka-msk)
+  - [AWS AppSync](#aws-appsync)
+  - [Amazon EventBridge](#amazon-eventbridge)
   - [Amazon Cognito](#amazon-cognito)
 - [AIサービス](#aiサービス)
   - [Amazon Rekognition](#amazon-rekognition)
+  - [Amazon SageMaker](#amazon-sagemaker)
 - [移行](#移行)
+  - [AWS Database Migration Service （AWS DMS）](#aws-database-migration-service-aws-dms)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
 - [開発者用ツール](#開発者用ツール)
   - [X-Ray](#x-ray)
+  - [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit-cdk)
 - [コスト最適化](#コスト最適化)
   - [AWSサポート](#awsサポート)
 - [参考](#参考)
@@ -437,7 +444,7 @@ AWSリソースに対してどんな変更をしたか、時系列で変更履�
 ログデータやパフォーマンスデータを統合的に収集し、確認することができ、メトリクス(パフォーマンスに関する)データは15ヵ月間保持される。  
 システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。  
 
-CloudWatch Eventとして、例えばメトリックを元に何らかのインシデントのアラートをAWS Lambdaでの自動化のアクションのルールを起動させることが可能。  
+CloudWatch Eventsとして、例えばメトリックを元に何らかのインシデントのアラートをAWS Lambdaでの自動化のアクションのルールを起動させることが可能。  
 つまりAWSリソースの状態変化に対応する、システムの自動化に利用できる。
 
 CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ処理やソートしてグループ化できる。  
@@ -483,6 +490,17 @@ CloudFormationとの違いとしては、サポート範囲が異なり、EC2 �
 
 ### AWS Systems Manager
 主にEC2インスタンスやオンプレミス環境のサーバー群の運用管理を容易にするための多種多様なサービスを提供している。
+
+### AWS Secrets Manager
+AWS内リソース、オンプレミス環境、またはサードパーティアプリケーションにアクセスするための各種機密情報の管理を、簡単にするAWSのマネージドサービス。  
+
+
+<details><summary>参照</summary>
+
+- [AWS Secrets Managerとは? \- AWS Secrets Manager](https://docs.aws.amazon.com/ja_jp/secretsmanager/latest/userguide/intro.html)
+- [機密情報を一元管理できる「AWS Secrets Manager」とは？概要と主要機能、動作原理、各種リソースまとめ \| DevelopersIO](https://dev.classmethod.jp/articles/about-secrets-manager/)
+
+</details>
 
 
 <!--------------------------
@@ -610,6 +628,38 @@ Apache ActiveMQ向けのマネージド型メッセージブローカーサー�
 
 </details>
 
+### Amazon Managed Streaming for Apache Kafka (MSK)
+フルマネージドのApache Kafkaを提供する。  
+Kafkaとはスケーラビリティと処理性能に優れた分散メッセージキューのことで、データをリアルタイムに処理するストリーミングアプリケーションに向いている。
+
+<details><summary>参照</summary>
+
+- [特徴 \- Amazon MSK \| AWS](https://aws.amazon.com/jp/msk/features/)
+- [Amazon MSKとは？データを高速に中継し分析する \| SKYARCHのITあんちょこ](https://www.skyarch.net/column/amazon-managed-streaming-for-apache-kafka/)
+
+</details>
+
+### AWS AppSync
+GraphQL APIの開発を容易にする、完全マネージド型サービス。  
+AWS DynamoDBやLambda、その他のデータソースとの安全な接続に必要な、面倒な作業を自動的に処理することができる。  
+また、数百万のクライアントに対しWebsocketsを介して、データの更新をリアルタイムでプッシュできる。
+
+<details><summary>参照</summary>
+
+- [AWS AppSync（アプリデータをリアルタイムで保存、同期）\| AWS](https://aws.amazon.com/jp/appsync/)
+
+</details>
+
+### Amazon EventBridge 
+CloudWatch Eventsをベースに構築され、イベントを通じて様々なアプリケーション同士を簡単に接続できるようにするサーバーレスのサービス。  
+
+<details><summary>参照</summary>
+
+- [Amazon EventBridge とは \- Amazon EventBridge](https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-what-is.html)
+- [【徹底解説】Amazon EventBridgeとは？ \| SunnyCloud](https://www.sunnycloud.jp/column/20210802-01-2/)
+
+</details>
+
 ### Amazon Cognito
 モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
 
@@ -625,6 +675,18 @@ Apache ActiveMQ向けのマネージド型メッセージブローカーサー�
 画像およびどうかを認識するサービス。  
 あらかじめ学習済みの顔や物体、テキストなどを検出するモデルを提供しており、AIによる画像認識などが実現できる。
 
+### Amazon SageMaker
+機械学習モデルを高速に開発、学習、デプロイするためのモジュールが用意されているフルマネージド型サービス。  
+Jupyter Notebook（ジュピターノートブック）をインターフェイスとしてインスタンス作成、モデル構築、トレーニング、デプロイまでのフローを実施することが可能。  
+Jupyter Notebookとはデータ分析を行うことが出来る対話型ブラウザ実行環境のこと。
+
+
+<details><summary>参照</summary>
+
+- [Amazon SageMakerとは何なのか、使い方について。 – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1237)
+
+</details>
+
 
 <!--------------------------
 ## 移行
@@ -632,6 +694,16 @@ Apache ActiveMQ向けのマネージド型メッセージブローカーサー�
 
 
 ## 移行
+
+### AWS Database Migration Service （AWS DMS）
+データベースをAWSに移行するためのマネージド型サービス。  
+リレーショナルデータベース、データウェアハウス、NoSQL データベース、他の種類のデータストアを移行することができる。
+
+<details><summary>参照</summary>
+
+- [AWS Database Migration Service（AWS DMS）を使ったデータ移行（前編） – エンタープライズIT \[COLUMNS\]](https://ent.iij.ad.jp/articles/2499/)
+
+</details>
 
 ### AWS Snow ファミリー
 AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
@@ -652,6 +724,16 @@ AWSへのデータ移行やエッジコンピューティングのための物�
 ### X-Ray
 マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
 マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
+
+### AWS Cloud Development Kit (CDK)
+プログラミング言語を使用してクラウドアプリケーションリソースを定義するためのオープンソースのソフトウェア開発フレームワーク。
+また、AWS Codeシリーズと組み合わせて使用することも可能。
+
+<details><summary>参照</summary>
+
+- [AWS クラウド開発キット – アマゾン ウェブ サービス](https://aws.amazon.com/jp/cdk/)
+
+</details>
 
 
 <!--------------------------
