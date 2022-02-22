@@ -7,7 +7,6 @@
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
   - [EFS](#efs)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
-  - [DynamoDB](#dynamodb)
   - [Auto Scaling](#auto-scaling)
   - [AWS Storage Gateway](#aws-storage-gateway)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
@@ -18,6 +17,7 @@
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [AWS Config](#aws-config)
   - [RDS](#rds)
+  - [DynamoDB](#dynamodb)
   - [CloudFront](#cloudfront)
   - [Redshift](#redshift)
   - [ELB (Elastic Load Balancer)](#elb-elastic-load-balancer)
@@ -31,6 +31,7 @@
   - [CloudFormation](#cloudformation)
   - [Amazon Elasticserch Service](#amazon-elasticserch-service)
   - [AWS OpsWorks](#aws-opsworks)
+  - [AWS Application Discovery Service](#aws-application-discovery-service)
   - [CloudTrail](#cloudtrail)
   - [AWS Systems Manager](#aws-systems-manager)
   - [AWS KMS (Key Management Service)](#aws-kms-key-management-service)
@@ -92,12 +93,19 @@ VPNなどを使用する際は、ユーザー側に配置し、VPCルートテ�
 - プライベート仮想インターフェイス  
 プライベートIPアドレスを使用してVPCにアクセスすることができる。
 
+- DX接続でVPNを確立する  
+Direct Connect接続用のパブリック仮想インターフェイスを作成することで実現可能。
+
 ### Route53
 - エイリアスレコード  
 Route 53のDNS拡張機能であり、IPアドレスの代わりにAWSのリソースにルーティングすることができる。
 
 - ホストゾーン  
 ホストゾーンとはドメインおよびサブドメインのトラフィックのルーティングする方法についての情報を保持するコンテナこと。
+  - パブリックホストゾーン  
+  インターネット上で名前解決をする。
+  - プライベートホストゾーン  
+  設定したVPC内のみ、名前解決をすることができる。
 
 - 加重ルーティングポリシー  
 指定した重量（比率）で複数リソースにトラフィックをルーティングすることができ、負荷分散が可能。
@@ -230,27 +238,6 @@ I/O パフォーマンスが最も重要視される場合に使用する。
 - DeleteOnTermination  
 EC2インスタンスを削除した際に、接続されたEBSボリュームを保持することができる。
 
-### DynamoDB
-最大項目サイズ400KB以内のデータを処理することができ、テーブルのサイズに実質的な制限がない。  
-またAuto Scalingをサポートしている。
-
-- DynamoDB Accelerator (DAX)  
-キャパシティーユニット（RCU）の削減に最適。
-
-- DynamoDB ストリーム  
-テーブル内の項目レベルの変更をキャプチャし、最大24時間のログを保存することができる。  
-これによりほぼリアルタイムで変更前、変更後の内容を参照できるため、写真を追加した際に通知を送るなどの機能を実装することができる。
-
-- パーティションキー  
-RDBのプライマリキーのようなもの。データがどのパーティションに保存されているかを一意に決める。
-
-- ソートキー  
-パーティションの中で何かしらの並び替えを行う際に使用するキーのこと。
-
-- Time To Live (TTL)  
-テーブル項目の有効期限を指定して、データベースから項目を自動的に削除することができる。  
-一時データや特定の期間のみ保存するデータなどを予定に従って自動的に削除できる。
-
 ### Auto Scaling
 自動的にリソースをスケールさせることができるサービス。  
 
@@ -360,6 +347,39 @@ IAMデータベース認証を有効にし、認証トークンを使用する�
 
 - RDS for VMware  
 オンプレミス環境にてRDSをvSphere上で提供するサービス。
+
+- Aurora Global Database  
+単一のデータベースを複数のリージョンにまたがって運用できる。  
+また、RPO1秒、RTO1分以内に災害復旧が可能。
+
+### DynamoDB
+最大項目サイズ400KB以内のデータを処理することができ、テーブルのサイズに実質的な制限がない。  
+またAuto Scalingをサポートしている。
+
+- Auto Scaling  
+スループット容量の自動管理を行い、これにより読み込み及び書き込み容量が拡張され、ドラフィックの急激な増加を処理できるようになる。  
+また、ワークロードが減るとスプープットを自動的に低下させ、コストを抑えることができる。
+
+- DynamoDB Accelerator (DAX)  
+キャパシティーユニット（RCU）の削減に最適。
+
+- DynamoDB ストリーム  
+テーブル内の項目レベルの変更をキャプチャし、最大24時間のログを保存することができる。  
+これによりほぼリアルタイムで変更前、変更後の内容を参照できるため、写真を追加した際に通知を送るなどの機能を実装することができる。
+
+- パーティションキー  
+RDBのプライマリキーのようなもの。データがどのパーティションに保存されているかを一意に決める。
+
+- ソートキー  
+パーティションの中で何かしらの並び替えを行う際に使用するキーのこと。
+
+- Time To Live (TTL)  
+テーブル項目の有効期限を指定して、データベースから項目を自動的に削除することができる。  
+一時データや特定の期間のみ保存するデータなどを予定に従って自動的に削除できる。
+
+- グローバルテーブル  
+フルマネージドのマルチリージョン、マルチマスターのグローバルデータベースを提供する。  
+選択したリージョン全体にわたってテーブルを自動的にレプリケートする。
 
 ### CloudFront
 - コンテンツの更新  
@@ -549,6 +569,10 @@ CloudWatchの請求アラームとAWS Budgetsの予算アラートを使用す�
 - 別リージョンにデプロイ  
 --region パラメータを指定して、別リージョンにデプロイすることができる。
 
+- StackSets  
+複数のアカウントおよびリージョンのスタックを1度のオペレーションで、作成・更新・削除ができる。  
+これにより、全てのアカウントでSNSトピックの作成が必要な際などに全てのアカウントに自動デプロイすることが可能。
+
 ### Amazon Elasticserch Service
 - CloudWatch Logsデータのストリーミング  
 ESドメイン（クラスタと同義）を作成し、クラスターにほぼリアルタイムでデータをストリーミングする事ができる。
@@ -556,6 +580,10 @@ ESドメイン（クラスタと同義）を作成し、クラスターにほぼ
 ### AWS OpsWorks
 - CloudFormationとの併用  
 CloudFormationテンプレート内で、OpsWorksコンポーネントを使用する事ができ、CloudFormationスタックとしてプロビジョニングが可能。
+
+### AWS Application Discovery Service
+- AWS Agentless Discovery Connector  
+VMware 仮想マシン (VM) に関する情報のみを収集できる VMware アプライアンス。
 
 ### CloudTrail
 - ログの暗号化  
@@ -573,6 +601,9 @@ OSのパッチ適用、ドライバーの更新、ソフトウェアやパッチ
 OSとアプリケーションのパッチ適用を自動化できる。  
 SSMエージェント（Systems Managerエージェント）をインスタンス、またはオンプレミスのサーバーにインストールする必要がある。  
 また、パッチベースラインというパッチ適用の際のルールを定義するものがあり、OSごとに事前定義済みのAWS-DefaultPatchBaselineというパッチベースラインがある。
+
+- Session Manager  
+ブラウザベースでEC2インスタンスに安全に接続することができる。
 
 ### AWS KMS (Key Management Service)
 データを暗号化するためのキーを作成および管理することができるサービス。  
