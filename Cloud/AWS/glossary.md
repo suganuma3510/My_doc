@@ -10,6 +10,7 @@
   - [AWS ENI (Elastic Network Interface)](#aws-eni-elastic-network-interface)
   - [Route 53](#route-53)
   - [AWS Direct Connect](#aws-direct-connect)
+  - [AWS IoT Core](#aws-iot-core)
 - [コンピュート](#コンピュート)
   - [EC2 (Elastic Compute Cloud)](#ec2-elastic-compute-cloud)
   - [AMI (Amazon Machine Image)](#ami-amazon-machine-image)
@@ -78,17 +79,23 @@
   - [AWS AppSync](#aws-appsync)
   - [Amazon EventBridge](#amazon-eventbridge)
   - [Amazon Cognito](#amazon-cognito)
+  - [AWS Step Functions](#aws-step-functions)
 - [AIサービス](#aiサービス)
   - [Amazon Rekognition](#amazon-rekognition)
   - [Amazon SageMaker](#amazon-sagemaker)
 - [移行](#移行)
   - [AWS Database Migration Service （AWS DMS）](#aws-database-migration-service-aws-dms)
+  - [AWS Application Migration Service (AWS MGN)](#aws-application-migration-service-aws-mgn)
+  - [AWS Schema Conversion Tool （AWS SCT）](#aws-schema-conversion-tool-aws-sct)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
 - [開発者用ツール](#開発者用ツール)
   - [X-Ray](#x-ray)
   - [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit-cdk)
+  - [AWS Serverless Application Model (AWS SAM)](#aws-serverless-application-model-aws-sam)
 - [コスト最適化](#コスト最適化)
   - [AWSサポート](#awsサポート)
+  - [Amazon WorkSpaces](#amazon-workspaces)
+  - [Amazon AppStream](#amazon-appstream)
 - [参考](#参考)
 
 
@@ -136,7 +143,20 @@ IP アドレスの変換だけでなく、新規ドメイン名の登録やド�
 ### AWS Direct Connect
 オンプレミスのデータセンターやオフィスとAWS間を専用線を介してプライベート接続するサービス。  
 これにより、インターネットを介した接続に比べ、安定した良好なネットワーク品質が実現できる。  
-利用料はポート使用料とデータ転送料で決まり、インターネット接続よりコストを抑えることができる。  
+利用料はポート使用料とデータ転送料で決まり、インターネット接続よりコストを抑えることができる。
+
+### AWS IoT Core
+インターネットに接続されたデバイスから、クラウドアプリケーションやその他のデバイスに簡単かつ安全に通信するためのマネージドクラウドプラットフォーム。
+
+- ルールエンジン  
+メッセージブローカーから他のAWSサービスにデータを接続することで、DynamoDBにデータを追加やLambda関数の呼び出しなどができる。
+
+<details><summary>参照</summary>
+
+- [よくある質問 \- AWS IoT Core \| AWS](https://aws.amazon.com/jp/iot-core/faqs/)
+- [AWS IoT の仕組み \- AWS IoT Core](https://docs.aws.amazon.com/ja_jp/iot/latest/developerguide/aws-iot-how-it-works.html#aws-iot-core-services)
+
+</details>
 
 
 <!--------------------------
@@ -663,6 +683,16 @@ CloudWatch Eventsをベースに構築され、イベントを通じて様々な
 ### Amazon Cognito
 モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
 
+### AWS Step Functions
+AWS Lambda 関数およびその他のビジネスクリティカルなアプリケーションを構築するための AWS のサービスを組み合わせることができるサーバーレスオーケストレーションサービス。  
+素早くアプリケーションをビルドおよび更新ができる。
+
+<details><summary>参照</summary>
+
+- [AWS Step Functions とは? \- AWS Step Functions](https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/welcome.html)
+
+</details>
+
 
 <!--------------------------
 ## AIサービス
@@ -705,6 +735,26 @@ Jupyter Notebookとはデータ分析を行うことが出来る対話型ブラ�
 
 </details>
 
+### AWS Application Migration Service (AWS MGN)
+変更を加えることなく、最小限のダウンタイムで、アプリケーションをクラウドに移行することが出来る。  
+ソースサーバーを物理インフラストラクチャ、仮想インフラストラクチャ、およびクラウドインフラストラクチャからAWSでネイティブに実行するように自動的に変換することにより、時間のかかる、エラーが発生しやすい手動プロセスを最小限に抑え、以降を簡素化できる。
+
+<details><summary>参照</summary>
+
+- [リフトアンドシフト \- AWS Application Migration Service](https://aws.amazon.com/jp/application-migration-service/?nc1=h_ls)
+
+</details>
+
+### AWS Schema Conversion Tool （AWS SCT）
+既存のデータベーススキーマを、別のデータベースエンジンのスキーマに変換するツール。  
+リレーショナルOLTPスキーマやデータウェアハウススキーマを変換可能。
+
+<details><summary>参照</summary>
+
+- [[AWS Schema Conversion Tool とは \- AWS Schema Conversion Tool](https://docs.aws.amazon.com/ja_jp/SchemaConversionTool/latest/userguide/CHAP_Welcome.html)
+
+</details>
+
 ### AWS Snow ファミリー
 AWSへのデータ移行やエッジコンピューティングのための物理的デバイス。  
 非常に容量の多いデータの移行などに使用され、SnowballというアタッシュケースのようなものやSnowmobileというトラックのものもある。  
@@ -735,6 +785,16 @@ AWSへのデータ移行やエッジコンピューティングのための物�
 
 </details>
 
+### AWS Serverless Application Model (AWS SAM)
+サーバーレスアプリケーション構築用のオープンソースフレームワーク。  
+
+
+<details><summary>参照</summary>
+
+- [AWS Serverless Application Model \(AWS SAM\) とは \- AWS Serverless Application Model](https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/what-is-sam.html)
+
+</details>
+
 
 <!--------------------------
 ## コスト最適化
@@ -759,6 +819,20 @@ AWSによる技術サポートサービス。料金に応じてサポートを�
 <details><summary>参照</summary>
 
 - [サポートのプラン比較 \| 開発者、ビジネス、エンタープライズ \| AWS サポート](https://aws.amazon.com/jp/premiumsupport/plans/)
+
+</details>
+
+### Amazon WorkSpaces
+マネージド型の仮想デスクトップサービス。
+
+### Amazon AppStream
+完全マネージド型のアプリケーションストリーミングサービス。  
+アプリケーションの配信(Workspacesを特定アプリにだけアクセスできるよう制限したような形で利用)できるサービス
+
+<details><summary>参照</summary>
+
+- [Amazon AppStream 2\.0（デスクトップアプリをブラウザへ安全に配信）\| AWS](https://aws.amazon.com/jp/appstream2/)
+- [Amazon AppStream 2\.0 のお試し構築・設定 \- Qiita](https://qiita.com/u-bayashi/items/316c32068d421e4647bb)
 
 </details>
 
