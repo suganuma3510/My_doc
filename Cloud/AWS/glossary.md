@@ -72,6 +72,7 @@
   - [Amazon Kinesis](#amazon-kinesis)
   - [Amazon CloudSerch](#amazon-cloudserch)
   - [Amazon Elasticserch Service](#amazon-elasticserch-service)
+  - [Amazon QuickSight](#amazon-quicksight)
 - [アプリケーション統合](#アプリケーション統合)
   - [Amazon SQS (Simple Queue Service)](#amazon-sqs-simple-queue-service)
   - [Amazon MQ](#amazon-mq)
@@ -79,6 +80,7 @@
   - [AWS AppSync](#aws-appsync)
   - [Amazon EventBridge](#amazon-eventbridge)
   - [Amazon Cognito](#amazon-cognito)
+  - [Amazon Simple Workflow Service (SWF)](#amazon-simple-workflow-service-swf)
   - [AWS Step Functions](#aws-step-functions)
 - [AIサービス](#aiサービス)
   - [Amazon Rekognition](#amazon-rekognition)
@@ -368,7 +370,7 @@ IAMロールとは、ユーザーやグループではなく、EC2などのAWS�
 
 - [IAM とは \- AWS Identity and Access Management](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
 - [AWSのポリシーを使いこなそう　ポリシー設計につまづかないためのポイントを整理 \| そるでぶろぐ](https://devlog.arksystems.co.jp/2020/03/12/9338/#)
-- [\[AWS\]管理ポリシーとインラインポリシーの違いが分からなかったので改めてIAMポリシーのお勉強をする \- Qiita](https://qiita.com/Batchi/items/a2dde3d2df27568cc078)
+- [AWS管理ポリシーとインラインポリシーの違いが分からなかったので改めてIAMポリシーのお勉強をする \- Qiita](https://qiita.com/Batchi/items/a2dde3d2df27568cc078)
 
 </details>
 
@@ -609,12 +611,23 @@ SQLやApache Finkでストリームデータをリアルタイムで分析でき
 
 ### Amazon CloudSerch
 マネージド型の検索機能サービス。  
-検索キーワードが、どの文書に含まれているかを簡単に管理できる。
+検索キーワードが、どの文書に含まれているかを簡単に管理できる。  
 これによりアプリケーション側の検索機能の実装や運用口数を減らすことができる。
 
 ### Amazon Elasticserch Service
-Elastic社が提供しているオープンソースの全文検索エンジンのマネージド型サービス。
+Elastic社が提供しているオープンソースの全文検索エンジンのマネージド型サービス。  
 全文検索に加え、リアルタイムデータ分析、ログ解析などが可能。
+
+### Amazon QuickSight
+クラウド規模のマネージド型ビジネスインテリジェンス (BI) サービス。  
+BIとは企業の組織が蓄積している膨大なデータを収集、蓄積、分析、報告することで、経営上の意思決定に役立てる手法や技術のこと。
+
+<details><summary>参照</summary>
+
+- [Amazon QuickSight とは \- Amazon QuickSight](https://docs.aws.amazon.com/ja_jp/quicksight/latest/user/welcome.html)
+- [Amazon QuickSightとは何なのか、使い方について – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1273)
+
+</details>
 
 
 <!--------------------------
@@ -683,12 +696,25 @@ CloudWatch Eventsをベースに構築され、イベントを通じて様々な
 ### Amazon Cognito
 モバイルやWebアプリケーションにユーザーのサインアップと認証機能を素早く簡単に追加することができる。
 
-### AWS Step Functions
-AWS Lambda 関数およびその他のビジネスクリティカルなアプリケーションを構築するための AWS のサービスを組み合わせることができるサーバーレスオーケストレーションサービス。  
-素早くアプリケーションをビルドおよび更新ができる。
+### Amazon Simple Workflow Service (SWF)
+開発者が並行したステップまたは連続したステップがあるバックグラウンドジョブを構築、実行、スケールするのに役立つフルマネージド型のタスクコーディネーター。  
+複数のサーバーでバッチ等の自動処理を行う時に、その順番や振り分け先の管理を行うことが出来る。  
+また複雑なシーケンスを構築したいのでない限り、新しいアプリケーションにはStep Functionsを使用することを推奨している。
 
 <details><summary>参照</summary>
 
+- [よくある質問 \- Amazon Simple Workflow Service（SWF） \| AWS](https://aws.amazon.com/jp/swf/faqs/)
+- [AWS再入門 Amazon Simple Workflow Service編 \| DevelopersIO](https://dev.classmethod.jp/articles/cm-advent-calendar-2015-getting-started-again-swf/)
+
+</details>
+
+### AWS Step Functions
+AWS Lambda 関数およびその他のビジネスクリティカルなアプリケーションを構築するための AWS のサービスを組み合わせることができるサーバーレスオーケストレーションサービス。  
+素早くアプリケーションをビルドおよび更新ができるため、新規アプリケーションの開発に向いている。
+
+<details><summary>参照</summary>
+
+- [よくある質問 \- AWS Step Functions \| AWS](https://aws.amazon.com/jp/step-functions/faqs/)
 - [AWS Step Functions とは? \- AWS Step Functions](https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/welcome.html)
 
 </details>
