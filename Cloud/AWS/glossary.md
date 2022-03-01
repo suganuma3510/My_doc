@@ -27,7 +27,7 @@
 - [ストレージおよび配信](#ストレージおよび配信)
   - [EBS (Elastic Block Store)](#ebs-elastic-block-store)
   - [S3 (Simple Storage Service)](#s3-simple-storage-service)
-    - [S3 Glacier](#s3-glacier)
+    - [ストレージクラス](#ストレージクラス)
     - [オブジェクトストレージ](#オブジェクトストレージ)
   - [Amazon EFS (Amazon Elastic File System)](#amazon-efs-amazon-elastic-file-system)
   - [AWS Storage Gateway](#aws-storage-gateway)
@@ -267,11 +267,32 @@ EBSはデータに素早く、かつ長期永続性が必要な場合に推奨�
 世界中で利用されており、Webアプリやバックアップ、静的ファイルの配信、IoTデバイスやビッグデータ分析など様々な用途で活用されている。  
 耐久性は99.999999999%（イレブンナイン）、可用性は年間99.99%。  
 
-#### S3 Glacier
+#### ストレージクラス
+- S3 標準  
+頻繁にアクセスするデータの保存に適している。  
+- S3 標準 - 低頻度アクセス (S3 標準 -IA)  
+アクセス頻度は低いが、必要に応じてすぐに取り出す際に適している。  
+取り出す際にGB辺りに料金が発生する。
+バックアップ、災害対策ファイルなどに最適。
+- S3 1 ゾーン – 低頻度アクセス (S3 1 ゾーン – IA)  
+アクセス頻度は低いが、必要に応じてすぐに取り出す際に適している。  
+ひとつの AZ にデータを保存するため、S3 標準 – IA よりもコストを 20% 削減できる。
+- S3 Glacier  
 データのアーカイブ(複数のファイルやフォルダを1つにまとめること)や長期のバックアップを目的としたサービス。  
 S3との違いとして、保管したデータの取り出しに時間がかかるが、価格が安価であることが特徴。  
 また高い安全性と耐久性に優れており、ほとんど取り出す機会がないデータやダウンロードに時間が掛かってもいいデータなどに使用される。  
 1ファイル40TBまで保存可能。
+  - 迅速取り出し  
+  通常1〜5分で使用可能。
+  - 標準  
+  通常3〜5時間で使用可能。
+  - Deep Archive  
+  通常5〜12時間で使用可能。
+- S3 Intelligent-Tiering  
+未知のアクセスパターンやアクセスが変化するストレージパターンに最適。
+- S3 Transfer Acceleration  
+異なる地域からS3の高速データ転送が可能になる。  
+世界中からアップロードされる、大陸間でGBからTB単位のデータ転送をする、アップロード時にインターネット経由で利用可能な帯域幅を十分に活用できていない際などに使用が推奨されている。
 
 #### オブジェクトストレージ
 データを「オブジェクト」という単位で扱う記憶装置。  
@@ -284,6 +305,7 @@ S3との違いとして、保管したデータの取り出しに時間がかか
 - [5分で絶対に分かるオブジェクトストレージ：5分で絶対に分かる（3/5 ページ） \- ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1705/29/news014_3.html)
 - [オブジェクトストレージとは : 富士通](https://www.fujitsu.com/jp/products/computing/storage/lib-f/tech/beginner/object-storage/)
 - [Amazon S3とAmazon Glacier両者の違いとは？ – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1646)
+- [ストレージクラス \- Amazon S3 ｜AWS](https://aws.amazon.com/jp/s3/storage-classes/)
 
 </details>
 
