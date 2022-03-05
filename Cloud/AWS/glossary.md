@@ -82,15 +82,22 @@
   - [Amazon Cognito](#amazon-cognito)
   - [Amazon Simple Workflow Service (SWF)](#amazon-simple-workflow-service-swf)
   - [AWS Step Functions](#aws-step-functions)
+  - [AWS Glue](#aws-glue)
 - [AIサービス](#aiサービス)
   - [Amazon Rekognition](#amazon-rekognition)
   - [Amazon SageMaker](#amazon-sagemaker)
+  - [Amazon Lex](#amazon-lex)
 - [移行](#移行)
   - [AWS Database Migration Service （AWS DMS）](#aws-database-migration-service-aws-dms)
   - [AWS Application Migration Service (AWS MGN)](#aws-application-migration-service-aws-mgn)
   - [AWS Schema Conversion Tool （AWS SCT）](#aws-schema-conversion-tool-aws-sct)
   - [AWS Snow ファミリー](#aws-snow-ファミリー)
 - [開発者用ツール](#開発者用ツール)
+  - [AWS CodeCommit](#aws-codecommit)
+  - [AWS CodeBuild](#aws-codebuild)
+  - [AWS CodeDeploy](#aws-codedeploy)
+  - [AWS CodePipeline](#aws-codepipeline)
+  - [AWS CodeStar](#aws-codestar)
   - [X-Ray](#x-ray)
   - [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit-cdk)
   - [AWS Serverless Application Model (AWS SAM)](#aws-serverless-application-model-aws-sam)
@@ -448,13 +455,15 @@ DDoS攻撃（分散型サービス妨害）に対するAWSの保護サービス�
 
 ### Amazon Directory Service
 AWS上でMicrosoftのActive Directoryが使用できるサービス。  
+複数のWindowsパソコンを一元的に管理することができる。
 
 ### AWS Organizations
 複数のAWSアカウントを統合するためのアカウント管理サービス。
 
 ### AWS SSO (Single Sign-On)
 シングルサインオン（SSO：Single Sign On）とは、1度のユーザー認証によって複数のシステム（業務アプリケーションやクラウドサービスなど）の利用が可能になる仕組みのこと。  
-SSOを実現するマネージドサービスであり、Organizationsとサービス統合されているため、複数アカウント間のSSOを容易に実現することができる。
+SSOを実現するマネージドサービスであり、Organizationsとサービス統合されているため、複数アカウント間のSSOを容易に実現することができる。  
+ウェブブラウザのみサポートしているため、モバイルアプリで使用することはできない。
 
 ### AWS Arifact
 AWSはコンプライアンスプログラム（法規範、社内規範、倫理規範の3要素を企業及び全従業員が遵守するための枠組み）として独立した監査人による業界認証等を取得している。  
@@ -488,11 +497,18 @@ AWSリソースに対してどんな変更をしたか、時系列で変更履�
 ログデータやパフォーマンスデータを統合的に収集し、確認することができ、メトリクス(パフォーマンスに関する)データは15ヵ月間保持される。  
 システム環境名における異常検知、アラーム設定、ログとメトリクスを元にした表示、自動化されたアクションの実行、問題のトラブルシューティング等を行うことができる。  
 
-CloudWatch Eventsとして、例えばメトリックを元に何らかのインシデントのアラートをAWS Lambdaでの自動化のアクションのルールを起動させることが可能。  
-つまりAWSリソースの状態変化に対応する、システムの自動化に利用できる。
-
-CloudWatch Logsでは、ログを特定のフィールドを基準にクエリ処理やソートしてグループ化できる。  
+- CloudWatch Events  
+AWSリソースの状態監視サービス。システムの自動化に利用できる。  
+例：AWSリソースの変化をトリガーとしてLambdaでの自動化のアクションを実行することが可能。
+- CloudWatch Logs  
+AWSのログ管理サービス。ログを特定のフィールドを基準にクエリ処理やソートしてグループ化できる。  
 またクエリ言語を使用したカスタム計算の作成や、ダッシュボードでのログデータの可視化も可能。
+
+<details><summary>参照</summary>
+
+- [CloudWatch\(Logs\)とCloudTrailについて – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=2222)
+
+</details>
 
 ### AWS Application Discovery Service
 オンプレミス環境など、AWSとは別環境で稼働しているサーバ（物理/仮想問わない）のホスト名、IP アドレス、MAC アドレス、CPU 割り当て、ネットワークスループット、メモリ割り当て、ディスクリソース割り当て、DNS サーバーといった静的設定内容およびCPU 使用率やメモリ使用率といったリソース使用率のメトリクスを含むさまざまなデータを収集することができる。  
@@ -741,6 +757,17 @@ AWS Lambda 関数およびその他のビジネスクリティカルなアプリ
 
 </details>
 
+### AWS Glue
+フルマネージド型のETL(Extract：抽出、Transform：変換、Load：ロード)サービス。  
+ETLとは組織の内外に散在するデジタルデータを抽出・収集し、用途に応じて変換・加工したうえで、その先にある格納先に有用な情報として格納すること。  
+抽出元、格納先としてS3やRDS、Redshift等がある。
+
+<details><summary>参照</summary>
+
+- [AWS Glue とは \- AWS Glue](https://docs.aws.amazon.com/ja_jp/glue/latest/dg/what-is-glue.html)
+
+</details>
+
 
 <!--------------------------
 ## AIサービス
@@ -764,6 +791,9 @@ Jupyter Notebookとはデータ分析を行うことが出来る対話型ブラ�
 - [Amazon SageMakerとは何なのか、使い方について。 – Amazon Web Service\(AWS\)導入開発支援](https://www.acrovision.jp/service/aws/?p=1237)
 
 </details>
+
+### Amazon Lex
+音声やテキストをインプットとし、アプリケーションに対して対話型インターフェイスを提供するサービス。
 
 
 <!--------------------------
@@ -819,6 +849,26 @@ AWSへのデータ移行やエッジコンピューティングのための物�
 
 ## 開発者用ツール
 
+### AWS CodeCommit
+マネージド型ソースリポジトリ。  
+Gitと互換性があり、ソースコードのバージョン管理を行うことができる。
+
+### AWS CodeBuild
+マネージド型ビルドサービス。  
+ビルドの使用をYAML形式の設定ファイルに記述し、ソースコードをCodeCommitやGitHub、S3から取得し、テストやビルドを行うことができる。
+
+### AWS CodeDeploy
+マネージド型自動デプロイサービス。  
+ソフトウェアをEC2、ECS、Lambda、オンプレ環境などさまざまな環境へデプロイすることができる。  
+またデプロイ方法としてブルーグリーンデプロイメントを指定することも可能。
+
+### AWS CodePipeline
+各種Codeサービスを束ね、CI/CDパイプラインを構築することができるマネージドサービス。  
+
+### AWS CodeStar
+各種Codeサービスを組み合わせ、簡単に独自のCI/CDパイプラインを構築することができるマネージドサービス。  
+クラウドベースの開発環境構築を構築でき、ブラウザ上でJava、JavaScript、PHP、Ruby、C#、Python などの言語を使用して開発が可能。
+
 ### X-Ray
 マイクロサービスアプリケーションのサービス間の依存関係を分かりやすく可視化し、詳細なトレースデータを提供するアプリケーション分析ツール。  
 マイクロサービスでは、コンポーネント間のボトルネックが見えないため、パフォーマンス分析が難しい面があり、それらを解決するために使用される。
@@ -835,7 +885,6 @@ AWSへのデータ移行やエッジコンピューティングのための物�
 
 ### AWS Serverless Application Model (AWS SAM)
 サーバーレスアプリケーション構築用のオープンソースフレームワーク。  
-
 
 <details><summary>参照</summary>
 
