@@ -855,7 +855,7 @@ Gitと互換性があり、ソースコードのバージョン管理を行う�
 
 ### AWS CodeBuild
 マネージド型ビルドサービス。  
-ビルドの使用をYAML形式の設定ファイルに記述し、ソースコードをCodeCommitやGitHub、S3から取得し、テストやビルドを行うことができる。
+ビルドの仕様をYAML形式の設定ファイルに記述し、ソースコードをCodeCommitやGitHub、S3から取得し、テストやビルドを行うことができる。
 
 ### AWS CodeDeploy
 マネージド型自動デプロイサービス。  
@@ -943,4 +943,4 @@ AWSによる技術サポートサービス。料金に応じてサポートを�
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
 - [AWS の製品・サービス一覧 \| クラウドなら AWS](https://aws.amazon.com/jp/products/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc&awsf.re%3AInvent=*all&awsf.Free%20Tier=*all&awsf.tech-category=*all)
 - 『AWS認定クラウドプラクティショナー直前対策テキスト』- 山内貴弘(著)
-- 『AWS認定ソリューションアーキテクト－プロフェッショナル～試験特性から導き出した演習問題と詳細解説～』
+- 『AWS認定ソリューションアーキテクト－プロフェッショナル～試験特性から導き出した演習問題と詳細解説～』- 平山毅,堀内康弘,福垣内孝造,岡智也,新村俊介,岡崎靖浩,池田大,澤田拓也,津山晃一,鳥谷部昭寛,早川愛
