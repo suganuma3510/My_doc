@@ -25,6 +25,7 @@
   - [DDos攻撃](#ddos攻撃)
   - [ランサムウェア](#ランサムウェア)
   - [CSRF](#csrf)
+  - [IDS/IPS](#idsips)
 
 #### 攻撃の流れ
 事前調査→権限取得→不正実行→後処理
@@ -106,3 +107,9 @@ Webアプリケーションに不正なSQL文を埋め込んでデータを操�
 
 [クロスサイトリクエストフォージェリ（CSRF）とは？](https://siteguard.jp-secure.com/blog/what-is-csrf)
 [3分でわかるXSSとCSRFの違い \- Qiita](https://qiita.com/wanko5296/items/142b5b82485b0196a2da)
+
+#### IDS/IPS
+- IDS（侵入検知システム）  
+不正または異常な通信を検知するシステム。
+- IPS（侵入防御システム）  
+不正な通信を検知するだけでなく、防御・遮断するところまで対応する。
