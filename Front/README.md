@@ -11,6 +11,7 @@
 - [Color Picker — A handy design tool from Color Supply](https://colorsupplyyy.com/app/)
 - [Webデザインギャラリー･参考サイト集](https://sankoudesign.com/category/simple/)
 - [2021年版：Webデザインの参考に！おすすめギャラリーサイト20選 \| Web Design Trends](https://webdesign-trends.net/entry/13511#5_SANKOU)
+- [2022年1月：デザインの参考にしたい魅力的なWebサイト14選 \| Web Design Trends](https://webdesign-trends.net/entry/14751)
 
 ## 写真・画像素材
 - [Pixabay: 1.800万点以上の高品質なフリー画像素材](https://pixabay.com/ja/)

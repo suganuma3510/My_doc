@@ -11,3 +11,6 @@
 - [drow.io](https://app.diagrams.net/)
 - [Isoflow \| Network diagrams](https://isoflow.io/)
 - [Recently viewed – Figma](https://www.figma.com/)
+
+### 参考
+- [仕様書の参考例と、こんな内容を仕様書に最低書くといいというお話｜田辺めぐみ｜note](https://note.com/tanabemg/n/na2db89a5cbda)
