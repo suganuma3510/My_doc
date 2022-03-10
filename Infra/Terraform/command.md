@@ -1,9 +1,10 @@
 - [初期化](#初期化)
-- [インデント](#インデント)
+- [フォーマット](#フォーマット)
 - [エラーチェック](#エラーチェック)
 - [構成をチェック](#構成をチェック)
 - [実行、再作成](#実行再作成)
 - [状態を確認](#状態を確認)
+- [module取り込み](#module取り込み)
 - [削除](#削除)
 
 #### 初期化
@@ -11,9 +12,14 @@
 terraform init
 ```
 
-#### インデント
+#### フォーマット
 ```
 terraform fmt
+```
+
+まとめてフォーマット
+```
+terraform fmt -recursive
 ```
 
 #### エラーチェック
@@ -34,6 +40,20 @@ terraform apply
 #### 状態を確認
 ```
 terraform show
+```
+
+#### module取り込み
+```
+terraform get
+```
+
+```
+terraform init
+```
+
+module更新
+```
+terraform get -update
 ```
 
 #### 削除
