@@ -50,6 +50,11 @@ buildと同時にup
 docker-compose up -d --build
 ```
 
+キャッシュを使わずbuild
+```
+docker-compose build --no-cache
+```
+
 #### コンテナでコマンド実行
 
 すでにあるコンテナでコマンド実行
