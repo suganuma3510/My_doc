@@ -3,12 +3,14 @@
 - [プッシュ（現在のブランチ）](#プッシュ現在のブランチ)
 - [push先のリポジトリを登録](#push先のリポジトリを登録)
 - [push先のリポジトリの登録を削除](#push先のリポジトリの登録を削除)
+- [複数のリモートブランチを設定](#複数のリモートブランチを設定)
 - [ブランチ作成](#ブランチ作成)
 - [ブランチ削除](#ブランチ削除)
 - [ブランチ移動](#ブランチ移動)
 - [ブランチを作成と同時に移動](#ブランチを作成と同時に移動)
 - [ローカルを最新のリポジトリに更新](#ローカルを最新のリポジトリに更新)
-- [作業中のリポジトリに反映](#作業中のリポジトリに反映)
+- [作業中のリポジトリに反映（マージ）](#作業中のリポジトリに反映マージ)
+- [作業中のリポジトリに反映（リベース）](#作業中のリポジトリに反映リベース)
 - [変更の取り消し](#変更の取り消し)
 - [変更を退避 & 適用](#変更を退避--適用)
 - [コミットメッセージ変更](#コミットメッセージ変更)
@@ -49,6 +51,16 @@ git remote add origin git@github.com:MikotoSuganuma/media_app.git
 git remote rm origin
 ```
 
+#### 複数のリモートブランチを設定
+```
+git remote add github git@github.com:test/github.git
+git remote -v
+```
+
+```
+git push github master
+```
+
 #### ブランチ作成
 ```
 git branch develop
@@ -85,10 +97,18 @@ git pull origin develop
 git pull -rp
 ```
 
-#### 作業中のリポジトリに反映
+#### 作業中のリポジトリに反映（マージ）
 ```
 git checkout
 git merge develop
+```
+
+#### 作業中のリポジトリに反映（リベース）
+```
+git fetch origin
+git stash
+git rebase origin/master
+git stash pop
 ```
 
 #### 変更の取り消し
