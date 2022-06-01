@@ -21,6 +21,7 @@
 - [コミット履歴を確認](#コミット履歴を確認)
 - [特定のバージョンに戻す](#特定のバージョンに戻す)
 - [リモートブランチ取得](#リモートブランチ取得)
+- [タグ操作](#タグ操作)
 - [アカウント変更](#アカウント変更)
 
 #### ステージングエリアに登録
@@ -106,6 +107,7 @@ git merge develop
 #### 作業中のリポジトリに反映（リベース）
 ```
 git fetch origin
+git add .
 git stash
 git rebase origin/master
 git stash pop
@@ -215,6 +217,29 @@ git checkout -b feature/ origin/feature/
 
 ```
 git checkout -t origin/feature/
+```
+
+#### タグ操作
+
+作成
+```
+git tag v1.0
+git tag -a v1.0 -m 'Version 1.0'
+```
+
+リスト表示
+```
+git tag
+```
+
+削除
+```
+git tag -d tag-name
+```
+
+プッシュ
+```
+git push origin --tags
 ```
 
 #### アカウント変更
