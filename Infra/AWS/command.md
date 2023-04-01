@@ -3,6 +3,7 @@
   - [初期設定](#初期設定)
   - [プロファイル確認](#プロファイル確認)
   - [プロファイル切り替え](#プロファイル切り替え)
+  - [ECSタスクをストップ](#ecsタスクをストップ)
 
 ### aws-cli コマンド
 #### デフォルトではない、プロファイルでコマンドを実行
@@ -28,4 +29,20 @@ aws configure list
 
 ```
 export AWS_DEFAULT_PROFILE=[name]
+```
+
+#### ECSタスクをストップ
+```
+TASK_ARNS=$(
+  aws ecs list-tasks \
+    --cluster ${CLUSTER_NAME} \
+    --service ${SERVICE_NAME} \
+    --desired-status RUNNING \
+    --output text \
+    --query taskArns
+)
+for taskarn in ${TASK_ARNS}
+do
+  aws ecs stop-task --cluster ${CLUSTER_NAME} --task $taskarn
+done
 ```

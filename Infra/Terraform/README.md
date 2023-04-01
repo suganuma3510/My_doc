@@ -25,6 +25,8 @@
 - [hashicorp/best\-practices](https://github.com/hashicorp/best-practices)
 - [Terraformなにもわからないけどディレクトリ構成の実例を晒して人類に貢献したい \- エムスリーテックブログ](https://www.m3tech.blog/entry/2020/07/27/150000)
 - [Terraformのディレクトリ構成の模索 \- Adwaysエンジニアブログ](https://blog.engineer.adways.net/entry/2020/07/03/150000)
+- [Mercari Microservices Platform における Terraform 0\.12 対応 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/mercari-microservices-platform-terraform-0-12/)
+- [AWSコンソールを5年間ぽちぽちしてましたが、やっとTerraformに完全移行しました。\-マイクロサービスインフラの移行とその運用について\- \| by Ryo Kubota \| FiNC Tech Blog \| Medium](https://medium.com/finc-engineering/terraform-import-microservices-and-operate-685341d9115b)
 
 ### トラブル解消
 - [M1マックでTerraformでエラーが出たり成功したりする件の解消](https://zenn.dev/bun913/articles/m1-mac-terraform-unstable)

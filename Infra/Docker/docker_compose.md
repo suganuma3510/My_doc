@@ -9,8 +9,9 @@
     - [トップレベルの volumes](#トップレベルの-volumes)
   - [ports](#ports)
   - [environment](#environment)
-  - [env_file](#env_file)
+  - [env\_file](#env_file)
   - [command](#command)
+  - [Docker コンテナ内からホストのポートにアクセス](#docker-コンテナ内からホストのポートにアクセス)
   - [参考](#参考)
 
 ## docker-compose
@@ -138,6 +139,14 @@ environment:
 Dockerfileで定義されている `CMD` の上書きを行う。
 
 `command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci` 
+
+### Docker コンテナ内からホストのポートにアクセス
+
+Docker for Mac / Windows の場合は、`host.docker.internal` がホストを指すものとしてデフォルトで提供されている
+```
+environment:
+  WEB_URL: 'http://host.docker.internal:8080'
+```
 
 ### 参考
 - [docker-compose - 入門 Docker](https://y-ohgi.com/introduction-docker/3_production/docker-compose/)

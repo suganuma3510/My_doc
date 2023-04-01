@@ -17,3 +17,4 @@
 - [Dockerイメージの理解を目指すチュートリアル \- Qiita](https://qiita.com/zembutsu/items/24558f9d0d254e33088f)
 - [Dockerfileのベストプラクティス \- Qiita](https://qiita.com/Tsuyozo/items/c706a04848c3fbbaf055)
 - [Dockerfileのベストプラクティス Top 20 – Sysdig](https://sysdig.jp/blog/dockerfile-best-practices-2/)
+- [実践 Docker \- ソフトウェアエンジニアの「Docker よくわからない」を終わりにする本](https://zenn.dev/suzuki_hoge/books/2022-03-docker-practice-8ae36c33424b59)

@@ -11,13 +11,13 @@
 ```
 ├── interface
 │   └── controller // サーバへの入力と出力を扱う責務
-├── application // 作業の調整を行う責務
+├── application    // 作業の調整を行う責務
 ├── domain
-│   ├── model // ビジネスの概念とビジネスロジック
-│   ├── service // EntityでもValue Objectでもないドメイン層のロジック
+│   ├── model      // ビジネスの概念とビジネスロジック
+│   ├── service    // EntityでもValue Objectでもないドメイン層のロジック
 │   └── repository // infra/dbへのポート
-├── infra // 技術に関すること
-     ├── db // DBの技術に関すること
-     ├── logger // Logの技術に関すること
-     └── router // Routingの技術に関すること
+└── infrastructure // 技術に関すること
+     ├── db        // DBの技術に関すること
+     ├── logger    // Logの技術に関すること
+     └── router    // Routingの技術に関すること
 ```

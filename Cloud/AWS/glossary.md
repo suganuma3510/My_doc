@@ -551,6 +551,12 @@ CloudFormationとの違いとしては、サポート範囲が異なり、EC2 �
 ### AWS Systems Manager
 主にEC2インスタンスやオンプレミス環境のサーバー群の運用管理を容易にするための多種多様なサービスを提供している。
 
+- State Manager  
+  - run command や patch manager の定期実行が可能
+- Session Manager  
+  - AWS マネジメントコンソールから EC2 インスタンスへSSH接続が可能  
+  - SSMSessionRunAsを設定することで任意のOSユーザにログイン可能
+
 ### AWS Secrets Manager
 AWS内リソース、オンプレミス環境、またはサードパーティアプリケーションにアクセスするための各種機密情報の管理を、簡単にするAWSのマネージドサービス。  
 
