@@ -24,6 +24,7 @@
 - [リモートブランチ取得](#リモートブランチ取得)
 - [タグ操作](#タグ操作)
 - [アカウント変更](#アカウント変更)
+- [設定確認](#設定確認)
 - [フェッチしてdevelopブランチをリベース](#フェッチしてdevelopブランチをリベース)
 
 #### ステージングエリアに登録
@@ -254,6 +255,11 @@ git push origin --tags
 ```
 git config --global user.name "<YOUR_NAME>"
 git config --global user.email "<YUOR_EMAIL>"
+```
+
+#### 設定確認
+```
+git config --global --list
 ```
 
 #### フェッチしてdevelopブランチをリベース
